@@ -3,7 +3,7 @@ title: "React Best Practices in 2024"
 date: "2024-02-05"
 author: "afikri"
 tags: ["React", "JavaScript", "Web Development"]
-imageUrl: "/blogs/images/web.jpg"
+imageUrl: "https://picsum.photos/seed/react/800/400"
 commentsCount: 23
 likesCount: 250
 bookmarksCount: 100

@@ -22,7 +22,7 @@ async function getBlogPosts() {
             date: data.date || "Unknown date",
             author: data.author || "afikri",
             tags: data.tags || [],
-            imageUrl: data.imageUrl || "/default-image.jpg",
+            imageUrl: data.imageUrl || "https://picsum.photos/seed/default/800/400",
             commentsCount: data.commentsCount || 0,
             likesCount: data.likesCount || 0,
             bookmarksCount: data.bookmarksCount || 0,

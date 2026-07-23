@@ -3,7 +3,7 @@ title: "Building Modern Web Applications with TypeScript"
 date: "2024-02-10"
 author: "afikri"
 tags: ["TypeScript", "Web Development", "React"]
-imageUrl: "/blogs/images/web.jpg"
+imageUrl: "https://picsum.photos/seed/typescript/800/400"
 commentsCount: 15
 likesCount: 120
 bookmarksCount: 60
