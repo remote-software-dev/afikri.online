@@ -30,6 +30,14 @@ export function Navbar() {
             </li>
             <li>
               <Link
+                href="/blogs"
+                className="text-gray-500 transition-colors hover:text-blue-600"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/projects"
                 className="text-gray-500 transition-colors hover:text-blue-600"
               >
