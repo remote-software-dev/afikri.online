@@ -23,16 +23,16 @@ export default function AboutPage() {
         <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
           About
         </h1>
-        <p className="max-w-lg text-lg leading-relaxed text-gray-500">
+        <p className="max-w-lg text-lg leading-relaxed text-black-500">
           Developer building clean, fast web experiences with TypeScript,
           React, and intentional design. Focused on craft, performance, and
           shipping things that work.
         </p>
       </section>
 
-      <section className="border-t border-gray-200 bg-gray-50">
+      <section className="border-t border-black-200 bg-black-50">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-20">
-          <h2 className="text-sm font-medium uppercase tracking-widest text-gray-500">
+          <h2 className="text-sm font-medium uppercase tracking-widest text-black-500">
             Bio
           </h2>
           <p className="text-base leading-relaxed text-black">
@@ -50,14 +50,14 @@ export default function AboutPage() {
 
       <section>
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-20">
-          <h2 className="text-sm font-medium uppercase tracking-widest text-gray-500">
+          <h2 className="text-sm font-medium uppercase tracking-widest text-black-500">
             Skills
           </h2>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <article className="flex flex-col gap-2">
               <h3 className="text-lg font-semibold text-black">Frontend</h3>
-              <p className="text-base leading-relaxed text-gray-500">
+              <p className="text-base leading-relaxed text-black-500">
                 TypeScript, React, Next.js, Tailwind CSS. Component-driven
                 architecture with an emphasis on type safety and minimal
                 bundle size.
@@ -66,7 +66,7 @@ export default function AboutPage() {
 
             <article className="flex flex-col gap-2">
               <h3 className="text-lg font-semibold text-black">Backend</h3>
-              <p className="text-base leading-relaxed text-gray-500">
+              <p className="text-base leading-relaxed text-black-500">
                 Node.js, Python, PostgreSQL. API design focused on
                 predictability, error handling, and clear data contracts.
               </p>
@@ -76,7 +76,7 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold text-black">
                 Infrastructure
               </h3>
-              <p className="text-base leading-relaxed text-gray-500">
+              <p className="text-base leading-relaxed text-black-500">
                 Vercel, Docker, CI/CD pipelines. Deployment that is
                 boring and reliable.
               </p>
@@ -84,7 +84,7 @@ export default function AboutPage() {
 
             <article className="flex flex-col gap-2">
               <h3 className="text-lg font-semibold text-black">Principles</h3>
-              <p className="text-base leading-relaxed text-gray-500">
+              <p className="text-base leading-relaxed text-black-500">
                 Accessibility is not a feature. Performance is not optional.
                 Clean code is not a luxury — it is how you ship faster next
                 time.

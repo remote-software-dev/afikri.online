@@ -1,14 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Navbar() {
   return (
     <header className="w-full border-b border-black-200">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-5 sm:flex-row sm:justify-between">
-        <Link
-          href="/"
-          className="text-sm font-semibold tracking-tight text-black"
-        >
-          afikri
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Afikri logo"
+            width={25}
+            height={8}
+            priority
+          />
         </Link>
         <nav aria-label="Main navigation">
           <ul className="flex flex-col gap-3 text-sm sm:flex-row sm:gap-6">

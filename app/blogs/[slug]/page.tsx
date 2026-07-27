@@ -24,7 +24,7 @@ export default async function BlogPostPage({
   if (!mdxData) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-gray-500">Post not found</p>
+        <p className="text-black-500">Post not found</p>
       </div>
     );
   }
@@ -34,7 +34,7 @@ export default async function BlogPostPage({
       <h1 className="mb-4 text-4xl font-bold tracking-tight text-black">
         {mdxData.frontMatter.title}
       </h1>
-      <div className="mb-8 text-gray-500">
+      <div className="mb-8 text-black-500">
         {mdxData.frontMatter.author && (
           <p>
             <strong>Author:</strong> {mdxData.frontMatter.author}
@@ -45,9 +45,9 @@ export default async function BlogPostPage({
         </p>
       </div>
 
-      <hr className="my-8 border-gray-200" />
+      <hr className="my-8 border-black-200" />
 
-      <div className="prose prose-gray max-w-none">
+      <div className="prose prose-black max-w-none">
         <MDXRemote
           source={mdxData.source}
           components={{
