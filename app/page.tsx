@@ -10,7 +10,7 @@ export default function Home() {
         <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
           Building things for the web.
         </h1>
-        <p className="max-w-lg text-lg leading-relaxed text-gray-500">
+        <p className="max-w-lg text-lg leading-relaxed text-black-500">
           Developer focused on clean code, fast interfaces, and tools that
           ship. Currently working with TypeScript, React, and whatever gets
           the job done.

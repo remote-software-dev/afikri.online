@@ -21,6 +21,14 @@ export const metadata: Metadata = {
   },
   description:
     "Developer building clean, fast web experiences. TypeScript, React, and intentional design.",
+  // ADD THIS BLOCK:
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: ["/icon.png"],
+    apple: ["/icon.png"],
+  },
   keywords: ["afikri", "developer", "portfolio", "TypeScript", "React"],
   authors: [{ name: "afikri" }],
   robots: {
