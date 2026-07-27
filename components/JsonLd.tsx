@@ -114,23 +114,27 @@ export function PersonJsonLd() {
   const person: JsonLdPerson = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "afikri",
+    name: "Afikri",
     url: SITE_URL,
-    jobTitle: "Developer",
+    jobTitle: "Full-Stack Developer",
     description:
       "Developer building clean, fast web experiences with TypeScript, React, and intentional design.",
+    sameAs: [
+      "https://github.com/afikri",
+      "https://linkedin.com/in/afikri",
+    ],
   };
 
   const website: JsonLdWebSite = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "afikri",
+    name: "Afikri",
     url: SITE_URL,
     description:
       "Developer building clean, fast web experiences with TypeScript, React, and intentional design.",
     author: {
       "@type": "Person",
-      name: "afikri",
+      name: "Afikri",
     },
     inLanguage: "en-US",
   };

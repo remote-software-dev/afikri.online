@@ -48,14 +48,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "afikri",
-    title: "afikri",
+    siteName: "Afikri",
+    title: "Afikri",
     description:
       "Developer building clean, fast web experiences. TypeScript, React, and intentional design.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "afikri",
+    title: "Afikri",
     description:
       "Developer building clean, fast web experiences. TypeScript, React, and intentional design.",
   },

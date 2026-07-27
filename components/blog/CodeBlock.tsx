@@ -9,14 +9,22 @@ interface CodeBlockProps {
 }
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ className = "", children }) => {
-  const language = className.replace("language-", "") || "tsx";
+  const language = className.replace("language-", "");
   const codeString = Array.isArray(children) ? children.join("") : children;
+
+  if (!language) {
+    return (
+      <code className={className}>
+        {String(codeString).trim()}
+      </code>
+    );
+  }
 
   return (
     <SyntaxHighlighter
       language={language}
       style={oneDark}
-      PreTag="div"
+      PreTag="pre"
       customStyle={{ padding: "10px", borderRadius: "5px" }}
     >
       {String(codeString).trim()}
