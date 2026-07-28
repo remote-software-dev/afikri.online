@@ -44,7 +44,7 @@ export default function ProjectsPage() {
         ]}
       />
 
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-24 pb-20">
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-12 pb-4">
         <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
           Projects
         </h1>
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
       </section>
 
       <section className="border-t border-black-200">
-        <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-20">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-12">
           {projects.map((project) => (
             <article
               key={project.title}

@@ -19,7 +19,7 @@ export default function AboutPage() {
         ]}
       />
 
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-24 pb-20">
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-12 pb-4">
         <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
           About
         </h1>
