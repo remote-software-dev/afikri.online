@@ -1,6 +1,3 @@
-import Image from "next/image";
-import { formatDate } from "@/lib/utils";
-
 interface BlogCardProps {
   imageUrl: string;
   tags: string[];
@@ -20,24 +17,24 @@ const BlogCard: React.FC<BlogCardProps> = ({
   content,
   readMoreLink,
 }) => (
-  <article className="border border-border rounded-lg overflow-hidden bg-card">
-    <div className="aspect-video w-full bg-muted">
-      <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+  <article className="rounded-lg border border-gray-200 bg-white">
+    <div className="aspect-video w-full bg-gray-100">
+      <img src={imageUrl} alt={title} className="h-full w-full object-cover" />
     </div>
-    <div className="p-6 space-y-4">
+    <div className="space-y-4 p-6">
       <div className="flex flex-wrap gap-2">
         {tags.map((tag, index) => (
-          <span key={index} className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+          <span key={index} className="rounded-full bg-blue-50 px-2 py-1 text-xs text-blue-600">
             {tag}
           </span>
         ))}
       </div>
-      <h2 className="text-2xl font-semibold text-foreground">{title}</h2>
-      <div className="text-sm text-muted-foreground">
-        {author} · {formatDate(date)}
+      <h2 className="text-2xl font-bold text-black">{title}</h2>
+      <div className="text-sm text-gray-600">
+        {author} · {date}
       </div>
-      <p className="text-muted-foreground">{content}</p>
-      <a href={readMoreLink} className="text-primary font-medium hover:underline">
+      <p className="text-gray-600">{content}</p>
+      <a href={readMoreLink} className="font-medium text-blue-600 hover:underline">
         Read more →
       </a>
     </div>

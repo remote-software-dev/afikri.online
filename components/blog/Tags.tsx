@@ -4,13 +4,13 @@ const Tags: React.FC = () => {
   const tagList = ["Web Development", "TypeScript", "React", "Next.js", "Design"];
 
   return (
-    <div className="border border-border rounded-lg p-6 bg-card">
-      <h3 className="text-lg font-semibold text-foreground mb-4">Tags</h3>
+    <div className="rounded-lg border border-gray-200 bg-white p-6">
+      <h3 className="mb-4 text-lg font-semibold text-black">Tags</h3>
       <div className="flex flex-wrap gap-2">
         {tagList.map((tag, index) => (
           <span
             key={index}
-            className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full cursor-pointer hover:bg-primary/20 transition-colors"
+            className="cursor-pointer rounded-full bg-blue-50 px-3 py-1.5 text-xs text-blue-600 transition-colors hover:bg-blue-100"
           >
             {tag}
           </span>

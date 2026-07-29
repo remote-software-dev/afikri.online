@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function Navbar() {
   return (
-    <header className="w-full border-b border-black-200">
+    <header className="w-full border-b border-gray-200">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-5 sm:flex-row sm:justify-between">
         <Link href="/" className="flex items-center">
           <Image
@@ -19,7 +19,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/"
-                className="text-black-500 transition-colors hover:text-blue-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Home
               </Link>
@@ -28,7 +28,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/blogs"
-                className="text-black-500 transition-colors hover:text-blue-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Blog
               </Link>
@@ -36,7 +36,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/projects"
-                className="text-black-500 transition-colors hover:text-blue-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Projects
               </Link>
@@ -44,7 +44,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/about"
-                className="text-black-500 transition-colors hover:text-blue-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 About
               </Link>
@@ -52,7 +52,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/contact"
-                className="text-black-500 transition-colors hover:text-blue-600"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Contact
               </Link>

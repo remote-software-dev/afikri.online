@@ -30,11 +30,11 @@ export default async function BlogPostPage({
   }
 
   return (
-    <article className="mx-auto max-w-3xl px-6 pt-12 pb-20">
-      <h1 className="mb-4 text-4xl font-bold tracking-tight text-black">
+    <article className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+      <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
         {mdxData.frontMatter.title}
       </h1>
-      <div className="mb-8 text-black-500">
+      <div className="mb-8 text-gray-600">
         {mdxData.frontMatter.author && (
           <p>
             <strong>Author:</strong> {mdxData.frontMatter.author}
@@ -45,7 +45,7 @@ export default async function BlogPostPage({
         </p>
       </div>
 
-      <hr className="my-8 border-black-200" />
+      <hr className="my-8 border-gray-200" />
 
       <div className="prose prose-black max-w-none">
         <MDXRemote

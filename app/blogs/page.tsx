@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from "react";
 import BlogCard from "@/components/blog/BlogCard";
-import PopularPosts from "@/components/blog/PopularPosts";
-import Tags from "@/components/blog/Tags";
 import Pagination from "@/components/blog/Pagination";
-import { formatDate } from "@/lib/utils";
 
 export interface BlogPost {
   slug: string;
@@ -57,7 +54,7 @@ export default function BlogPage() {
   if (loading) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-muted-foreground">Loading...</p>
+        <p className="text-gray-600">Loading...</p>
       </div>
     );
   }
@@ -65,18 +62,23 @@ export default function BlogPage() {
   if (error) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-red-500">{error}</p>
+        <p className="text-gray-600">{error}</p>
       </div>
     );
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-4 pt-12 pb-20">
-      <h1 className="text-4xl font-semibold tracking-tight text-foreground mb-8">
-        Blog
-      </h1>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-8">
+    <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+      <section className="mb-12">
+        <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
+          Blog
+        </h1>
+      </section>
+
+      <div className="border-b border-gray-100 my-12" />
+
+      <section>
+        <div className="flex flex-col gap-8">
           {postsToShow.length > 0 ? (
             postsToShow.map((post) => (
               <BlogCard
@@ -91,7 +93,7 @@ export default function BlogPage() {
               />
             ))
           ) : (
-            <p className="text-center text-muted-foreground">No blog posts found.</p>
+            <p className="text-center text-gray-600">No blog posts found.</p>
           )}
           <Pagination
             currentPage={currentPage}
@@ -99,11 +101,7 @@ export default function BlogPage() {
             setCurrentPage={setCurrentPage}
           />
         </div>
-        <aside className="lg:col-span-1 space-y-8">
-          <PopularPosts />
-          <Tags />
-        </aside>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

@@ -24,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="mt-5 flex">
       <button
-        className="mr-1.5 h-[30px] w-[30px] rounded-full border border-gray-300 text-center text-sm font-bold transition-colors hover:bg-blue-600 hover:text-black disabled:opacity-50"
+        className="mr-1.5 h-[30px] w-[30px] rounded-full border border-gray-300 text-center text-sm font-bold transition-colors hover:bg-blue-600 hover:text-white disabled:opacity-50"
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
         aria-label="Previous Page"
@@ -37,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({
         return (
           <button
             key={pageNumber}
-            className={`mr-1.5 h-[30px] w-[30px] rounded-full border text-center text-sm transition-colors hover:bg-blue-600 hover:text-black ${
+            className={`mr-1.5 h-[30px] w-[30px] rounded-full border text-center text-sm transition-colors hover:bg-blue-600 hover:text-white ${
               pageNumber === currentPage
                 ? "border-blue-600 bg-blue-600 text-white"
                 : "border-gray-300"
@@ -50,7 +50,7 @@ const Pagination: React.FC<PaginationProps> = ({
       })}
 
       <button
-        className="mr-1.5 h-[30px] w-[30px] rounded-full border border-gray-300 text-center text-sm font-bold transition-colors hover:bg-blue-600 hover:text-black disabled:opacity-50"
+        className="mr-1.5 h-[30px] w-[30px] rounded-full border border-gray-300 text-center text-sm font-bold transition-colors hover:bg-blue-600 hover:text-white disabled:opacity-50"
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
         aria-label="Next Page"

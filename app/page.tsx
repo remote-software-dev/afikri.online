@@ -6,11 +6,11 @@ export default function Home() {
     <>
       <PersonJsonLd />
 
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-12 pb-20">
-        <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
+      <section className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+        <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
           Building things for the web.
         </h1>
-        <p className="max-w-lg text-lg leading-relaxed text-black-500">
+        <p className="mb-12 text-xl leading-relaxed text-gray-600">
           Developer focused on clean code, fast interfaces, and tools that
           ship. Currently working with TypeScript, React, and whatever gets
           the job done.
@@ -18,7 +18,7 @@ export default function Home() {
         <div>
           <Link
             href="/projects"
-            className="inline-flex h-11 items-center rounded-md bg-blue-600 px-6 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            className="inline-flex items-center bg-black px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-blue-600"
           >
             View Projects
           </Link>
