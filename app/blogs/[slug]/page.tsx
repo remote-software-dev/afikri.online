@@ -30,7 +30,7 @@ export default async function BlogPostPage({
   }
 
   return (
-    <article className="mx-auto max-w-3xl px-6 pt-24 pb-20">
+    <article className="mx-auto max-w-3xl px-6 pt-12 pb-20">
       <h1 className="mb-4 text-4xl font-bold tracking-tight text-black">
         {mdxData.frontMatter.title}
       </h1>

@@ -19,7 +19,7 @@ export default function ContactPage() {
         ]}
       />
 
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-24 pb-12">
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-12 pb-12">
         <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
           Contact
         </h1>

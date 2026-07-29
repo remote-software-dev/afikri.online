@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <PersonJsonLd />
 
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-24 pb-20">
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 pt-12 pb-20">
         <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
           Building things for the web.
         </h1>

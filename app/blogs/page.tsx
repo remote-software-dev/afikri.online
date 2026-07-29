@@ -71,7 +71,7 @@ export default function BlogPage() {
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-4 pt-24 pb-20">
+    <section className="max-w-6xl mx-auto px-4 pt-12 pb-20">
       <h1 className="text-4xl font-semibold tracking-tight text-foreground mb-8">
         Blog
       </h1>
