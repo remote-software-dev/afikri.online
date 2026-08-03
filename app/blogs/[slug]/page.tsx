@@ -47,7 +47,7 @@ export default async function BlogPostPage({
 
       <hr className="my-8 border-gray-200" />
 
-      <div className="prose prose-black max-w-none">
+      <div className="prose prose-black max-w-none text-justify">
         <MDXRemote
           source={mdxData.source}
           components={{

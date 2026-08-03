@@ -8,6 +8,14 @@ interface BlogCardProps {
   readMoreLink: string;
 }
 
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+};
+
 const BlogCard: React.FC<BlogCardProps> = ({
   imageUrl,
   tags,
@@ -31,7 +39,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
       </div>
       <h2 className="text-2xl font-bold text-black">{title}</h2>
       <div className="text-sm text-gray-600">
-        {author} · {date}
+        {author} · {formatDate(date)}
       </div>
       <p className="text-gray-600">{content}</p>
       <a href={readMoreLink} className="font-medium text-blue-600 hover:underline">
