@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { generatePageMetadata } from "@/components/PageMetadata";
 import { PageMetadata } from "@/components/PageMetadata";
+import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Contact",
@@ -73,51 +74,7 @@ export default function ContactPage() {
             {/* Left Column: Contact Form */}
             <div className="flex-1">
               <h2 className="mb-6 text-2xl font-bold text-black md:text-3xl">Send a message</h2>
-              <form 
-                action="https://formspree.io/f/YOUR_FORM_ID" 
-                method="POST" 
-                className="flex flex-col gap-4"
-              >
-                <div>
-                  <label htmlFor="name" className="mb-1 block text-sm font-medium text-gray-700">Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    required
-                    className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm text-black focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    required
-                    className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm text-black focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    placeholder="you@company.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="mb-1 block text-sm font-medium text-gray-700">Message</label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    rows={4} 
-                    required
-                    className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm text-black focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    placeholder="Tell me about your project or opportunity..."
-                  />
-                </div>
-                <button 
-                  type="submit" 
-                  className="mt-2 inline-flex w-full items-center justify-center bg-black px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-blue-600"
-                >
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </div>
 
             {/* Right Column: Direct Links */}
