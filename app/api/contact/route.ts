@@ -4,7 +4,7 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const TO_EMAIL = "fikri.abdul.jp@gmail.com";
-const FROM_EMAIL = "onboarding@resend.dev";
+const FROM_EMAIL = "noreply@afikri.online";
 
 interface ContactBody {
   name: string;
