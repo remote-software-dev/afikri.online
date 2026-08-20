@@ -130,6 +130,54 @@ export default function AboutPage() {
           </h2>
 
           <div className="flex flex-col gap-10">
+            {/* Experience 0 */}
+            <div>
+              <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+                <p className="text-base font-semibold text-black">
+                  Independent Software Engineer &amp; Product Developer
+                </p>
+                <p className="text-sm text-gray-500">
+                  Apr 2026 &ndash; Present
+                </p>
+              </div>
+              <p className="mb-3 text-sm text-gray-500">
+                Independent Product Development &amp; Consulting, Indonesia
+              </p>
+              <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
+                <li className="text-base leading-relaxed">
+                  Design and develop proprietary software products using
+                  TypeScript, Next.js, React, Tailwind CSS, Prisma, PostgreSQL,
+                  and FastAPI.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Build full-stack applications covering frontend development,
+                  backend services, database architecture, API development,
+                  authentication, and application workflows.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Design and implement PostgreSQL data models and database access
+                  layers using Prisma.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Develop backend APIs and services using FastAPI and integrate
+                  them with Next.js applications.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Build and integrate AI powered functionality and automation
+                  into software products and application workflows.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Provide software development consulting for clients building
+                  applications with Next.js and TypeScript.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Work across the complete development lifecycle, from
+                  requirements and architecture through development, testing,
+                  deployment, and iterative improvement.
+                </li>
+              </ul>
+            </div>
+
             {/* Experience 1 */}
             <div>
               <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
