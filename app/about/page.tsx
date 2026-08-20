@@ -5,7 +5,7 @@ import { PageMetadata } from "@/components/PageMetadata";
 export const metadata: Metadata = generatePageMetadata({
   title: "About",
   description:
-    "Backend & Systems Engineer with 10+ years building enterprise information systems, APIs, and data platforms for governments, UN agencies, and international NGOs.",
+    "Software Engineer — Full Stack Developer with 10+ years building web applications, APIs, databases, and enterprise software for governments, UN agencies, and international NGOs.",
   path: "/about",
 });
 
@@ -23,11 +23,11 @@ export default function AboutPage() {
         {/* Header */}
         <section className="mb-12">
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
-            Backend & Systems Engineer
+            Software Engineer &mdash; Full Stack Developer
           </h1>
           <p className="mb-12 text-xl leading-relaxed text-gray-600">
-            10+ years building enterprise information systems, APIs, and data
-            platforms for governments, UN agencies, and international NGOs.
+            10+ years building web applications, APIs, databases, and enterprise
+            software for governments, UN agencies, and international NGOs.
           </p>
         </section>
 
@@ -39,13 +39,16 @@ export default function AboutPage() {
             Professional Summary
           </h2>
           <p className="mb-6 text-base leading-relaxed text-gray-700 md:text-lg">
-            Backend & Systems Engineer with over a decade of experience
-            developing enterprise information systems, backend services, APIs,
-            and database-driven platforms. Specialized in backend architecture,
-            interoperability systems, and structured data workflows. Proven
-            track record building scalable solutions for organizations like
-            UNICEF, IOM, and BNPB using Python, PHP, FastAPI, Django, and
-            Laravel.
+            Fullstack Software Engineer with 10+ years of experience designing
+            and developing web applications, APIs, databases, and enterprise
+            software solutions for governments, UN agencies, international NGOs,
+            and independent products. Strong hands-on experience with Next.js,
+            React, TypeScript, Tailwind CSS, PostgreSQL, Prisma, FastAPI, and
+            REST APIs, with current focus on building full-stack and AI-powered
+            applications. Experienced across the full software development
+            lifecycle, from system architecture and database design to
+            application development, API integration, testing, deployment, and
+            production support.
           </p>
         </section>
 
@@ -60,37 +63,59 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <article>
               <h3 className="mb-2 text-base font-semibold text-black">
-                Backend
-              </h3>
-              <p className="text-base leading-relaxed text-gray-600">
-                Python, PHP, FastAPI, Django, Laravel, REST APIs, Microservices
-              </p>
-            </article>
-
-            <article>
-              <h3 className="mb-2 text-base font-semibold text-black">
                 Frontend
               </h3>
               <p className="text-base leading-relaxed text-gray-600">
-                React, Next.js, TypeScript
+                React, Next.js, TypeScript, Tailwind CSS, JavaScript (ES6+),
+                HTML5, CSS3, Responsive Design
               </p>
             </article>
 
             <article>
               <h3 className="mb-2 text-base font-semibold text-black">
-                Databases
+                Backend &amp; APIs
               </h3>
               <p className="text-base leading-relaxed text-gray-600">
-                PostgreSQL, MySQL, SQL Server, NoSQL
+                FastAPI, Python, Node.js, PHP, Laravel, Django, RESTful APIs,
+                Auth Systems, JSON
               </p>
             </article>
 
             <article>
               <h3 className="mb-2 text-base font-semibold text-black">
-                Infrastructure & DevOps
+                Databases &amp; ORM
               </h3>
               <p className="text-base leading-relaxed text-gray-600">
-                Docker, Kubernetes, Redis, Git, Linux, Grafana
+                PostgreSQL, Prisma, MySQL, Schema Design, Data Modeling
+              </p>
+            </article>
+
+            <article>
+              <h3 className="mb-2 text-base font-semibold text-black">
+                AI &amp; Automation
+              </h3>
+              <p className="text-base leading-relaxed text-gray-600">
+                AI-Powered Applications, AI/ML API Integration, Workflow
+                Automation
+              </p>
+            </article>
+
+            <article>
+              <h3 className="mb-2 text-base font-semibold text-black">
+                Software Engineering
+              </h3>
+              <p className="text-base leading-relaxed text-gray-600">
+                Software Architecture, System Analysis, Requirements
+                Engineering, SDLC, QA Testing
+              </p>
+            </article>
+
+            <article>
+              <h3 className="mb-2 text-base font-semibold text-black">
+                DevOps &amp; Tools
+              </h3>
+              <p className="text-base leading-relaxed text-gray-600">
+                Git, Docker, Linux, Redis
               </p>
             </article>
           </div>
@@ -208,7 +233,8 @@ export default function AboutPage() {
 
           <div className="mt-10">
             <a
-              href="#"
+              href="/Curriculum-Vitae.pdf"
+              download="Abdul-Fikri-CV.pdf"
               className="inline-flex items-center bg-black px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-blue-600"
             >
               Download CV
