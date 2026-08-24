@@ -7,7 +7,7 @@ import { PageMetadata } from "@/components/PageMetadata";
 export const metadata: Metadata = generatePageMetadata({
   title: "Projects",
   description:
-    "Selected projects by afikri — clean, fast web applications built with TypeScript, React, and Next.js.",
+    "Selected projects by afikri — clean, fastdsadsdasdsaads web applications built with TypeScript, React, and Next.js.",
   path: "/projects",
 });
 
@@ -27,8 +27,7 @@ export default function ProjectsPage() {
             Projects
           </h1>
           <p className="text-xl leading-relaxed text-gray-600">
-            Selected work — clean, fast web applications built with TypeScript,
-            React, and intentional design.
+            Selected work — clean, fast, and scalable full-stack applications built with Python, FastAPI, Laravel, React, and intentional design.
           </p>
         </section>
 
