@@ -99,14 +99,16 @@ export default async function ProjectPage({ params }: PageProps) {
               Visit Project On Github &rarr;
             </a>
 
-            <a
-              href={frontMatter.liveLink || "https://dmics.vercel.app/"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-black px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-blue-600"
-            >
-              See it live &rarr;
-            </a>
+            {frontMatter.liveLink && (
+              <a
+                href={frontMatter.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-black px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-blue-600"
+              >
+                See it live &rarr;
+              </a>
+            )}
           </div>
         )}
 

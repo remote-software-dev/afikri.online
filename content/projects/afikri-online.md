@@ -6,7 +6,8 @@ tags: ["Next.js", "TypeScript", "Tailwind CSS", "Markdown"]
 excerpt: "Personal portfolio site. Minimalist by design, built with Next.js and Tailwind with strict attention to typography and whitespace."
 role: "Full Stack Developer"
 year: "2025"
-link: "https://afikri.online"
+link: "https://github.com/remote-software-dev/afikri.online"
+liveLink: "https://afikri.online"
 ---
 
 This very site. A minimalist portfolio built from scratch with a focus on clean typography, generous whitespace, and fast load times. Every design decision — from the Montserrat typeface to the black-and-white palette with blue accents — was made intentionally.

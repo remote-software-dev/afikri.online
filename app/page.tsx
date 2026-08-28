@@ -12,7 +12,7 @@ export default function Home() {
         </h1>
         <p className="mb-12 text-xl leading-relaxed text-gray-600">
           Developer focused on clean code, fast interfaces, and tools that
-          ship. Currently working with TypeScript, React, and whatever gets
+          ship. Currently working with Python, FastAPI, TypeScript, NextJS, React, PostgreSQL and whatever gets
           the job done.
         </p>
         <div>
