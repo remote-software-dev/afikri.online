@@ -8,10 +8,16 @@ type FrontMatter = {
   date: string;
   tags?: string[];
   author?: string;
+  role?: string;
+  year?: string;
+  link?: string;
+  liveLink?: string;
 };
 
-export async function getMdxContent(slug: string) {
-  const filePath = path.join(process.cwd(), "content", "blogs", `${slug}.md`);
+type ContentType = "blogs" | "projects";
+
+export async function getMdxContent(slug: string, contentType: ContentType = "blogs") {
+  const filePath = path.join(process.cwd(), "content", contentType, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
     return null;
   }

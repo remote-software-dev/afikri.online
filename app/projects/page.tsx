@@ -1,74 +1,102 @@
-import Link from "next/link";
-import type { Metadata } from "next";
-import { projects } from "@/data/projects";
-import { generatePageMetadata } from "@/components/PageMetadata";
-import { PageMetadata } from "@/components/PageMetadata";
+"use client";
 
-export const metadata: Metadata = generatePageMetadata({
-  title: "Projects",
-  description:
-    "Selected projects by afikri — clean, fastdsadsdasdsaads web applications built with TypeScript, React, and Next.js.",
-  path: "/projects",
-});
+import { useState, useEffect } from "react";
+import ProjectCard from "@/components/projects/ProjectCard";
+import Pagination from "@/components/blog/Pagination";
+
+export interface Project {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  tags: string[];
+  excerpt: string;
+}
 
 export default function ProjectsPage() {
-  return (
-    <>
-      <PageMetadata
-        breadcrumbs={[
-          { name: "Home", url: "https://afikri.online" },
-          { name: "Projects" },
-        ]}
-      />
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-      <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
-        <section className="mb-12">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
-            Projects
-          </h1>
-          <p className="text-xl leading-relaxed text-gray-600">
-            Selected work — clean, fast, and scalable full-stack applications built with Python, FastAPI, PHP/Laravel, TypeScript/Next/React, and intentional design.
-          </p>
-        </section>
+  const postsPerPage = 4;
+  const totalPages = Math.ceil(projects.length / postsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
 
-        <div className="border-b border-gray-100 my-12" />
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/projects");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error("Failed to fetch projects:", error);
+        setError("Failed to load projects. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        <section>
-          <div className="flex flex-col gap-8">
-            {projects.map((project) => (
-              <article
-                key={project.slug}
-                className="flex flex-col gap-3 border-b border-gray-200 pb-8 last:border-b-0 last:pb-0"
-              >
-                <h2 className="text-2xl font-bold text-black md:text-3xl">
-                  {project.title}
-                </h2>
-                <p className="text-base leading-relaxed text-gray-600">
-                  {project.description}
-                </p>
-                <ul className="flex gap-2 pt-1" aria-label="Technologies used">
-                  {project.technologies.map((tech) => (
-                    <li
-                      key={tech}
-                      className="inline-flex h-6 items-center rounded border border-gray-200 px-2 text-xs text-gray-600"
-                    >
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-                <div className="pt-1">
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
-                  >
-                    View &rarr;
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+    fetchProjects();
+  }, []);
+
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const projectsToShow = projects.slice(startIndex, endIndex);
+
+  if (loading) {
+    return (
+      <div className="flex min-h-[50vh] items-center justify-center">
+        <p className="text-gray-600">Loading...</p>
       </div>
-    </>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-[50vh] items-center justify-center">
+        <p className="text-gray-600">{error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+      <section className="mb-12">
+        <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
+          Projects
+        </h1>
+      </section>
+
+      <div className="border-b border-gray-100 my-12" />
+
+      <section>
+        <div className="flex flex-col gap-8">
+          {projectsToShow.length > 0 ? (
+            projectsToShow.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                tags={project.tags}
+                title={project.title}
+                author={project.author}
+                date={project.date}
+                content={project.excerpt}
+                readMoreLink={`/projects/${project.slug}`}
+              />
+            ))
+          ) : (
+            <p className="text-center text-gray-600">No projects found.</p>
+          )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
+      </section>
+    </div>
   );
 }
