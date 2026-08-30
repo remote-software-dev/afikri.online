@@ -19,7 +19,7 @@ export default function AboutPage() {
         ]}
       />
 
-      <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+      <div className="mx-auto max-w-3xl px-6 py-12 text-justify md:py-20">
         {/* Header */}
         <section className="mb-12">
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
@@ -66,8 +66,7 @@ export default function AboutPage() {
                 Frontend
               </h3>
               <p className="text-base leading-relaxed text-gray-600">
-                React, Next.js, TypeScript, Tailwind CSS, JavaScript (ES6+),
-                HTML5, CSS3, Responsive Design
+                React, Next.js, TypeScript, Tailwind CSS, Responsive Design
               </p>
             </article>
 
@@ -95,7 +94,7 @@ export default function AboutPage() {
                 AI &amp; Automation
               </h3>
               <p className="text-base leading-relaxed text-gray-600">
-                AI-Powered Applications, AI/ML API Integration, Workflow
+                AI Powered Applications, AI/ML API Integration, Workflow
                 Automation
               </p>
             </article>
@@ -134,46 +133,39 @@ export default function AboutPage() {
             <div>
               <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
                 <p className="text-base font-semibold text-black">
-                  Independent Software Engineer &amp; Product Developer
+                  Software Engineer &amp; Product Developer
                 </p>
                 <p className="text-sm text-gray-500">
-                  Apr 2026 &ndash; Present
+                  Jun 2026 &ndash; Present
                 </p>
               </div>
               <p className="mb-3 text-sm text-gray-500">
-                Independent Product Development &amp; Consulting, Indonesia
+                Product Development &amp; Cosnulting, Indonesia
               </p>
               <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
                 <li className="text-base leading-relaxed">
-                  Design and develop proprietary software products using
-                  TypeScript, Next.js, React, Tailwind CSS, Prisma, PostgreSQL,
-                  and FastAPI.
+                  Design and deliver production ready full stack web applications using TypeScript,
+                  Next.js, React, FastAPI, PostgreSQL, Prisma, and Tailwind CSS from architecture through deployment.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Build full-stack applications covering frontend development,
-                  backend services, database architecture, API development,
-                  authentication, and application workflows.
+                  Build scalable backend APIs, authentication, and application workflows that improve software maintainability
+                  and support secure user facing services.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Design and implement PostgreSQL data models and database access
-                  layers using Prisma.
+                  Architect relational PostgreSQL databases and Prisma ORM models that ensure data consistency
+                  and simplify future feature development.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Develop backend APIs and services using FastAPI and integrate
-                  them with Next.js applications.
+                  Integrate AI powered functionality and workflow automation into web applications,
+                  reducing manual processing and enhancing user productivity.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Build and integrate AI powered functionality and automation
-                  into software products and application workflows.
+                  Provide technical consulting on application architecture, API integration, and database design
+                  for software development projects using Next.js and TypeScript.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Provide software development consulting for clients building
-                  applications with Next.js and TypeScript.
-                </li>
-                <li className="text-base leading-relaxed">
-                  Work across the complete development lifecycle, from
-                  requirements and architecture through development, testing,
-                  deployment, and iterative improvement.
+                  Manage the complete software development lifecycle, including requirements analysis,
+                  system design, implementation, testing, deployment, and continuous product improvement
                 </li>
               </ul>
             </div>
@@ -185,7 +177,7 @@ export default function AboutPage() {
                   Program Specific Researcher (Database Officer)
                 </p>
                 <p className="text-sm text-gray-500">
-                  2024 &ndash; 2026
+                  Dec 2024 &ndash; Mar 2026
                 </p>
               </div>
               <p className="mb-3 text-sm text-gray-500">
@@ -193,12 +185,22 @@ export default function AboutPage() {
               </p>
               <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
                 <li className="text-base leading-relaxed">
-                  Designed and managed databases for maritime heritage
-                  documentation and archival workflows.
+                  Managed and maintained structured cultural heritage data in the Arches platform, improving data integrity, consistency, and accessibility for an international research initiative.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Built backend services and data pipelines for research data
-                  processing and interoperability.
+                  Designed and maintained database schemas that accommodated evolving research requirements while preserving long-term data integrity.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Implemented validation rules and data quality workflows that improved consistency across heritage records and metadata.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Developed structured data ingestion, metadata standardization, and extraction workflows that streamlined research data processing.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Resolved database integrity issues and supported reporting workflows used by researchers and project stakeholders.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Produced technical documentation that improved knowledge transfer and operational continuity across the project team.
                 </li>
               </ul>
             </div>
@@ -210,7 +212,7 @@ export default function AboutPage() {
                   Software Engineering Specialist
                 </p>
                 <p className="text-sm text-gray-500">
-                  2023 &ndash; 2024
+                  Aug 2023 &ndash; Jan 2024
                 </p>
               </div>
               <p className="mb-3 text-sm text-gray-500">
@@ -218,12 +220,16 @@ export default function AboutPage() {
               </p>
               <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
                 <li className="text-base leading-relaxed">
-                  Developed enterprise backend systems for disaster data
-                  management and resilience planning.
+                  Contributed to the system architecture and application design of Indonesia's Multi-Hazard Early Warning System, supporting a nationally integrated disaster resilience platform.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Built APIs and integration layers connecting field data
-                  collection with central information systems.
+                  Prepared Software Requirements Specifications (SRS) that provided implementation vendors with clear functional and technical requirements.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Conducted gap analyses across application workflows, subsystem integration, and operational processes to identify implementation priorities.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Coordinated technical integration activities between engineering vendors and government stakeholders to support interoperable system delivery.
                 </li>
               </ul>
             </div>
@@ -232,23 +238,35 @@ export default function AboutPage() {
             <div>
               <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
                 <p className="text-base font-semibold text-black">
-                  Full Stack Programmer
+                  Software Engineer &amp; Product Developer
                 </p>
                 <p className="text-sm text-gray-500">
-                  2021
+                  Feb 2023 &ndash; Oct 2023
                 </p>
               </div>
               <p className="mb-3 text-sm text-gray-500">
-                UNICEF Indonesia
+                Product Development Consultant
               </p>
               <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
                 <li className="text-base leading-relaxed">
-                  Developed and maintained full stack applications supporting
-                  child welfare and program delivery.
+                  Designed and delivered Fullstack web applications that supported public health monitoring and government budget reporting,
+                  enabling more efficient operational reporting workflows.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Built RESTful APIs and database integrations for cross-system
-                  data exchange.
+                  Developed frontend interfaces, backend services, and REST APIs using JavaScript, Laravel,
+                  and MySQL, improving the usability and reliability of data driven applications.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Architected relational database schemas that improved data consistency, reporting accuracy,
+                  and long-term application maintainability.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Supported production deployment and system integration with infrastructure engineers, help-
+                  ing ensure stable application rollout and operational reliability.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Produced technical documentation and performed application testing that improved deploy-
+                  ment readiness, knowledge transfer, and ongoing system maintenance.
                 </li>
               </ul>
             </div>
@@ -257,10 +275,156 @@ export default function AboutPage() {
             <div>
               <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
                 <p className="text-base font-semibold text-black">
+                  Software Engineer Consultant
+                </p>
+                <p className="text-sm text-gray-500">
+                  May 2022 &ndash; Jan 2023
+                </p>
+              </div>
+              <p className="mb-3 text-sm text-gray-500">
+                Madani Berkelanjutan
+              </p>
+              <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
+                <li className="text-base leading-relaxed">
+                  Designed software architecture and digital platform solutions that supported multiple digital
+                  transformation initiatives across government and development projects.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Implemented scalable web application infrastructure and platform services, improving the
+                  reliability and maintainability of digital systems.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Translated business and operational requirements into fullstack application solutions that
+                  streamlined organizational workflows and supported long term scalability.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Coordinated technical implementation across multiple projects, ensuring successful integra-
+                  tion, delivery alignment, and timely execution of development priorities.
+                </li>
+              </ul>
+            </div>
+
+            {/* Experience 4 */}
+            <div>
+              <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+                <p className="text-base font-semibold text-black">
+                  Full Stack Programmer
+                </p>
+                <p className="text-sm text-gray-500">
+                  Jun 2021 &ndash; Dec 2021
+                </p>
+              </div>
+              <p className="mb-3 text-sm text-gray-500">
+                UNICEF Indonesia
+              </p>
+              <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
+                <li className="text-base leading-relaxed">
+                  Developed and enhanced frontend and backend components for national monitoring dash-
+                  boards used by Indonesian government stakeholders to monitor programs and support re-
+                  porting and decision-making.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Integrated REST APIs and government information systems, enabling data exchange and
+                  interoperability across multiple digital monitoring platforms.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Optimized dashboard interfaces and reporting workflows, reducing manual steps and improv-
+                  ing usability for program and reporting teams.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Produced technical documentation, user manuals, and training materials that supported
+                  nationwide system deployment and user adoption.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Investigated and resolved production issues across frontend and backend services, improving
+                  system reliability and continuity of operations.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Supported RapidPro and ONA platforms used for digital data collection, reporting, and
+                  operational information management.
+                </li>
+              </ul>
+            </div>
+
+            {/* Experience 6 */}
+            <div>
+              <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+                <p className="text-base font-semibold text-black">
+                  Database Management Consultant
+                </p>
+                <p className="text-sm text-gray-500">
+                  Jan 2021 &ndash; May 2021
+                </p>
+              </div>
+              <p className="mb-3 text-sm text-gray-500">
+                Save the Children Indonesia
+              </p>
+              <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
+                <li className="text-base leading-relaxed">
+                  Designed and implemented information management workflows to structure, visualize, and
+                  improve access to operational program data.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Built data processing pipelines supporting mobile data collection and near real-time reporting
+                  from field activities.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Automated operational reporting workflows, reducing manual data preparation and accelerating monitoring
+                  of program indicators.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Standardized data management processes to improve dataset consistency, reliability, and
+                  accessibility for operational reporting and analysis.
+                </li>
+              </ul>
+            </div>
+
+            {/* Experience 6 */}
+            <div>
+              <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+                <p className="text-base font-semibold text-black">
+                  ICT Associate
+                </p>
+                <p className="text-sm text-gray-500">
+                  Dec 2018 &ndash; 2020
+                </p>
+              </div>
+              <p className="mb-3 text-sm text-gray-500">
+                UNICEF Indonesia
+              </p>
+              <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
+                <li className="text-base leading-relaxed">
+                  Developed digital monitoring and reporting systems with the Immunization Unit for Measles-
+                  Rubella (MR) and Oral Polio Vaccine (OPV) vaccination campaigns, enabling centralized
+                  tracking of campaign activities and vaccination data.
+
+                </li>
+                <li className="text-base leading-relaxed">
+                  Built and maintained database-driven applications and data workflows that supported pro-
+                  gram monitoring, reporting, and operational decision-making.
+                </li>
+                <li className="text-base leading-relaxed">Integrated and managed data across internal information systems, improving the availability
+                  and consistency of operational data for program teams.
+                </li>
+                <li className="text-base leading-relaxed">Contributed to Enterprise Content Management (ECM) and
+                  Multi-Factor Authentication(MFA) implementations, strengthening secure access to organizational
+                  information and digital services.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Automated routine data and reporting tasks and produced technical documentation, reducing
+                  manual operational work and improving continuity of system support
+                </li>
+              </ul>
+            </div>
+
+            {/* Experience 7 */}
+            <div>
+              <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+                <p className="text-base font-semibold text-black">
                   Database System Administrator
                 </p>
                 <p className="text-sm text-gray-500">
-                  2017 &ndash; 2018
+                  Apr 2017 &ndash; Mar 2018
                 </p>
               </div>
               <p className="mb-3 text-sm text-gray-500">
@@ -268,12 +432,61 @@ export default function AboutPage() {
               </p>
               <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
                 <li className="text-base leading-relaxed">
-                  Administered enterprise database systems supporting migration
-                  data workflows and reporting.
+                  Administered the RAMS enterprise database platform supporting migration operations and
+                  operational information management, ensuring reliable access to critical program data.
                 </li>
                 <li className="text-base leading-relaxed">
-                  Developed data processing pipelines and ETL procedures for
-                  large-scale humanitarian data.
+                  Managed database integrity, user access controls, and operational workflows to maintain
+                  platform reliability, data quality, and secure access.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Developed enhancements to database and web service components, expanding platform
+                  functionality and streamlining data processing workflows.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Processed and transformed structured datasets using Python (Pandas), preparing data for
+                  SQL ingestion and operational reporting pipelines.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Produced technical documentation and delivered user training, improving platform adoption
+                  and enabling more effective operational support.
+                </li>
+              </ul>
+            </div>
+
+            {/* Experience 7 */}
+            <div>
+              <div className="mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+                <p className="text-base font-semibold text-black">
+                  Software Engineer & Product Developer
+                </p>
+                <p className="text-sm text-gray-500">
+                  2010 &amp; 2016
+                </p>
+              </div>
+              <p className="mb-3 text-sm text-gray-500">
+                Product Development Consultant
+              </p>
+              <ul className="space-y-1.5 border-l-2 border-gray-100 pl-4 text-gray-600">
+                <li className="text-base leading-relaxed">
+                  Designed and delivered database driven web applications for monitoring, reporting, and
+                  operational information management across multiple client projects.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Developed backend application logic, database components, and reporting functionality using
+                  PHP, CodeIgniter/Laravel, MySQL, and SQL based technologies.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Designed and implemented data processing and reporting workflows that improved data
+                  consistency and enabled more efficient operational analysis.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Integrated application components and external data sources to support end to end informa-
+                  tion flows across client systems.
+                </li>
+                <li className="text-base leading-relaxed">
+                  Coordinated application deployment and infrastructure implementation with technical teams,
+                  taking solutions from development through production delivery
                 </li>
               </ul>
             </div>
