@@ -1,11 +1,11 @@
 ---
 title: "Digital Monitoring Immunization Campaign System"
-date: "2020-06-01"
+date: "2026-08-01"
 author: "afikri"
 tags: ["Python", "FastAPI", "Next.js", "PostgreSQL", "TypeScript", "Tailwind CSS"]
 excerpt: "A production grade public health platform modernizing a legacy CodeIgniter system to track MR and OPV vaccination campaigns for the Indonesian Ministry of Health."
 role: "Full Stack Developer"
-year: "2020"
+year: "2026"
 link: "https://github.com/remote-software-dev/dmics"
 liveLink: "https://dmics.vercel.app/"
 ---
