@@ -8,7 +8,6 @@ Personal portfolio site built with Next.js, TypeScript, and Tailwind CSS.
 - **TypeScript** — Full type safety
 - **Tailwind CSS** — Utility-first styling
 - **MDX** — Markdown content for blog and projects
-- **Resend** — Contact form email delivery
 
 ## Getting Started
 
