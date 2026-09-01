@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -75,7 +76,10 @@ export default function RootLayout({
     <html lang="en" className={`${montserrat.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-white text-black antialiased">
         <Navbar />
-        <main className="flex flex-1 flex-col">{children}</main>
+        <main className="flex flex-1 flex-col">
+          {children}
+          <Analytics />
+        </main>
         <Footer />
       </body>
     </html>
