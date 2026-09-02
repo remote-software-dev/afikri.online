@@ -8,6 +8,7 @@ role: "Full Stack Developer"
 year: "2026"
 link: "https://github.com/remote-software-dev/dmics"
 liveLink: "https://dmics.vercel.app/"
+apiDocsLink: "https://dmics.vercel.app/api/docs"
 ---
 
 ## Overview
