@@ -7,7 +7,7 @@ import TopicListingPage, { TopicItem } from './components/TopicListingPage';
 const topics: TopicItem[] = [
   {
     id: 'web-framework',
-    title: 'Building Full Stack Applications with FastAPI and Next.js',
+    title: 'Sesi 1',
     description: 'A comprehensive guide to building modern web applications using FastAPI for the backend and Next.js for the frontend.',
   },
 ];
@@ -23,10 +23,12 @@ export default function CoursePage() {
     setSelectedTopic(null);
   };
 
-  if (selectedTopic) {
+  const selectedTopicData = topics.find(t => t.id === selectedTopic);
+
+  if (selectedTopic && selectedTopicData) {
     return (
       <DocumentationPage
-        selectedTopic={selectedTopic}
+        title={selectedTopicData.title}
         onBackToTopics={handleBackToCategory}
       />
     );
