@@ -1,36 +1,20 @@
 import { ArrowRight } from 'lucide-react';
 
-interface TopicItem {
+export interface TopicItem {
   id: string;
   title: string;
   description: string;
 }
 
 interface TopicListingPageProps {
-  selectedCategory: string;
+  topics: TopicItem[];
   onTopicSelect: (topicId: string) => void;
 }
 
-const getTopicsData = (category: string): TopicItem[] => {
-  const topicsMap: Record<string, TopicItem[]> = {
-    'ai': [
-      {
-        id: 'ai-introduction',
-        title: 'Web Framework: Building Full Stack Applications with FastAPI and Nextjs.',
-        description: 'A comprehensive guide to building modern web applicatins using FastAPI for the backend and Nextjs for the frontend',
-      },
-    ],
-  };
-
-  return topicsMap[category] || [];
-};
-
 export default function TopicListingPage({
-  selectedCategory,
+  topics,
   onTopicSelect,
 }: TopicListingPageProps) {
-  const topics = getTopicsData(selectedCategory);
-
   return (
     <>
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">

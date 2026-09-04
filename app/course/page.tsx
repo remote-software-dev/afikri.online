@@ -1,13 +1,20 @@
 'use client'
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DocumentationPage from './components/DocumentationPage';
-import TopicListingPage from './components/TopicListingPage';
+import TopicListingPage, { TopicItem } from './components/TopicListingPage';
+
+const topics: TopicItem[] = [
+  {
+    id: 'web-framework',
+    title: 'Building Full Stack Applications with FastAPI and Next.js',
+    description: 'A comprehensive guide to building modern web applications using FastAPI for the backend and Next.js for the frontend.',
+  },
+];
 
 export default function CoursePage() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>('ai');
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-  
+
   const handleTopicSelect = (topicId: string) => {
     setSelectedTopic(topicId);
   };
@@ -27,7 +34,7 @@ export default function CoursePage() {
 
   return (
     <TopicListingPage
-      selectedCategory={selectedCategory ?? 'ai'}
+      topics={topics}
       onTopicSelect={handleTopicSelect}
     />
   );
