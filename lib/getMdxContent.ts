@@ -12,6 +12,7 @@ type FrontMatter = {
   year?: string;
   link?: string;
   liveLink?: string;
+  apiDocsLink?: string;
 };
 
 type ContentType = "blogs" | "projects";

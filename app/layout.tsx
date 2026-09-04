@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { LayoutShell } from "@/components/LayoutShell";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -75,12 +74,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-white text-black antialiased">
-        <Navbar />
-        <main className="flex flex-1 flex-col">
+        <LayoutShell>
           {children}
           <Analytics />
-        </main>
-        <Footer />
+        </LayoutShell>
       </body>
     </html>
   );
