@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Search, Book, FileText, ChevronRight, ChevronDown, ArrowLeft, Info } from 'lucide-react';
+import { Menu, X, Search, FileText, ChevronRight, ChevronDown, ArrowLeft, Info } from 'lucide-react';
 
 interface NavItem {
   id: string;
@@ -8,14 +8,13 @@ interface NavItem {
 }
 
 interface DocumentationPageProps {
-  title: string;
   onBackToTopics: () => void;
 }
 
 const navigationData: NavItem[] = [
   {
     id: 'session-1',
-    title: 'Session 1 — Introduction & Environment Setup',
+    title: 'Session 1',
     children: [
       { id: 'learning-outcomes', title: 'Learning Outcomes' },
       { id: 'course-overview', title: 'Course Overview' },
@@ -64,7 +63,7 @@ const ChecklistItem = ({ label }: { label: string }) => (
   </label>
 );
 
-export default function DocumentationPage({ title, onBackToTopics }: DocumentationPageProps) {
+export default function DocumentationPage({ onBackToTopics }: DocumentationPageProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['session-1']));
   const [activeSection, setActiveSection] = useState('learning-outcomes');
@@ -374,12 +373,11 @@ npm run dev`} />
           <div className="flex items-center space-x-2">
             <button
               onClick={onBackToTopics}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors mr-2"
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <Book className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold text-black">{title}</span>
+            <span className="text-lg font-bold text-black">Session 1</span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}

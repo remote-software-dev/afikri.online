@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Artificial Intelligence",
+  title: "Web Framework Course",
   description: "Comprehensive documentation and tutorials",
 };
 
