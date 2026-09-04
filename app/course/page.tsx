@@ -7,7 +7,7 @@ import TopicListingPage, { TopicItem } from './components/TopicListingPage';
 const topics: TopicItem[] = [
   {
     id: 'web-framework',
-    title: 'Sesi 1',
+    title: 'Session 1 — Introduction & Environment Setup',
     description: 'A comprehensive guide to building modern web applications using FastAPI for the backend and Next.js for the frontend.',
   },
 ];
