@@ -103,7 +103,7 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="https://linkedin.com/in/afikri"
+              href="https://www.linkedin.com/in/afikri"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-blue-300 hover:shadow-md"
@@ -113,7 +113,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-600">LinkedIn</p>
-                <p className="text-sm font-semibold text-black group-hover:text-blue-600">linkedin.com/in/afikri</p>
+                <p className="text-sm font-semibold text-black group-hover:text-blue-600">www.linkedin.com/in/afikri</p>
               </div>
             </a>
           </div>

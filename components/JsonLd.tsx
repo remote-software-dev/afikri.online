@@ -121,7 +121,7 @@ export function PersonJsonLd() {
       "Developer building clean, fast web experiences with TypeScript, React, and intentional design.",
     sameAs: [
       "https://github.com/afikri",
-      "https://linkedin.com/in/afikri",
+      "https://www.linkedin.com/in/afikri",
     ],
   };
 

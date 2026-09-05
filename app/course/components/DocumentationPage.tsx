@@ -20,10 +20,9 @@ const navigationData: NavItem[] = [
       { id: 'course-overview', title: 'Course Overview' },
       { id: 'web-framework-architecture', title: 'Web Framework Architecture' },
       { id: 'development-environment', title: 'Development Environment' },
-      { id: 'vs-code-extensions', title: 'Recommended VS Code Extensions' },
       { id: 'verify-installation', title: 'Verify Your Installation' },
-      { id: 'first-fastapi-app', title: 'Run Your First FastAPI Application' },
-      { id: 'first-nextjs-app', title: 'Run Your First Next.js Application' },
+      { id: 'first-fastapi-app', title: 'Run Your FastAPI Application' },
+      { id: 'first-nextjs-app', title: 'Run Your Next.js Application' },
       { id: 'session-checklist', title: 'Session Checklist' },
       { id: 'homework', title: 'Homework' },
     ]
@@ -131,7 +130,7 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
           </div>
 
           <InfoBox>
-            Throughout the semester, students will build an <strong>Event Registration System</strong> by combining these technologies.
+            Throughout the semester, students will build an <strong>some useful Proposed Web Application System</strong> by combining these technologies.
           </InfoBox>
         </div>
       ),
@@ -202,19 +201,6 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
         </div>
       ),
 
-      'vs-code-extensions': (
-        <div className="space-y-6">
-          <h2 className="text-3xl font-bold tracking-tight text-black">Recommended VS Code Extensions</h2>
-          <ul className="space-y-2 text-gray-700 ml-4">
-            <li className="flex items-center gap-2"><span className="text-blue-600">•</span> Python</li>
-            <li className="flex items-center gap-2"><span className="text-blue-600">•</span> Pylance</li>
-            <li className="flex items-center gap-2"><span className="text-blue-600">•</span> ESLint</li>
-            <li className="flex items-center gap-2"><span className="text-blue-600">•</span> Prettier</li>
-            <li className="flex items-center gap-2"><span className="text-blue-600">•</span> Tailwind CSS IntelliSense</li>
-          </ul>
-        </div>
-      ),
-
       'verify-installation': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Verify Your Installation</h2>
@@ -230,7 +216,7 @@ git --version`} />
 
       'first-fastapi-app': (
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold tracking-tight text-black">Run Your First FastAPI Application</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-black">Run FastAPI Application</h2>
           <p className="text-gray-600 leading-relaxed">Your project structure should look like this:</p>
           <TextBlock text={`backend/
 ├── app/
@@ -246,7 +232,7 @@ git --version`} />
           </InfoBox>
         </div>
       ),
-
+      
       'first-nextjs-app': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Run Your First Next.js Application</h2>
