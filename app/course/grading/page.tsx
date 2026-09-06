@@ -28,13 +28,13 @@ export default function GradingPage() {
       </p>
 
       <div className="overflow-hidden rounded-xl border border-gray-200">
-        <table className="w-full text-left">
+        <table className="w-full table-fixed text-left">
           <thead>
             <tr className="border-b border-gray-200 bg-gray-50">
-              <th className="px-6 py-4 text-sm font-semibold text-black">
+              <th className="w-4/5 px-6 py-4 text-sm font-semibold text-black">
                 Component
               </th>
-              <th className="px-6 py-4 text-right text-sm font-semibold text-black">
+              <th className="w-1/5 px-6 py-4 text-right text-sm font-semibold text-black">
                 Bobot
               </th>
             </tr>
