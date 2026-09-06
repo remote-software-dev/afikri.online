@@ -1,4 +1,5 @@
 import { ArrowRight, Lock } from 'lucide-react';
+import Link from 'next/link';
 
 export interface TopicItem {
   id: string;
@@ -17,11 +18,19 @@ export default function TopicListingPage({
 }: TopicListingPageProps) {
   return (
     <>
-      <div className="mx-auto max-w-6xl px-6 py-12 md:py-20">
-        <h1 className="mb-8 text-4xl font-bold tracking-tight text-black md:text-5xl">
-          Course Sessions
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-4xl font-bold tracking-tight text-black md:text-5xl">
+            Course Sessions
+          </h1>
+          <Link
+            href="/course/grading"
+            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50"
+          >
+            Grading
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {topics.map((topic, index) => {
             const isLocked = index > 0;
             return (

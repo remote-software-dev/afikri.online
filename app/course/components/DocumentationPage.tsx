@@ -132,6 +132,24 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
           <InfoBox>
             Throughout the semester, students will build an <strong>some useful Proposed Web Application System</strong> by combining these technologies.
           </InfoBox>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Grading</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Component</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Weight (%)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Attendance &amp; Participation</td><td className="px-4 py-3 text-sm text-gray-700">10%</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Weekly Assignments</td><td className="px-4 py-3 text-sm text-gray-700">20%</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Midterm Project</td><td className="px-4 py-3 text-sm text-gray-700">30%</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Final Project</td><td className="px-4 py-3 text-sm text-gray-700">40%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       ),
 
