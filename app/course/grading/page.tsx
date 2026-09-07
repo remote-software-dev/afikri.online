@@ -106,9 +106,18 @@ export default function GradingPage() {
         </table>
       </div>
 
+      {/*
       <div className="mt-14">
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black md:text-3xl">
-          Grade 
+          Grade - Kelas Pagi
+        </h2>
+        <StudentGradesTable />
+      </div>
+      */}
+
+      <div className="mt-14">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-black md:text-3xl">
+          Grade - Kelas Siang
         </h2>
         <StudentGradesTable />
       </div>

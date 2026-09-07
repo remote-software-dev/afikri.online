@@ -151,16 +151,49 @@ function FragmentRow({
             <div className="overflow-hidden">
               <div className="px-4 py-1.5">
                 <p className="mb-0.5 text-xs font-semibold leading-tight text-gray-700">
-                  {student.name} - Exercise Grades
+                  {student.name} - Kehadiran &amp; Nilai
                 </p>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-center leading-tight">
                     <thead>
-                      <tr className="border-b border-gray-200 bg-gray-100/70">
+                      <tr>
+                        <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-400">
+                          Sesi
+                        </th>
                         {student.exercises.map((_, index) => (
                           <th
                             key={index}
                             className="whitespace-nowrap px-1.5 py-0.5 text-[10px] font-semibold text-gray-500"
+                          >
+                            S{index + 1}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="bg-gray-100/50">
+                        <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-500">
+                          Kehadiran
+                        </th>
+                        {student.exercises.map((_, index) => (
+                          <td
+                            key={index}
+                            className="whitespace-nowrap border-r border-gray-100 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-gray-700 last:border-r-0"
+                          >
+                            {index === 0 ? '✅' : '—'}
+                          </td>
+                        ))}
+                      </tr>
+                    </tbody>
+                    <thead>
+                      <tr>
+                        <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-400">
+                          Latihan
+                        </th>
+                        {student.exercises.map((_, index) => (
+                          <th
+                            key={index}
+                            className="whitespace-nowrap px-1.5 py-0.5 text-[10px] font-semibold text-gray-400"
                           >
                             X{index + 1}
                           </th>
@@ -169,6 +202,9 @@ function FragmentRow({
                     </thead>
                     <tbody>
                       <tr>
+                        <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-500">
+                          Nilai
+                        </th>
                         {student.exercises.map((score, index) => (
                           <td
                             key={index}
