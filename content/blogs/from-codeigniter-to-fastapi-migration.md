@@ -1,6 +1,6 @@
 ---
 title: "From CodeIgniter to FastAPI: Rebuilding Indonesia's Immunization Monitoring System"
-date: "2026-09-02"
+date: "2 September 2026"
 author: "Abdul Fikri"
 tags: ["FastAPI", "Next.js", "PostgreSQL", "System Migration", "Enterprise Architecture"]
 imageUrl: "/blogs/codeigniter-to-fastapi-migration.png"

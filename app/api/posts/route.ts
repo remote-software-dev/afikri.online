@@ -5,6 +5,20 @@ import matter from "gray-matter";
 
 const blogDir = path.join(process.cwd(), "content/blogs");
 
+const MONTHS: Record<string, number> = {
+  January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
+  July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,
+};
+
+function parseDateString(dateStr: string): number {
+  const match = dateStr.match(/^(\d{1,2})\s+(\w+)\s+(\d{4})$/);
+  if (match) {
+    const [, day, month, year] = match;
+    return new Date(Number(year), MONTHS[month], Number(day)).getTime();
+  }
+  return new Date(dateStr).getTime();
+}
+
 async function getBlogPosts() {
   try {
     const files = await fs.readdir(blogDir);
@@ -22,7 +36,7 @@ async function getBlogPosts() {
             date: data.date || "Unknown date",
             author: data.author || "afikri",
             tags: data.tags || [],
-            imageUrl: data.imageUrl || "https://picsum.photos/seed/default/800/400",
+            imageUrl: data.imgUrl || data.imageUrl || "https://picsum.photos/seed/default/800/400",
             commentsCount: data.commentsCount || 0,
             likesCount: data.likesCount || 0,
             bookmarksCount: data.bookmarksCount || 0,
@@ -32,7 +46,7 @@ async function getBlogPosts() {
     );
 
     return posts.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      (a, b) => parseDateString(b.date) - parseDateString(a.date)
     );
   } catch (error) {
     console.error("Error reading blog posts:", error);

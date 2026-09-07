@@ -8,6 +8,7 @@ type FrontMatter = {
   date: string;
   tags?: string[];
   author?: string;
+  imgUrl?: string;
   role?: string;
   year?: string;
   link?: string;

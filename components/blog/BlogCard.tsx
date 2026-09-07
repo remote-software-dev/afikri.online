@@ -9,6 +9,9 @@ interface BlogCardProps {
 }
 
 const formatDate = (dateString: string) => {
+  if (/^\d{1,2}\s+\w+\s+\d{4}$/.test(dateString)) {
+    return dateString;
+  }
   return new Date(dateString).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
