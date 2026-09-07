@@ -1,12 +1,36 @@
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Users, ClipboardList, FolderKanban, Trophy } from 'lucide-react';
 import StudentGradesTable from '../components/StudentGradesTable';
 
 const gradingItems = [
-  { component: 'Kehadiran & Partisipasi', weight: '10%' },
-  { component: 'Tugas Mingguan', weight: '20%' },
-  { component: 'Midterm Project/UTS', weight: '30%' },
-  { component: 'Final Project/UAS', weight: '40%' },
+  {
+    component: 'Kehadiran & Partisipasi',
+    weight: '10%',
+    icon: Users,
+    iconClass: 'bg-blue-50 text-blue-600',
+    badgeClass: 'bg-blue-50 text-blue-700',
+  },
+  {
+    component: 'Tugas Mingguan',
+    weight: '20%',
+    icon: ClipboardList,
+    iconClass: 'bg-emerald-50 text-emerald-600',
+    badgeClass: 'bg-emerald-50 text-emerald-700',
+  },
+  {
+    component: 'Midterm Project/UTS',
+    weight: '30%',
+    icon: FolderKanban,
+    iconClass: 'bg-amber-50 text-amber-600',
+    badgeClass: 'bg-amber-50 text-amber-700',
+  },
+  {
+    component: 'Final Project/UAS',
+    weight: '40%',
+    icon: Trophy,
+    iconClass: 'bg-violet-50 text-violet-600',
+    badgeClass: 'bg-violet-50 text-violet-700',
+  },
 ];
 
 export default function GradingPage() {
@@ -27,14 +51,14 @@ export default function GradingPage() {
         Course grade ditentukan oleh.
       </p>
 
-      <div className="overflow-hidden rounded-xl border border-gray-200">
+      <div className="overflow-hidden rounded-xl">
         <table className="w-full table-fixed text-left">
           <thead>
-            <tr className="border-b border-gray-200 bg-gray-50">
-              <th className="w-4/5 px-6 py-4 text-sm font-semibold text-black">
+            <tr className="bg-gray-50">
+              <th className="w-4/5 px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-500">
                 Component
               </th>
-              <th className="w-1/5 px-6 py-4 text-right text-sm font-semibold text-black">
+              <th className="w-1/5 px-6 py-4 text-right text-xs font-semibold uppercase tracking-wide text-gray-500">
                 Bobot
               </th>
             </tr>
@@ -43,13 +67,26 @@ export default function GradingPage() {
             {gradingItems.map((item) => (
               <tr
                 key={item.component}
-                className="border-b border-gray-100 last:border-b-0"
+                className="group transition-colors hover:bg-gray-50"
               >
-                <td className="px-6 py-4 text-sm text-gray-700">
-                  {item.component}
+                <td className="px-6 py-4">
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${item.iconClass}`}
+                    >
+                      <item.icon className="h-4 w-4" />
+                    </span>
+                    <span className="text-sm font-medium text-gray-800">
+                      {item.component}
+                    </span>
+                  </div>
                 </td>
-                <td className="px-6 py-4 text-right text-sm font-medium text-black">
-                  {item.weight}
+                <td className="px-6 py-4 text-right">
+                  <span
+                    className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${item.badgeClass}`}
+                  >
+                    {item.weight}
+                  </span>
                 </td>
               </tr>
             ))}
@@ -59,8 +96,10 @@ export default function GradingPage() {
               <td className="px-6 py-4 text-sm font-semibold text-black">
                 Total
               </td>
-              <td className="px-6 py-4 text-right text-sm font-semibold text-black">
-                100%
+              <td className="px-6 py-4 text-right">
+                <span className="inline-block rounded-full bg-black px-3 py-1 text-xs font-bold text-white">
+                  100%
+                </span>
               </td>
             </tr>
           </tfoot>

@@ -11,36 +11,19 @@ interface Student {
 }
 
 const students: Student[] = [
-  {
-    id: 1,
-    nim: '2301001',
-    name: 'Ahmad Fauzi',
-    exercises: [85, 90, 78, 92, 88, 75, 95, 82, 79, 91, 86, 84, 88, 90, 85, 93],
-  },
-  {
-    id: 2,
-    nim: '2301002',
-    name: 'Budi Santoso',
-    exercises: [76, 82, 88, 85, 90, 74, 81, 86, 92, 78, 84, 89, 80, 87, 83, 91],
-  },
-  {
-    id: 3,
-    nim: '2301003',
-    name: 'Citra Lestari',
-    exercises: [92, 88, 95, 84, 90, 93, 87, 96, 85, 91, 94, 90, 88, 92, 95, 89],
-  },
-  {
-    id: 4,
-    nim: '2301004',
-    name: 'Dewi Anggraini',
-    exercises: [68, 72, 75, 80, 78, 70, 74, 77, 81, 79, 76, 82, 78, 75, 80, 84],
-  },
-  {
-    id: 5,
-    nim: '2301005',
-    name: 'Eko Prasetyo',
-    exercises: [88, 91, 84, 79, 86, 92, 89, 90, 93, 87, 85, 91, 88, 86, 90, 94],
-  },
+  { id: 1, nim: '240212039', name: 'Masjuanda', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 2, nim: '240212083', name: 'Muyassir Farisi', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 3, nim: '220212021', name: 'Fadhlun', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 4, nim: '240212108', name: 'Ahqiyar', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 5, nim: '240212011', name: 'Annisa', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 6, nim: '240212023', name: 'Nepisa', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 7, nim: '240212003', name: 'Rizqia', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 8, nim: '240212048', name: 'Isra Safriani', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 9, nim: '240212054', name: 'Dzaki Aulia Pasya', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 10, nim: '240212005', name: 'Humaira Izza', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 11, nim: '240212047', name: 'Maulidar', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 12, nim: '240212009', name: 'Alifi Luthfir Rahman', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  { id: 13, nim: '240212088', name: 'Humaira Balqis', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
 ];
 
 function formatScore(score: number) {
@@ -191,7 +174,7 @@ function FragmentRow({
                             key={index}
                             className="whitespace-nowrap border-r border-gray-100 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-gray-700 last:border-r-0"
                           >
-                            {score}
+                            {index === 0 ? '✅' : score}
                           </td>
                         ))}
                       </tr>
