@@ -79,10 +79,35 @@ After the AI writes code, prompt it: *"Review the code you just generated. Act a
 ### Phase 6: Automated Quality Gates
 Every AI-generated change must pass automated checks. Configure your CI/CD (like GitHub Actions) to run Typecheck, Lint, Unit Tests, and Production Build. **No merge until every gate is green.**
 
-### Phase 7 to 12: Advanced Verification
-* **Integration Tests:** Use Playwright to test the app like a real user.
-* **Security Review:** Ask the AI to perform an OWASP top 10 review.
-* **Performance Review:** Check for unnecessary React renders, Prisma N+1 queries, and caching opportunities.
+### Phase 7: Write Integration & End-to-End (E2E) Tests
+* **Integration & E2E Tests:** Use tools like Playwright or Cypress to test the application exactly like a real user.
+* **Real-World Scenarios:** Ask the AI to generate tests for complete user flows, such as registering, logging in, navigating to a protected page, and logging out.
+* **Failure Handling:** Ensure the AI writes tests for negative paths, such as entering invalid credentials or experiencing a network timeout.
+
+### Phase 8: Add AI Verification Gates (CI/CD)
+* **Automated Pipelines:** Set up GitHub Actions or GitLab CI to automatically run checks whenever the AI pushes code.
+* **The "No Merge" Rule:** Configure the pipeline to run Typecheck, Lint, Unit Tests, and Production Build. The AI is not allowed to merge its code until every single gate is green.
+* **Auto-Fix Failures:** If a gate fails, instruct the AI to explain the root cause, propose a minimal fix, and rerun only the affected tests.
+
+### Phase 9: Professional Git & Pull Request (PR) Documentation
+* **Structured PR Summaries:** Force the AI to generate a comprehensive Pull Request description before merging.
+* **Required Details:** The summary must include the purpose of the change, architecture updates, database schema changes, and required migrations.
+* **Rollback Strategy:** Ask the AI to explicitly state how to revert the changes if the new feature breaks in production.
+
+### Phase 10: Test Coverage Analysis
+* **Identify Blind Spots:** Ask the AI to analyze the current test coverage and report on uncovered files, branches, and risky functions.
+* **Prioritize High-Risk Areas:** Instruct the AI to suggest and write missing tests for critical paths, such as expired tokens, duplicate emails, or unauthorized access attempts.
+* **Quality over Quantity:** Focus on covering complex business logic rather than just achieving a high percentage number.
+
+### Phase 11: Security Review (OWASP)
+* **OWASP Top 10 Audit:** Ask the AI to act as a cybersecurity expert and review its own code for common vulnerabilities.
+* **Specific Checks:** Ensure it checks for SQL injection, Cross-Site Scripting (XSS), exposed environment variables, insecure direct object references, and rate limiting.
+* **Dependency Scanning:** Run automated dependency audits (e.g., `npm audit` or `pip-audit`) and have the AI patch any vulnerable packages.
+
+### Phase 12: Performance Review
+* **Database Optimization:** Ask the AI to check for N+1 queries in Prisma/ORM and suggest adding missing database indexes.
+* **Frontend Efficiency:** Instruct the AI to look for unnecessary React re-renders, heavy computations in the render cycle, and missing memoization.
+* **Caching & Latency:** Identify opportunities to implement caching (like Redis) and optimize API response times to stay under target thresholds (e.g., 300ms).
 
 ---
 

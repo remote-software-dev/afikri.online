@@ -103,6 +103,7 @@ export default function CoursePage() {
   if (selectedTopic && selectedTopicData) {
     return (
       <DocumentationPage
+        topicId={selectedTopic}
         onBackToTopics={handleBackToCategory}
       />
     );

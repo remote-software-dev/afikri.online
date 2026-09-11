@@ -8,26 +8,48 @@ interface NavItem {
 }
 
 interface DocumentationPageProps {
+  topicId: string;
   onBackToTopics: () => void;
 }
 
-const navigationData: NavItem[] = [
-  {
-    id: 'session-1',
-    title: 'Session 1',
-    children: [
-      { id: 'learning-outcomes', title: 'Learning Outcomes' },
-      { id: 'course-overview', title: 'Course Overview' },
-      { id: 'web-framework-architecture', title: 'Web Framework Architecture' },
-      { id: 'development-environment', title: 'Development Environment' },
-      { id: 'verify-installation', title: 'Verify Your Installation' },
-      { id: 'first-fastapi-app', title: 'Run Your FastAPI Application' },
-      { id: 'first-nextjs-app', title: 'Run Your Next.js Application' },
-      { id: 'session-checklist', title: 'Session Checklist' },
-      { id: 'homework', title: 'Homework' },
-    ]
-  },
-];
+const navigationByTopic: Record<string, NavItem[]> = {
+  'session-1': [
+    {
+      id: 'session-1',
+      title: 'Session 1',
+      children: [
+        { id: 'learning-outcomes', title: 'Learning Outcomes' },
+        { id: 'course-overview', title: 'Course Overview' },
+        { id: 'web-framework-architecture', title: 'Web Framework Architecture' },
+        { id: 'development-environment', title: 'Development Environment' },
+        { id: 'verify-installation', title: 'Verify Your Installation' },
+        { id: 'first-fastapi-app', title: 'Run Your FastAPI Application' },
+        { id: 'first-nextjs-app', title: 'Run Your Next.js Application' },
+        { id: 'session-checklist', title: 'Session Checklist' },
+        { id: 'homework', title: 'Homework' },
+      ]
+    },
+  ],
+  'session-2': [
+    {
+      id: 'session-2',
+      title: 'Session 2',
+      children: [
+        { id: 'learning-outcomes', title: 'Learning Outcomes' },
+        { id: 'fastapi-intro', title: 'What is FastAPI?' },
+        { id: 'installation-setup', title: 'Installation & Setup' },
+        { id: 'basic-routing', title: 'Basic Routing' },
+        { id: 'path-parameters', title: 'Path Parameters' },
+        { id: 'query-parameters', title: 'Query Parameters' },
+        { id: 'api-documentation', title: 'API Documentation (Swagger UI)' },
+        { id: 'hands-on-exercise', title: 'Hands-on Exercise: Book API' },
+        { id: 'session-checklist', title: 'Session Checklist' },
+        { id: 'homework', title: 'Homework' },
+        { id: 'qa-wrapup', title: 'Q&A & Wrap-up' },
+      ]
+    },
+  ],
+};
 
 const InfoBox = ({ children }: { children: React.ReactNode }) => (
   <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg my-6">
@@ -62,11 +84,14 @@ const ChecklistItem = ({ label }: { label: string }) => (
   </label>
 );
 
-export default function DocumentationPage({ onBackToTopics }: DocumentationPageProps) {
+export default function DocumentationPage({ topicId, onBackToTopics }: DocumentationPageProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['session-1']));
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set([topicId]));
   const [activeSection, setActiveSection] = useState('learning-outcomes');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const sessionTitle = topicId === 'session-2' ? 'Session 2' : 'Session 1';
+  const navigationData = navigationByTopic[topicId] ?? navigationByTopic['session-1'];
 
   const toggleSection = (sectionId: string) => {
     const newExpanded = new Set(expandedSections);
@@ -84,8 +109,9 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
   };
 
   const getDocumentContent = (sectionId: string) => {
+    const contentKey = `${topicId}:${sectionId}`;
     const contentMap: Record<string, React.ReactNode> = {
-      'learning-outcomes': (
+      'session-1:learning-outcomes': (
         <div className="space-y-6">
           <h1 className="text-4xl font-bold tracking-tight text-black">Session 1 — Introduction &amp; Environment Setup</h1>
           <p className="text-lg text-gray-600 leading-relaxed">
@@ -104,7 +130,7 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
         </div>
       ),
 
-      'course-overview': (
+      'session-1:course-overview': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Course Overview</h2>
           <p className="text-lg text-gray-600 leading-relaxed">
@@ -153,7 +179,7 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
         </div>
       ),
 
-      'web-framework-architecture': (
+      'session-1:web-framework-architecture': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Web Framework Architecture</h2>
           <h3 className="text-xl font-semibold text-black mt-6">How Full-Stack Applications Work</h3>
@@ -193,7 +219,7 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
         </div>
       ),
 
-      'development-environment': (
+      'session-1:development-environment': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Development Environment</h2>
           <h3 className="text-xl font-semibold text-black mt-6">Software Required</h3>
@@ -219,7 +245,7 @@ export default function DocumentationPage({ onBackToTopics }: DocumentationPageP
         </div>
       ),
 
-      'verify-installation': (
+      'session-1:verify-installation': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Verify Your Installation</h2>
           <CodeBlock language="bash" code={`python --version
@@ -232,7 +258,7 @@ git --version`} />
         </div>
       ),
 
-      'first-fastapi-app': (
+      'session-1:first-fastapi-app': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Run FastAPI Application</h2>
           <p className="text-gray-600 leading-relaxed">Your project structure should look like this:</p>
@@ -251,7 +277,7 @@ git --version`} />
         </div>
       ),
       
-      'first-nextjs-app': (
+      'session-1:first-nextjs-app': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Run Your First Next.js Application</h2>
           <p className="text-gray-600 leading-relaxed">Your project structure should look like this:</p>
@@ -271,7 +297,7 @@ npm run dev`} />
         </div>
       ),
 
-      'session-checklist': (
+      'session-1:session-checklist': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Session Checklist</h2>
           <div className="space-y-1 divide-y divide-gray-100">
@@ -287,7 +313,7 @@ npm run dev`} />
         </div>
       ),
 
-      'homework': (
+      'session-1:homework': (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-black">Homework</h2>
           <h3 className="text-xl font-semibold text-black mt-4">Deliverables</h3>
@@ -313,9 +339,371 @@ npm run dev`} />
           </ol>
         </div>
       ),
+
+      'session-2:learning-outcomes': (
+        <div className="space-y-6">
+          <h1 className="text-4xl font-bold tracking-tight text-black">Session 2 — FastAPI Fundamentals</h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Build a working REST API with <strong>FastAPI</strong> in 2 hours. Learn routing, path parameters, query parameters, and interactive API documentation.
+          </p>
+
+          <h2 className="text-2xl font-semibold tracking-tight text-black mt-8">Learning Outcomes</h2>
+          <p className="text-gray-600 leading-relaxed">By the end of this session, students will be able to:</p>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Set up a FastAPI project with virtual environment and dependencies.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Create API endpoints using GET, POST, PUT, and DELETE methods.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Use path parameters to capture dynamic values from URLs.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Use query parameters to filter, paginate, and customize responses.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Combine path and query parameters in a single endpoint.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Navigate and test APIs using Swagger UI documentation.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Build a simple Book API with multiple endpoints during the hands-on exercise.</li>
+          </ul>
+
+          <InfoBox>
+            <strong>Time allocation:</strong> This session is designed for exactly 2 hours. Each section includes estimated timing to help you stay on track.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-2:fastapi-intro': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">What is FastAPI? <span className="text-base font-normal text-gray-400">(~10 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            <strong>FastAPI</strong> is a modern, high-performance Python web framework for building APIs. It is built on <strong>Starlette</strong> (web handling) and <strong>Pydantic</strong> (data validation).
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Why FastAPI?</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Feature</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Benefit</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-medium text-gray-900">Performance</td><td className="px-4 py-3 text-sm text-gray-700">On par with Node.js and Go</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-medium text-gray-900">Automatic docs</td><td className="px-4 py-3 text-sm text-gray-700">Interactive API docs at <code className="bg-gray-100 px-1 py-0.5 rounded text-xs font-mono">/docs</code></td></tr>
+                <tr><td className="px-4 py-3 text-sm font-medium text-gray-900">Type hints</td><td className="px-4 py-3 text-sm text-gray-700">Automatic validation and serialization</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-medium text-gray-900">Standards-based</td><td className="px-4 py-3 text-sm text-gray-700">OpenAPI and JSON Schema compatible</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <InfoBox>
+            FastAPI generates API documentation automatically from your code. This means your docs are <strong>always up to date</strong> — a major productivity advantage.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-2:installation-setup': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Installation &amp; Setup <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">Create a virtual environment and install FastAPI with the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">uvicorn</code> development server.</p>
+          <CodeBlock language="bash" code={`python -m venv venv
+source venv/bin/activate
+pip install fastapi "uvicorn[standard]"`} />
+          <p className="text-gray-600 leading-relaxed">Your project structure:</p>
+          <TextBlock text={`backend/
+├── app/
+│   └── main.py
+├── requirements.txt
+└── venv/`} />
+          <p className="text-gray-600 leading-relaxed">Create <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/main.py</code> with a minimal endpoint:</p>
+          <CodeBlock language="python" code={`from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}`} />
+          <p className="text-gray-600 leading-relaxed">Start the server from the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">backend</code> folder:</p>
+          <CodeBlock language="bash" code="uvicorn app.main:app --reload" />
+          <InfoBox>
+            The <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">--reload</code> flag restarts the server automatically on code changes. On Windows, activate the venv with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">venv\\Scripts\\activate</code>.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-2:basic-routing': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Basic Routing <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">Routes map HTTP methods to URL paths. Use decorators like <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">@app.get()</code> to register handlers.</p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Common HTTP Methods</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Decorator</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Purpose</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">@app.get()</td><td className="px-4 py-3 text-sm text-gray-700">Retrieve resources</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">@app.post()</td><td className="px-4 py-3 text-sm text-gray-700">Create new resources</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">@app.put()</td><td className="px-4 py-3 text-sm text-gray-700">Update existing resources</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">@app.delete()</td><td className="px-4 py-3 text-sm text-gray-700">Remove resources</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-gray-600 leading-relaxed">Multiple routes example:</p>
+          <CodeBlock language="python" code={`from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
+
+@app.get("/items")
+def read_items():
+    return [
+        {"id": 1, "name": "Laptop"},
+        {"id": 2, "name": "Phone"}
+    ]
+
+@app.post("/items")
+def create_item():
+    return {"status": "created"}`} />
+          <InfoBox>
+            Each decorator registers a <strong>route handler</strong>. FastAPI automatically generates documentation for every registered route.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-2:path-parameters': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Path Parameters <span className="text-base font-normal text-gray-400">(~20 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            Path parameters capture dynamic values <strong>from the URL</strong>. Declare them with curly braces <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">{"{param}"}</code> and receive them as function arguments.
+          </p>
+          <CodeBlock language="python" code={`@app.get("/items/{item_id}")
+def read_item(item_id: int):
+    return {"item_id": item_id, "name": f"Item {item_id}"}`} />
+          <p className="text-gray-600 leading-relaxed">Request <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /items/42</code> returns:</p>
+          <TextBlock text='{"item_id": 42, "name": "Item 42"}' />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Automatic Validation</h3>
+          <p className="text-gray-600 leading-relaxed">Type hints enforce validation automatically. <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /items/abc</code> returns a <strong>422 error</strong> because <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">abc</code> is not an integer.</p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Path Order Matters</h3>
+          <p className="text-gray-600 leading-relaxed">Static routes must come <strong>before</strong> dynamic ones:</p>
+          <CodeBlock language="python" code={`@app.get("/items/me")
+def read_current_user():
+    return {"user": "current"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int):
+    return {"item_id": item_id}`} />
+          <InfoBox>
+            If <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/items/{"{item_id}"}</code> came first, a request to <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/items/me</code> would match as <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">item_id=&apos;me&apos;</code> instead of reaching the static route.
+          </InfoBox>
+
+          <h3 className="text-xl font-semibold text-black mt-6">String Path Parameters</h3>
+          <CodeBlock language="python" code={`@app.get("/products/{product_name}")
+def read_product(product_name: str):
+    return {"product": product_name}`} />
+          <p className="text-gray-600 leading-relaxed">String params create readable URLs like <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/products/laptop</code>.</p>
+        </div>
+      ),
+
+      'session-2:query-parameters': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Query Parameters <span className="text-base font-normal text-gray-400">(~20 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            Query parameters are key-value pairs after <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">?</code> in the URL (e.g., <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">?skip=0&amp;limit=10</code>). Any function parameter that is <strong>not</strong> a path parameter becomes a query parameter automatically.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Optional with Defaults</h3>
+          <CodeBlock language="python" code={`@app.get("/items")
+def read_items(skip: int = 0, limit: int = 10):
+    return {"skip": skip, "limit": limit}`} />
+          <p className="text-gray-600 leading-relaxed"><code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /items</code> returns defaults. Override with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /items?skip=5&amp;limit=3</code>.</p>
+          <TextBlock text='{"skip": 0, "limit": 10}' />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Required Query Parameters</h3>
+          <p className="text-gray-600 leading-relaxed">Omit the default value to make a parameter <strong>required</strong>:</p>
+          <CodeBlock language="python" code={`@app.get("/search")
+def search(q: str):
+    return {"query": q}`} />
+          <p className="text-gray-600 leading-relaxed">A request to <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /search</code> without <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">?q=</code> returns a 422 error.</p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Combining Path + Query Parameters</h3>
+          <CodeBlock language="python" code={`@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str | None = None):
+    return {"item_id": item_id, "query": q}`} />
+          <p className="text-gray-600 leading-relaxed"><code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /items/42?q=test</code> returns:</p>
+          <TextBlock text='{"item_id": 42, "query": "test"}' />
+          <InfoBox>
+            Path parameters identify <strong>which resource</strong> to access. Query parameters control <strong>how</strong> to return it (filtering, pagination, sorting).
+          </InfoBox>
+        </div>
+      ),
+
+      'session-2:api-documentation': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">API Documentation (Swagger UI) <span className="text-base font-normal text-gray-400">(~10 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            FastAPI generates <strong>interactive API documentation</strong> automatically. While the server is running, open:
+          </p>
+          <TextBlock text="http://localhost:8000/docs" />
+          <p className="text-gray-600 leading-relaxed">You will see Swagger UI with all your endpoints listed. You can:</p>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Click any endpoint to expand its details.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Click <strong>&quot;Try it out&quot;</strong> to send live requests directly from the browser.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> See request/response schemas auto-generated from your type hints.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> View required vs optional parameters at a glance.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Alternative: ReDoc</h3>
+          <p className="text-gray-600 leading-relaxed">FastAPI also provides a second documentation format at:</p>
+          <TextBlock text="http://localhost:8000/redoc" />
+
+          <InfoBox>
+            Use Swagger UI during development to test endpoints quickly. It eliminates the need for external tools like Postman for basic API testing.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-2:hands-on-exercise': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Hands-on Exercise: Book API <span className="text-base font-normal text-gray-400">(~25 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            Build a <strong>Book API</strong> with 3 endpoints. This exercise combines everything learned in this session: routing, path parameters, and query parameters.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Requirements</h3>
+          <p className="text-gray-600 leading-relaxed">Create the following endpoints in <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/main.py</code>:</p>
+
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Method</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Path</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Parameters</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Description</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books</td><td className="px-4 py-3 text-sm text-gray-700">Query: <code>author</code>, <code>genre</code></td><td className="px-4 py-3 text-sm text-gray-700">List all books with optional filtering</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books/{"{book_id}"}</td><td className="px-4 py-3 text-sm text-gray-700">Path: <code>book_id</code></td><td className="px-4 py-3 text-sm text-gray-700">Get a specific book by ID</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books/{"{book_id}"}/summary</td><td className="px-4 py-3 text-sm text-gray-700">Path: <code>book_id</code>, Query: <code>max_length</code></td><td className="px-4 py-3 text-sm text-gray-700">Get a truncated book summary</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Starter Code</h3>
+          <p className="text-gray-600 leading-relaxed">Copy this into your <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/main.py</code> and complete the TODOs:</p>
+          <CodeBlock language="python" code={`from fastapi import FastAPI
+
+app = FastAPI()
+
+# Sample data
+books = [
+    {"id": 1, "title": "The Python Handbook", "author": "Alice", "genre": "Programming",
+     "summary": "A comprehensive guide to Python programming covering basics to advanced topics."},
+    {"id": 2, "title": "Clean Code", "author": "Robert", "genre": "Programming",
+     "summary": "A handbook of agile software craftsmanship and writing maintainable code."},
+    {"id": 3, "title": "Dune", "author": "Frank", "genre": "Sci-Fi",
+     "summary": "A science fiction epic about politics, religion, and ecology on a desert planet."},
+    {"id": 4, "title": "1984", "author": "George", "genre": "Fiction",
+     "summary": "A dystopian novel exploring themes of totalitarianism and surveillance."},
+]
+
+@app.get("/books")
+def list_books(author: str | None = None, genre: str | None = None):
+    """TODO: Filter books by author and/or genre if provided.
+    Return the full list if no filters are given."""
+    pass  # <-- Replace with your implementation
+
+@app.get("/books/{book_id}")
+def get_book(book_id: int):
+    """TODO: Find and return the book with matching id.
+    Return an error if not found."""
+    pass  # <-- Replace with your implementation
+
+@app.get("/books/{book_id}/summary")
+def get_book_summary(book_id: int, max_length: int = 50):
+    """TODO: Return the book's summary truncated to max_length characters.
+    Return an error if the book is not found."""
+    pass  # <-- Replace with your implementation`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Expected Behavior</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /books</code> returns all 4 books.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /books?genre=Programming</code> returns only programming books.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /books/1</code> returns the first book.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /books/1/summary?max_length=20</code> returns a truncated summary.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /books/99</code> returns a <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">404</code> error.</li>
+          </ul>
+
+          <InfoBox>
+            Test all endpoints in Swagger UI at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/docs</code> when you are done. Check that filtering, path parameters, and truncation all work correctly.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-2:session-checklist': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Session Checklist</h2>
+          <div className="space-y-1 divide-y divide-gray-100">
+            <ChecklistItem label="Virtual environment created and activated." />
+            <ChecklistItem label="FastAPI and uvicorn installed." />
+            <ChecklistItem label="FastAPI server running with --reload." />
+            <ChecklistItem label="GET endpoint returning JSON response." />
+            <ChecklistItem label="Path parameter endpoint working with int validation." />
+            <ChecklistItem label="Query parameter endpoint with filtering and defaults." />
+            <ChecklistItem label="Combined path + query endpoint working." />
+            <ChecklistItem label="Swagger UI accessible and all endpoints testable." />
+            <ChecklistItem label="Book API exercise completed with 3 working endpoints." />
+          </div>
+        </div>
+      ),
+
+      'session-2:homework': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Homework</h2>
+          <p className="text-gray-600 leading-relaxed">Test your understanding of FastAPI fundamentals with these 5 questions:</p>
+          <ol className="space-y-3 text-gray-700 ml-4 list-decimal list-inside">
+            <li>What is the difference between a path parameter and a query parameter in FastAPI? Give an example of each.</li>
+            <li>Which command do you use to run a FastAPI application using uvicorn, and what does the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">--reload</code> flag do?</li>
+            <li>If you want to retrieve a specific user by their ID, which HTTP method decorator (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">@app.get</code>, <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">@app.post</code>, etc.) should you use, and how would you define the path?</li>
+            <li>How can you access the automatic interactive API documentation (Swagger UI) for your running FastAPI application?</li>
+            <li>Why is it important to declare Python type hints for your path and query parameters in FastAPI?</li>
+          </ol>
+        </div>
+      ),
+
+      'session-2:qa-wrapup': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Q&amp;A &amp; Wrap-up <span className="text-base font-normal text-gray-400">(~5 min)</span></h2>
+
+          <h3 className="text-xl font-semibold text-black mt-4">What We Covered Today</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> FastAPI project setup with virtual environments.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Defining routes with HTTP method decorators.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Path parameters for dynamic URL segments with type validation.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Query parameters for filtering and pagination.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Using Swagger UI to test and document APIs.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Building a Book API with 3 endpoints.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Coming Next: Session 3</h3>
+          <p className="text-gray-600 leading-relaxed">
+            In the next session, we will explore <strong>API design patterns</strong>: request body validation with Pydantic models, status codes, response models, and building full CRUD endpoints.
+          </p>
+
+          <InfoBox>
+            If you have questions about any concepts from today, now is the time to ask! You can also review the Swagger UI documentation for your Book API to reinforce what you learned.
+          </InfoBox>
+        </div>
+      ),
     };
 
-    return contentMap[sectionId] || (
+    return contentMap[contentKey] || (
       <div className="space-y-6">
         <h1 className="text-4xl font-bold tracking-tight text-black capitalize">
           {sectionId.replace(/-/g, ' ')}
@@ -381,7 +769,7 @@ npm run dev`} />
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <span className="text-lg font-bold text-black">Session 1</span>
+            <span className="text-lg font-bold text-black">{sessionTitle}</span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}

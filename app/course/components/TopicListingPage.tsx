@@ -32,7 +32,7 @@ export default function TopicListingPage({
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {topics.map((topic, index) => {
-            const isLocked = index > 0;
+            const isLocked = index > 1;
             return (
               <div
                 key={topic.id}
