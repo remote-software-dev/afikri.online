@@ -34,6 +34,38 @@ const gradingItems = [
 ];
 
 export default function GradingPage() {
+  const kelasPagiStudents = [
+    { nim: '240212004', name: 'Nitajul Khaira' },
+    { nim: '240212012', name: 'Zahratul Jannah' },
+    { nim: '240212016', name: 'Hanifah Mawaddah' },
+    { nim: '240212024', name: 'Rahmayani Isma' },
+    { nim: '240212046', name: 'Salsabila Nasywa' },
+    { nim: '240212064', name: 'Salwa Salsabila' },
+    { nim: '240212072', name: 'Ika Desi' },
+    { nim: '240212084', name: 'Raja Mulia' },
+    { nim: '240212086', name: 'Diva Darmila' },
+    { nim: '240212092', name: 'Suci Widia Rizki' },
+    { nim: '240212096', name: 'Muhammad Afdhalul Zikri' },
+  ];
+
+  const kelasSiangStudents = [
+    { nim: '220212021', name: 'Fadhlun' },
+    { nim: '240212003', name: 'Rizqia' },
+    { nim: '240212005', name: 'Humaira izza' },
+    { nim: '240212009', name: 'Alifi Luthfir Rahman' },
+    { nim: '240212011', name: 'Annisa' },
+    { nim: '240212014', name: 'Nur Wasida' },
+    { nim: '240212023', name: 'Nepisa' },
+    { nim: '240212039', name: 'Masjuanda' },
+    { nim: '240212047', name: 'Maulidar' },
+    { nim: '240212048', name: 'Isra Safriani' },
+    { nim: '240212054', name: 'Dzaki Aulia Pasya' },
+    { nim: '240212083', name: 'Muyassir Farisi' },
+    { nim: '240212088', name: 'Humaira Balqis' },
+    { nim: '240212108', name: 'Ahqiyar' },
+    { nim: '240212119', name: 'Harianto' },
+  ];
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
       <Link
@@ -45,7 +77,7 @@ export default function GradingPage() {
       </Link>
 
       <h1 className="mb-2 text-4xl font-bold tracking-tight text-black md:text-5xl">
-        Uraian Grading 
+        Uraian Grading
       </h1>
       <p className="mb-10 text-gray-600">
         Course grade ditentukan oleh.
@@ -106,20 +138,18 @@ export default function GradingPage() {
         </table>
       </div>
 
-      {/*
       <div className="mt-14">
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black md:text-3xl">
           Grade - Kelas Pagi
         </h2>
-        <StudentGradesTable />
+        <StudentGradesTable students={kelasPagiStudents} />
       </div>
-      */}
 
       <div className="mt-14">
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black md:text-3xl">
           Grade - Kelas Siang
         </h2>
-        <StudentGradesTable />
+        <StudentGradesTable students={kelasSiangStudents} graded />
       </div>
     </div>
   );

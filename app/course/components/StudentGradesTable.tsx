@@ -4,37 +4,28 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 interface Student {
-  id: number;
   nim: string;
   name: string;
-  exercises: number[];
+  exercises?: number[];
 }
 
-const students: Student[] = [
-  { id: 1, nim: '240212039', name: 'Masjuanda', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 2, nim: '240212083', name: 'Muyassir Farisi', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 3, nim: '220212021', name: 'Fadhlun', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 4, nim: '240212108', name: 'Ahqiyar', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 5, nim: '240212011', name: 'Annisa', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 6, nim: '240212023', name: 'Nepisa', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 7, nim: '240212003', name: 'Rizqia', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 8, nim: '240212048', name: 'Isra Safriani', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 9, nim: '240212054', name: 'Dzaki Aulia Pasya', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 10, nim: '240212005', name: 'Humaira Izza', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 11, nim: '240212047', name: 'Maulidar', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 12, nim: '240212009', name: 'Alifi Luthfir Rahman', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-  { id: 13, nim: '240212088', name: 'Humaira Balqis', exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-];
+const defaultExercises = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function formatScore(score: number) {
   return score.toFixed(1);
 }
 
-export default function StudentGradesTable() {
-  const [expandedId, setExpandedId] = useState<number | null>(null);
+export default function StudentGradesTable({
+  students = [],
+  graded = false,
+}: {
+  students?: Student[];
+  graded?: boolean;
+}) {
+  const [expandedNim, setExpandedNim] = useState<string | null>(null);
 
-  const toggleRow = (id: number) => {
-    setExpandedId((prev) => (prev === id ? null : id));
+  const toggleRow = (nim: string) => {
+    setExpandedNim((prev) => (prev === nim ? null : nim));
   };
 
   return (
@@ -60,18 +51,22 @@ export default function StudentGradesTable() {
           </tr>
         </thead>
         <tbody>
-          {students.map((student) => {
-            const total = student.exercises.reduce((a, b) => a + b, 0);
-            const average = total / student.exercises.length;
-            const isExpanded = expandedId === student.id;
+          {students.map((student, index) => {
+            const exercises = student.exercises ?? defaultExercises;
+            const total = exercises.reduce((a, b) => a + b, 0);
+            const average = total / exercises.length;
+            const isExpanded = expandedNim === student.nim;
 
             return (
               <FragmentRow
-                key={student.id}
+                key={student.nim}
                 student={student}
+                rowNumber={index + 1}
+                exercises={exercises}
+                graded={graded}
                 average={average}
                 isExpanded={isExpanded}
-                onToggle={() => toggleRow(student.id)}
+                onToggle={() => toggleRow(student.nim)}
               />
             );
           })}
@@ -83,11 +78,17 @@ export default function StudentGradesTable() {
 
 function FragmentRow({
   student,
+  rowNumber,
+  exercises,
+  graded,
   average,
   isExpanded,
   onToggle,
 }: {
   student: Student;
+  rowNumber: number;
+  exercises: number[];
+  graded: boolean;
   average: number;
   isExpanded: boolean;
   onToggle: () => void;
@@ -102,7 +103,7 @@ function FragmentRow({
     <>
       <tr className={rowClasses} onClick={onToggle}>
         <td className="px-3 py-1 text-xs text-gray-600 leading-none">
-          {student.id}
+          {rowNumber}
         </td>
         <td className="px-3 py-1 text-xs font-medium text-gray-800 leading-none">
           {student.nim}
@@ -160,7 +161,7 @@ function FragmentRow({
                         <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-400">
                           Sesi
                         </th>
-                        {student.exercises.map((_, index) => (
+                        {exercises.map((_, index) => (
                           <th
                             key={index}
                             className="whitespace-nowrap px-1.5 py-0.5 text-[10px] font-semibold text-gray-500"
@@ -175,7 +176,7 @@ function FragmentRow({
                         <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-500">
                           Kehadiran
                         </th>
-                        {student.exercises.map((_, index) => (
+                        {exercises.map((_, index) => (
                           <td
                             key={index}
                             className="whitespace-nowrap border-r border-gray-100 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-gray-700 last:border-r-0"
@@ -190,7 +191,7 @@ function FragmentRow({
                         <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-400">
                           Latihan
                         </th>
-                        {student.exercises.map((_, index) => (
+                        {exercises.map((_, index) => (
                           <th
                             key={index}
                             className="whitespace-nowrap px-1.5 py-0.5 text-[10px] font-semibold text-gray-400"
@@ -205,12 +206,12 @@ function FragmentRow({
                         <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-500">
                           Nilai
                         </th>
-                        {student.exercises.map((score, index) => (
+                        {exercises.map((score, index) => (
                           <td
                             key={index}
                             className="whitespace-nowrap border-r border-gray-100 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-gray-700 last:border-r-0"
                           >
-                            {index === 0 ? '✅' : score}
+                            {graded && index === 0 ? '✅' : score}
                           </td>
                         ))}
                       </tr>
