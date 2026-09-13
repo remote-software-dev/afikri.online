@@ -35,35 +35,201 @@ const gradingItems = [
 
 export default function GradingPage() {
   const kelasPagiStudents = [
-    { nim: '240212004', name: 'Nitajul Khaira' },
-    { nim: '240212012', name: 'Zahratul Jannah' },
-    { nim: '240212016', name: 'Hanifah Mawaddah' },
-    { nim: '240212024', name: 'Rahmayani Isma' },
-    { nim: '240212046', name: 'Salsabila Nasywa' },
-    { nim: '240212064', name: 'Salwa Salsabila' },
-    { nim: '240212072', name: 'Ika Desi' },
-    { nim: '240212084', name: 'Raja Mulia' },
-    { nim: '240212086', name: 'Diva Darmila' },
-    { nim: '240212092', name: 'Suci Widia Rizki' },
-    { nim: '240212096', name: 'Muhammad Afdhalul Zikri' },
+    {
+      nim: '240212004',
+      name: 'Nitajul Khaira',
+      attendance: [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212012',
+      name: 'Zahratul Jannah',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212016',
+      name: 'Hanifah Mawaddah',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212024',
+      name: 'Rahmayani Isma',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212046',
+      name: 'Salsabila Nasywa',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212064',
+      name: 'Salwa Salsabila',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212072',
+      name: 'Ika Desi',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212084',
+      name: 'Raja Mulia',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212086',
+      name: 'Diva Darmila',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212092',
+      name: 'Suci Widia Rizki',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212096',
+      name: 'Muhammad Afdhalul Zikri',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
   ];
 
   const kelasSiangStudents = [
-    { nim: '220212021', name: 'Fadhlun' },
-    { nim: '240212003', name: 'Rizqia' },
-    { nim: '240212005', name: 'Humaira izza' },
-    { nim: '240212009', name: 'Alifi Luthfir Rahman' },
-    { nim: '240212011', name: 'Annisa' },
-    { nim: '240212014', name: 'Nur Wasida' },
-    { nim: '240212023', name: 'Nepisa' },
-    { nim: '240212039', name: 'Masjuanda' },
-    { nim: '240212047', name: 'Maulidar' },
-    { nim: '240212048', name: 'Isra Safriani' },
-    { nim: '240212054', name: 'Dzaki Aulia Pasya' },
-    { nim: '240212083', name: 'Muyassir Farisi' },
-    { nim: '240212088', name: 'Humaira Balqis' },
-    { nim: '240212108', name: 'Ahqiyar' },
-    { nim: '240212119', name: 'Harianto' },
+    {
+      nim: '220212021',
+      name: 'Fadhlun',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '230212107',
+      name: 'Alwin Rizki',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212003',
+      name: 'Rizqia Safira Putri',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212005',
+      name: 'Humaira Izza',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212009',
+      name: 'Alifi Luthfir Rahman',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212011',
+      name: 'Annisa',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212014',
+      name: 'Nur Wasida',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212023',
+      name: 'Nepisa Eviana',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212035',
+      name: 'Aqlima',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212039',
+      name: 'Masjuanda',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212047',
+      name: 'Maulidar',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212048',
+      name: 'Isra Safriani',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212054',
+      name: 'Dzaki Aulia Pasya',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212083',
+      name: 'Muyassir Farisi',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212088',
+      name: 'Humaira Balqis',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212102',
+      name: 'Jazil Mubarak',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212108',
+      name: 'Ahqiyar',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212111',
+      name: 'Sultan Syahbanta',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '240212119',
+      name: 'Harianto',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '250212802',
+      name: 'Vernanda Setiawan',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    {
+      nim: '250212803',
+      name: 'M Taufiqurrahman',
+      attendance: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
   ];
 
   return (
@@ -149,7 +315,7 @@ export default function GradingPage() {
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black md:text-3xl">
           Grade - Kelas Siang
         </h2>
-        <StudentGradesTable students={kelasSiangStudents} graded />
+        <StudentGradesTable students={kelasSiangStudents} />
       </div>
     </div>
   );

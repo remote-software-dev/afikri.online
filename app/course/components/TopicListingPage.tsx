@@ -1,5 +1,4 @@
 import { ArrowRight, Lock } from 'lucide-react';
-import Link from 'next/link';
 
 export interface TopicItem {
   id: string;
@@ -23,12 +22,7 @@ export default function TopicListingPage({
           <h1 className="text-4xl font-bold tracking-tight text-black md:text-5xl">
             Course Sessions
           </h1>
-          <Link
-            href="/course/grading"
-            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50"
-          >
-            Grading
-          </Link>
+          
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {topics.map((topic, index) => {

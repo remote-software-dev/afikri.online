@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Check } from 'lucide-react';
 
 interface Student {
   nim: string;
   name: string;
   exercises?: number[];
+  attendance?: boolean[];
 }
 
 const defaultExercises = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -15,12 +16,22 @@ function formatScore(score: number) {
   return score.toFixed(1);
 }
 
+function Mark({ present }: { present: boolean }) {
+  return (
+    <span className={present ? 'text-green-600' : 'text-gray-300'}>
+      {present ? (
+        <Check strokeWidth={3.5} className="mx-auto h-3.5 w-3.5" aria-hidden />
+      ) : (
+        '—'
+      )}
+    </span>
+  );
+}
+
 export default function StudentGradesTable({
   students = [],
-  graded = false,
 }: {
   students?: Student[];
-  graded?: boolean;
 }) {
   const [expandedNim, setExpandedNim] = useState<string | null>(null);
 
@@ -63,7 +74,6 @@ export default function StudentGradesTable({
                 student={student}
                 rowNumber={index + 1}
                 exercises={exercises}
-                graded={graded}
                 average={average}
                 isExpanded={isExpanded}
                 onToggle={() => toggleRow(student.nim)}
@@ -80,7 +90,6 @@ function FragmentRow({
   student,
   rowNumber,
   exercises,
-  graded,
   average,
   isExpanded,
   onToggle,
@@ -88,11 +97,11 @@ function FragmentRow({
   student: Student;
   rowNumber: number;
   exercises: number[];
-  graded: boolean;
   average: number;
   isExpanded: boolean;
   onToggle: () => void;
 }) {
+  const attendance = student.attendance ?? [];
   const rowClasses = `group cursor-pointer transition-colors ${
     isExpanded
       ? 'bg-blue-50/60'
@@ -174,14 +183,14 @@ function FragmentRow({
                     <tbody>
                       <tr className="bg-gray-100/50">
                         <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-500">
-                          Kehadiran
+                          Absensi
                         </th>
                         {exercises.map((_, index) => (
                           <td
                             key={index}
                             className="whitespace-nowrap border-r border-gray-100 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-gray-700 last:border-r-0"
                           >
-                            {index === 0 ? '✅' : '—'}
+                            <Mark present={attendance[index] === true} />
                           </td>
                         ))}
                       </tr>
@@ -189,7 +198,7 @@ function FragmentRow({
                     <thead>
                       <tr>
                         <th className="w-8 whitespace-nowrap border-r border-gray-100 px-1 py-0.5 text-[10px] font-semibold text-gray-400">
-                          Latihan
+                          Tugas
                         </th>
                         {exercises.map((_, index) => (
                           <th
@@ -211,7 +220,14 @@ function FragmentRow({
                             key={index}
                             className="whitespace-nowrap border-r border-gray-100 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-gray-700 last:border-r-0"
                           >
-                            {graded && index === 0 ? '✅' : score}
+                            {score > 0 ? (
+                              <span className="inline-flex items-center gap-1 text-green-600">
+                                <Check strokeWidth={3.5} className="h-3.5 w-3.5" aria-hidden />
+                                {score}
+                              </span>
+                            ) : (
+                              <span className="text-gray-300">—</span>
+                            )}
                           </td>
                         ))}
                       </tr>
