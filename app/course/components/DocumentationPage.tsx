@@ -30,25 +30,43 @@ const navigationByTopic: Record<string, NavItem[]> = {
       ]
     },
   ],
-  'session-2': [
-    {
-      id: 'session-2',
-      title: 'Session 2',
-      children: [
-        { id: 'learning-outcomes', title: 'Learning Outcomes' },
-        { id: 'fastapi-intro', title: 'What is FastAPI?' },
-        { id: 'installation-setup', title: 'Installation & Setup' },
-        { id: 'basic-routing', title: 'Basic Routing' },
-        { id: 'path-parameters', title: 'Path Parameters' },
-        { id: 'query-parameters', title: 'Query Parameters' },
-        { id: 'api-documentation', title: 'API Documentation (Swagger UI)' },
-        { id: 'hands-on-exercise', title: 'Hands-on Exercise: Book API' },
-        { id: 'session-checklist', title: 'Session Checklist' },
-        { id: 'homework', title: 'Homework' },
-        { id: 'qa-wrapup', title: 'Q&A & Wrap-up' },
-      ]
-    },
-  ],
+'session-2': [
+        {
+          id: 'session-2',
+          title: 'Session 2',
+          children: [
+            { id: 'learning-outcomes', title: 'Learning Outcomes' },
+            { id: 'fastapi-intro', title: 'What is FastAPI?' },
+            { id: 'installation-setup', title: 'Installation & Setup' },
+            { id: 'basic-routing', title: 'Basic Routing' },
+            { id: 'path-parameters', title: 'Path Parameters' },
+            { id: 'query-parameters', title: 'Query Parameters' },
+            { id: 'api-documentation', title: 'API Documentation (Swagger UI)' },
+            { id: 'hands-on-exercise', title: 'Hands-on Exercise: Book API' },
+            { id: 'session-checklist', title: 'Session Checklist' },
+            { id: 'homework', title: 'Homework' },
+            { id: 'qa-wrapup', title: 'Q&A & Wrap-up' },
+          ]
+        },
+      ],
+      'session-3': [
+        {
+          id: 'session-3',
+          title: 'Session 3',
+          children: [
+            { id: 'learning-outcomes', title: 'Learning Outcomes' },
+            { id: 'restful-design', title: 'RESTful API Design Principles' },
+            { id: 'request-body-validation', title: 'Request Body & Pydantic Models' },
+            { id: 'status-codes', title: 'HTTP Status Codes' },
+            { id: 'response-models', title: 'Response Models' },
+            { id: 'crud-endpoints', title: 'Building CRUD Endpoints' },
+            { id: 'crud-exercise', title: 'Hands-on Exercise: Full CRUD API' },
+            { id: 'session-checklist', title: 'Session Checklist' },
+            { id: 'homework', title: 'Homework' },
+            { id: 'qa-wrapup', title: 'Q&A & Wrap-up' },
+          ]
+        },
+      ],
 };
 
 const InfoBox = ({ children }: { children: React.ReactNode }) => (
@@ -90,7 +108,8 @@ export default function DocumentationPage({ topicId, onBackToTopics }: Documenta
   const [activeSection, setActiveSection] = useState('learning-outcomes');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const sessionTitle = topicId === 'session-2' ? 'Session 2' : 'Session 1';
+  const sessionTitle =
+    topicId === 'session-2' ? 'Session 2' : topicId === 'session-3' ? 'Session 3' : 'Session 1';
   const navigationData = navigationByTopic[topicId] ?? navigationByTopic['session-1'];
 
   const toggleSection = (sectionId: string) => {
@@ -699,6 +718,402 @@ def get_book_summary(book_id: int, max_length: int = 50):
           <InfoBox>
             If you have questions about any concepts from today, now is the time to ask! You can also review the Swagger UI documentation for your Book API to reinforce what you learned.
           </InfoBox>
+        </div>
+      ),
+
+      'session-3:learning-outcomes': (
+        <div className="space-y-6">
+          <h1 className="text-4xl font-bold tracking-tight text-black">Session 3 — API Design with FastAPI</h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Turn your FastAPI knowledge into professionally designed REST APIs. Learn request body validation with <strong>Pydantic</strong>, HTTP status codes, response models, and complete <strong>CRUD</strong> endpoints.
+          </p>
+
+          <h2 className="text-2xl font-semibold tracking-tight text-black mt-8">Learning Outcomes</h2>
+          <p className="text-gray-600 leading-relaxed">By the end of this session, students will be able to:</p>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Design RESTful APIs following standard conventions (nouns, pluralization, resource hierarchy).</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Define and validate request bodies using Pydantic models.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Return meaningful HTTP status codes for success and error cases.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Shape API responses with FastAPI response models.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Build complete CRUD endpoints (Create, Read, Update, Delete) for a resource.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Combine Pydantic models, status codes, and response models into a coherent API.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Test full CRUD flows using Swagger UI.</li>
+          </ul>
+
+          <InfoBox>
+            <strong>Prerequisite:</strong> This session builds directly on Session 2. You should be comfortable with FastAPI routing, path parameters, and query parameters before starting.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-3:restful-design': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">RESTful API Design Principles <span className="text-base font-normal text-gray-400">(~20 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            <strong>REST</strong> (Representational State Transfer) is an architectural style that treats everything as a <strong>resource</strong> addressed by a URL and manipulated with standard HTTP methods.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Core Principles</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Use <strong>nouns</strong> (not verbs) for resource URLs: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/books</code>, not <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/getBooks</code>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Use <strong>plural</strong> resource names for collections: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/books</code>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Use <strong>HTTP methods</strong> to express intent — GET, POST, PUT, PATCH, DELETE.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Use <strong>sub-resources</strong> for hierarchical relationships: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/books/{"{book_id}"}/reviews</code>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Return the appropriate <strong>status code</strong> for every response.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Keep endpoints <strong>stateless</strong> — each request contains everything needed to process it.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Mapping Methods to Actions</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Method</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Path</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Action</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books</td><td className="px-4 py-3 text-sm text-gray-700">Read — list all books</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books/{"{id}"}</td><td className="px-4 py-3 text-sm text-gray-700">Read — get one book</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">POST</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books</td><td className="px-4 py-3 text-sm text-gray-700">Create — add a book</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">PUT</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books/{"{id}"}</td><td className="px-4 py-3 text-sm text-gray-700">Update — replace a book</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">PATCH</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books/{"{id}"}</td><td className="px-4 py-3 text-sm text-gray-700">Update — partially update a book</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">DELETE</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/books/{"{id}"}</td><td className="px-4 py-3 text-sm text-gray-700">Delete — remove a book</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <InfoBox>
+            A resource is identified by a URL, and the HTTP method says what to do with it. The same URL <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/books/{"{id}"}</code> means &quot;read, update or delete&quot; depending on the method used.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-3:request-body-validation': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Request Body &amp; Pydantic Models <span className="text-base font-normal text-gray-400">(~25 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            For <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">POST</code>, <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">PUT</code>, and <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">PATCH</code> endpoints, clients send data in the <strong>request body</strong>. FastAPI uses <strong>Pydantic models</strong> to declare the expected shape and validate it automatically.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Defining a Pydantic Model</h3>
+          <CodeBlock language="python" code={`from pydantic import BaseModel
+
+class BookCreate(BaseModel):
+    title: str
+    author: str
+    genre: str
+    summary: str | None = None
+    price: float = 0.0`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Receiving the Body</h3>
+          <CodeBlock language="python" code={`@app.post("/books")
+def create_book(book: BookCreate):
+    return {"title": book.title, "author": book.author}`} />
+
+          <p className="text-gray-600 leading-relaxed">FastAPI will automatically:</p>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <strong>Validate</strong> the incoming JSON against the model.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Return <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">422 Unprocessable Entity</code> with details if validation fails.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Convert the JSON payload into a typed <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">BookCreate</code> instance.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Show the schema in Swagger UI for easy testing.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Field Validation</h3>
+          <CodeBlock language="python" code={`from pydantic import BaseModel, Field
+
+class BookCreate(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+    author: str = Field(min_length=1, max_length=120)
+    price: float = Field(ge=0, le=9999.99)
+    summary: str | None = Field(default=None, max_length=500)`} />
+
+          <p className="text-gray-600 leading-relaxed"><code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">Field()</code> adds constraints like <strong>min/max length</strong> (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">min_length</code>, <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">max_length</code>) and <strong>numeric ranges</strong> (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">ge</code> = greater/equal, <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">le</code> = less/equal). A rejected body returns an automatic 422 error listing every failing field.</p>
+
+          <InfoBox>
+            Pydantic models serve as a <strong>single source of truth</strong>: the same class validates input, documents the request body in Swagger UI, and can be reused as a response model.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-3:status-codes': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">HTTP Status Codes <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            Status codes tell the client what happened. Return the <strong>right one</strong> — this is a core part of good API design.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">The Codes You Need</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Code</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Name</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">When to use</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">200</td><td className="px-4 py-3 text-sm text-gray-700">OK</td><td className="px-4 py-3 text-sm text-gray-700">Successful GET (default)</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">201</td><td className="px-4 py-3 text-sm text-gray-700">Created</td><td className="px-4 py-3 text-sm text-gray-700">Successful POST that creates a resource</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">204</td><td className="px-4 py-3 text-sm text-gray-700">No Content</td><td className="px-4 py-3 text-sm text-gray-700">Successful DELETE — nothing to return</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">400</td><td className="px-4 py-3 text-sm text-gray-700">Bad Request</td><td className="px-4 py-3 text-sm text-gray-700">Malformed or invalid request</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">404</td><td className="px-4 py-3 text-sm text-gray-700">Not Found</td><td className="px-4 py-3 text-sm text-gray-700">Resource does not exist</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">422</td><td className="px-4 py-3 text-sm text-gray-700">Unprocessable Entity</td><td className="px-4 py-3 text-sm text-gray-700">Validation failed (automatic in FastAPI)</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">500</td><td className="px-4 py-3 text-sm text-gray-700">Internal Server Error</td><td className="px-4 py-3 text-sm text-gray-700">Unexpected server error (default)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Returning Custom Codes</h3>
+          <p className="text-gray-600 leading-relaxed">Use the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">status_code</code> decorator argument or the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">status</code> module:</p>
+          <CodeBlock language="python" code={`from fastapi import FastAPI, status, HTTPException
+
+@app.post("/books", status_code=status.HTTP_201_CREATED)
+def create_book(book: BookCreate):
+    return {"id": 99, **book.model_dump()}
+
+@app.get("/books/{book_id}")
+def get_book(book_id: int):
+    book = DB.get(book_id)
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return book`} />
+
+          <p className="text-gray-600 leading-relaxed"><code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">HTTPException</code> stops execution and returns the given status code with a <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">detail</code> message.</p>
+
+          <InfoBox>
+            Use <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">201</code> for creation instead of the default <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">200</code>. Small details like this make your API feel professional.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-3:response-models': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Response Models <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            <strong>Response models</strong> shape what your API returns — filtering out internal fields and guaranteeing a stable contract. Declare them with the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">response_model</code> parameter.
+          </p>
+
+          <CodeBlock language="python" code={`from pydantic import BaseModel
+
+class Book(BaseModel):
+    id: int
+    title: str
+    author: str
+    genre: str
+    summary: str | None = None
+
+class BookOut(Book):
+    price: float = 0.0
+
+@app.get("/books", response_model=list[BookOut])
+def list_books():
+    # Internal objects may have more fields; they are filtered out
+    return get_all_books()`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Why Use Response Models?</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <strong>Filter sensitive fields</strong> (passwords, internal IDs) from responses.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <strong>Document</strong> the exact response schema in Swagger UI.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Convert ORM/dict data into a clean, typed structure automatically.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Enforce <strong>optionality</strong> — fields omitted from the model are dropped from the output.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">The Create vs. Output Pattern</h3>
+          <CodeBlock language="python" code={`class BookCreate(BaseModel):   # input — client defines these
+    title: str
+    author: str
+    genre: str
+    summary: str | None = None
+
+class BookOut(BaseModel):     # output — the API returns these
+    id: int
+    title: str
+    author: str
+    genre: str
+    summary: str | None = None
+
+# FastAPI fills in id, and only returns the BookOut fields
+@app.post("/books", status_code=201, response_model=BookOut)
+def create_book(book: BookCreate):
+    book_id = db.insert(book)
+    return {"id": book_id, **book.model_dump()}`} />
+
+          <InfoBox>
+            Splitting input (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">BookCreate</code>) and output (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">BookOut</code>) models is a common pattern that keeps clients from setting (or leaking) fields they shouldn&apos;t control.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-3:crud-endpoints': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Building CRUD Endpoints <span className="text-base font-normal text-gray-400">(~30 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            <strong>CRUD</strong> stands for <strong>Create, Read, Update, Delete</strong> — the four operations nearly every application needs. Here is a complete CRUD API for books using an in-memory store.
+          </p>
+
+          <CodeBlock language="python" code={`from fastapi import FastAPI, HTTPException, status
+from pydantic import BaseModel, Field
+
+app = FastAPI()
+
+class BookCreate(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+    author: str = Field(min_length=1, max_length=120)
+    genre: str = "General"
+    summary: str | None = None
+
+class BookOut(BookCreate):
+    id: int
+
+books: dict[int, dict] = {}
+book_counter = 1`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Create (POST)</h3>
+          <CodeBlock language="python" code={`@app.post("/books", status_code=status.HTTP_201_CREATED, response_model=BookOut)
+def create_book(book: BookCreate):
+    global book_counter
+    new_book = {"id": book_counter, **book.model_dump()}
+    books[book_counter] = new_book
+    book_counter += 1
+    return new_book`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Read (GET)</h3>
+          <CodeBlock language="python" code={`@app.get("/books", response_model=list[BookOut])
+def list_books():
+    return list(books.values())
+
+@app.get("/books/{book_id}", response_model=BookOut)
+def get_book(book_id: int):
+    if book_id not in books:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return books[book_id]`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Update (PUT)</h3>
+          <CodeBlock language="python" code={`@app.put("/books/{book_id}", response_model=BookOut)
+def update_book(book_id: int, book: BookCreate):
+    if book_id not in books:
+        raise HTTPException(status_code=404, detail="Book not found")
+    updated = {"id": book_id, **book.model_dump()}
+    books[book_id] = updated
+    return updated`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Delete (DELETE)</h3>
+          <CodeBlock language="python" code={`@app.delete("/books/{book_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_book(book_id: int):
+    if book_id not in books:
+        raise HTTPException(status_code=404, detail="Book not found")
+    del books[book_id]`} />
+
+          <InfoBox>
+            Note the pattern: <strong>POST</strong> to the collection creates, <strong>GET /books</strong> lists, <strong>GET /books/{"{id}"}</strong> reads one, <strong>PUT /books/{"{id}"}</strong> replaces, and <strong>DELETE /books/{"{id}"}</strong> removes. Status codes tell the client whether the operation succeeded.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-3:crud-exercise': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Hands-on Exercise: Full CRUD API <span className="text-base font-normal text-gray-400">(~30 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            Build a complete <strong>CRUD API for a Product catalog</strong> that combines everything from this session. Create a new file <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/products.py</code> and copy the starter code below.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Requirements</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">POST /products</code> — create a product, return <strong>201</strong>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /products</code> — list all products, with optional <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">?category=</code> filtering.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /products/{"{id}"}</code> — get one product, <strong>404</strong> if missing.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">PUT /products/{"{id}"}</code> — update a product, <strong>404</strong> if missing.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">DELETE /products/{"{id}"}</code> — delete a product, return <strong>204</strong>.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Starter Code</h3>
+          <CodeBlock language="python" code={`from fastapi import FastAPI, HTTPException, status
+from pydantic import BaseModel, Field
+
+app = FastAPI()
+
+class ProductCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=200)
+    category: str = "General"
+    price: float = Field(gt=0, le=100000)
+    in_stock: bool = True
+
+class ProductOut(ProductCreate):
+    id: int
+
+products: dict[int, dict] = {}
+product_counter = 1
+
+# TODO 1: POST /products — create a product, status_code=201, response_model=ProductOut
+
+# TODO 2: GET /products — list all products; filter by category if the query param is provided
+
+# TODO 3: GET /products/{product_id} — return one product or raise HTTPException(404)
+
+# TODO 4: PUT /products/{product_id} — replace and return the product or raise HTTPException(404)
+
+# TODO 5: DELETE /products/{product_id} — remove or raise HTTPException(404); status_code=204`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Expected Behavior</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Creating a product returns <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">201 Created</code> with an auto-assigned <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">id</code>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Creating a product with an invalid price (e.g. <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">-5</code>) returns <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">422</code>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /products?category=Electronics</code> returns only electronics products.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Requesting, updating, or deleting a missing ID returns <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">404</code>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Deleting a product returns <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">204 No Content</code> with an empty response body.</li>
+          </ul>
+
+          <InfoBox>
+            Verify every endpoint in Swagger UI at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/docs</code>. A full CRUD round-trip — create, list, filter, get one, update, delete — should work without errors.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-3:session-checklist': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Session Checklist</h2>
+          <div className="space-y-1 divide-y divide-gray-100">
+            <ChecklistItem label="Rules of RESTful naming (nouns, plural, resource hierarchy) understood." />
+            <ChecklistItem label="Pydantic model defined with Field() constraints." />
+            <ChecklistItem label="Request body validated automatically (422 on bad input)." />
+            <ChecklistItem label="Custom status codes returned (201, 204, 404, 422)." />
+            <ChecklistItem label="Response model used to shape and filter output." />
+            <ChecklistItem label="Create, Read, Update, Delete endpoints all working." />
+            <ChecklistItem label="Missing resource returns 404, invalid data returns 422." />
+            <ChecklistItem label="Full CRUD exercise completed and tested in Swagger UI." />
+          </div>
+        </div>
+      ),
+
+      'session-3:homework': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Homework</h2>
+          <p className="text-gray-600 leading-relaxed">Reinforce the concepts from this session with these 5 questions:</p>
+          <ol className="space-y-3 text-gray-700 ml-4 list-decimal list-inside">
+            <li>Why should REST URLs use nouns and plural names instead of verbs? Give one example of a bad and a good URL.</li>
+            <li>What is the difference between a Pydantic input model (e.g. <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">BookCreate</code>) and a response model (e.g. <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">BookOut</code>)? Why is this separation useful?</li>
+            <li>Which HTTP status codes should a <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">POST</code> create endpoint, a <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">DELETE</code> endpoint, and a &quot;not found&quot; error return? Explain each choice.</li>
+            <li>How does raising <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">HTTPException(status_code=404, detail=...)</code> change the behavior of an endpoint?</li>
+            <li>Describe the full set of CRUD endpoints you would design for a <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/users</code> resource, including method, path, and purpose of each.</li>
+          </ol>
+        </div>
+      ),
+
+      'session-3:qa-wrapup': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Q&amp;A &amp; Wrap-up <span className="text-base font-normal text-gray-400">(~5 min)</span></h2>
+
+          <h3 className="text-xl font-semibold text-black mt-4">What We Covered Today</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> RESTful design conventions: nouns, pluralization, and HTTP methods.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Request bodies validated with Pydantic models and Field() constraints.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Meaningful HTTP status codes: 200, 201, 204, 404, 422.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Response models to shape and protect outgoing data.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Complete CRUD endpoints for a resource.</li>
+          </ul>
         </div>
       ),
     };
