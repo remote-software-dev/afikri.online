@@ -5,10 +5,12 @@ import matter from "gray-matter";
 type FrontMatter = {
   title: string;
   description?: string;
-  date: string;
+  date?: string;
+  publishedAt?: string;
   tags?: string[];
   author?: string;
   imgUrl?: string;
+  imageUrl?: string;
   role?: string;
   year?: string;
   link?: string;

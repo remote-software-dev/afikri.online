@@ -43,6 +43,14 @@ export function Navbar() {
             </li>
             <li>
               <Link
+                href="/tutorial"
+                className="text-gray-600 transition-colors hover:text-blue-600"
+              >
+                Tutorial
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/about"
                 className="text-gray-600 transition-colors hover:text-blue-600"
               >

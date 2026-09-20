@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import fs from "fs";
+import path from "path";
 import { getMdxContent } from "@/lib/getMdxContent";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import CodeBlock from "@/components/blog/CodeBlock";
@@ -12,27 +14,47 @@ const MONTHS: Record<string, number> = {
   July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,
 };
 
-function parseDateToISO(dateStr: string): string {
+function parseDateToISO(dateStr?: string): string {
+  if (!dateStr) {
+    return new Date().toISOString();
+  }
   const match = dateStr.match(/^(\d{1,2})\s+(\w+)\s+(\d{4})$/);
   if (match) {
     const [, day, month, year] = match;
-    return new Date(Number(year), MONTHS[month], Number(day)).toISOString();
+    const monthIndex = MONTHS[month];
+    if (monthIndex !== undefined) {
+      return new Date(Date.UTC(Number(year), monthIndex, Number(day))).toISOString();
+    }
   }
-  return new Date(dateStr).toISOString();
+  const parsed = new Date(dateStr);
+  return isNaN(parsed.getTime()) ? new Date().toISOString() : parsed.toISOString();
 }
 
 interface FrontMatter {
   title: string;
   description?: string;
   author?: string;
-  date: string;
+  date?: string;
+  publishedAt?: string;
   imgUrl?: string;
+  imageUrl?: string;
   tags?: string[];
 }
 
 interface MdxData {
   source: string;
   frontMatter: FrontMatter;
+}
+
+export async function generateStaticParams() {
+  const blogDir = path.join(process.cwd(), "content/blogs");
+  if (!fs.existsSync(blogDir)) return [];
+  const files = fs.readdirSync(blogDir);
+  return files
+    .filter((filename) => filename.endsWith(".md"))
+    .map((filename) => ({
+      slug: filename.replace(/\.md$/, ""),
+    }));
 }
 
 export async function generateMetadata({
@@ -46,9 +68,11 @@ export async function generateMetadata({
   if (!mdxData) return {};
 
   const { frontMatter } = mdxData;
-  const imageUrl = frontMatter.imgUrl
-    ? `${SITE_URL}${frontMatter.imgUrl}`
+  const rawImage = frontMatter.imgUrl || frontMatter.imageUrl;
+  const imageUrl = rawImage
+    ? (rawImage.startsWith("http") ? rawImage : `${SITE_URL}${rawImage}`)
     : undefined;
+  const dateStr = frontMatter.date || frontMatter.publishedAt;
 
   return generatePageMetadata({
     title: frontMatter.title,
@@ -57,7 +81,7 @@ export async function generateMetadata({
     path: `/blogs/${slug}`,
     image: imageUrl,
     type: "article",
-    publishedTime: parseDateToISO(frontMatter.date),
+    publishedTime: parseDateToISO(dateStr),
   });
 }
 
@@ -78,16 +102,19 @@ export default async function BlogPostPage({
   }
 
   const { frontMatter } = mdxData;
-  const dateISO = parseDateToISO(frontMatter.date);
+  const dateStr = frontMatter.date || frontMatter.publishedAt;
+  const dateISO = parseDateToISO(dateStr);
+  const rawImage = frontMatter.imgUrl || frontMatter.imageUrl;
+  const imageUrl = rawImage
+    ? (rawImage.startsWith("http") ? rawImage : `${SITE_URL}${rawImage}`)
+    : undefined;
 
   return (
     <>
       <ArticleJsonLd
         title={frontMatter.title}
         description={frontMatter.description}
-        image={
-          frontMatter.imgUrl ? `${SITE_URL}${frontMatter.imgUrl}` : undefined
-        }
+        image={imageUrl}
         datePublished={dateISO}
         url={`${SITE_URL}/blogs/${slug}`}
       />
@@ -102,9 +129,11 @@ export default async function BlogPostPage({
               <strong>Author:</strong> {frontMatter.author}
             </p>
           )}
-          <p>
-            <strong>Date:</strong> {frontMatter.date}
-          </p>
+          {dateStr && (
+            <p>
+              <strong>Date:</strong> {dateStr}
+            </p>
+          )}
         </div>
 
         <hr className="my-8 border-gray-200" />

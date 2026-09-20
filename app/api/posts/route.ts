@@ -10,13 +10,18 @@ const MONTHS: Record<string, number> = {
   July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,
 };
 
-function parseDateString(dateStr: string): number {
+function parseDateString(dateStr?: string): number {
+  if (!dateStr) return 0;
   const match = dateStr.match(/^(\d{1,2})\s+(\w+)\s+(\d{4})$/);
   if (match) {
     const [, day, month, year] = match;
-    return new Date(Number(year), MONTHS[month], Number(day)).getTime();
+    const monthIndex = MONTHS[month];
+    if (monthIndex !== undefined) {
+      return Date.UTC(Number(year), monthIndex, Number(day));
+    }
   }
-  return new Date(dateStr).getTime();
+  const time = new Date(dateStr).getTime();
+  return isNaN(time) ? 0 : time;
 }
 
 async function getBlogPosts() {
@@ -33,14 +38,14 @@ async function getBlogPosts() {
           return {
             slug: filename.replace(".md", ""),
             title: data.title || "Untitled",
-            date: data.date || "Unknown date",
+            date: data.date || data.publishedAt || "Unknown date",
             author: data.author || "afikri",
             tags: data.tags || [],
             imageUrl: data.imgUrl || data.imageUrl || "https://picsum.photos/seed/default/800/400",
             commentsCount: data.commentsCount || 0,
             likesCount: data.likesCount || 0,
             bookmarksCount: data.bookmarksCount || 0,
-            excerpt: data.excerpt || content.slice(0, 150) + "...",
+            excerpt: data.excerpt || data.description || (content ? content.slice(0, 150) + "..." : ""),
           };
         })
     );
