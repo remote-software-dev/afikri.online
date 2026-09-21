@@ -17,6 +17,11 @@ import { generatePageMetadata, PageMetadata } from "@/components/PageMetadata";
 import TutorialDocumentation from "@/components/tutorial/TutorialDocumentation";
 import TutorialMdxDocumentation from "@/components/tutorial/TutorialMdxDocumentation";
 import CodeBlock from "@/components/CodeBlock";
+import {
+  Callout,
+  PhaseCard,
+  SkillBadge,
+} from "@/components/blog/MdxBlocks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -101,6 +106,9 @@ const mdxComponents = {
   code: ({ children, ...rest }: React.HTMLAttributes<HTMLElement>) => (
     <CodeBlock {...rest}>{children ?? ""}</CodeBlock>
   ),
+  Callout,
+  PhaseCard,
+  SkillBadge,
 };
 
 export default async function TutorialDetailPage({ params }: PageProps) {

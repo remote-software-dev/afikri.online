@@ -12,7 +12,6 @@ import {
   PhaseCard,
   SkillBadge,
 } from "@/components/blog/MdxBlocks";
-import RoadmapTimeline from "@/components/blog/RoadmapTimeline";
 
 const SITE_URL = "https://afikri.online";
 
@@ -197,7 +196,6 @@ export default async function BlogPostPage({
             components={{
               Callout,
               PhaseCard,
-              RoadmapTimeline,
               SkillBadge,
               code: ({
                 children,

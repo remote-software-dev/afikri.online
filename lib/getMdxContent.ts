@@ -101,9 +101,14 @@ export function buildMdxToc(source: string): MdxTocItem[] {
       const title = h1Match[1].trim();
       current = { id: slugifyHeading(title), title, children: [] };
       toc.push(current);
-    } else if (h2Match && current) {
+    } else if (h2Match) {
       const title = h2Match[1].trim();
-      current.children!.push({ id: slugifyHeading(title), title });
+      const item: MdxTocItem = { id: slugifyHeading(title), title };
+      if (current) {
+        current.children!.push(item);
+      } else {
+        toc.push(item);
+      }
     }
   }
 
