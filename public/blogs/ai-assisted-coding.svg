@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#f5f8ff"/>
+      <stop offset="1" stop-color="#edf2fc"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="0.5" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="nodeStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93c5fd"/>
+      <stop offset="0.5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#5eead4"/>
+    </linearGradient>
+    <linearGradient id="chipBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="chipViolet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf5ff"/>
+      <stop offset="1" stop-color="#ede9fe"/>
+    </linearGradient>
+    <linearGradient id="chipEmerald" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/>
+      <stop offset="1" stop-color="#d1fae5"/>
+    </linearGradient>
+    <linearGradient id="chipAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffbeb"/>
+      <stop offset="1" stop-color="#fef3c7"/>
+    </linearGradient>
+    <radialGradient id="blobBlue" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#dbeafe" stop-opacity="0.8"/>
+      <stop offset="0.55" stop-color="#dbeafe" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#dbeafe" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobViolet" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ede9fe" stop-opacity="0.75"/>
+      <stop offset="0.55" stop-color="#ede9fe" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#ede9fe" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobEmerald" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#d1fae5" stop-opacity="0.8"/>
+      <stop offset="0.55" stop-color="#d1fae5" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#d1fae5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobCyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#cffafe" stop-opacity="0.8"/>
+      <stop offset="0.55" stop-color="#cffafe" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#cffafe" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <clipPath id="cardClip">
+      <rect x="700" y="165" width="420" height="320" rx="34"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="120" cy="150" r="200" fill="url(#blobBlue)"/>
+  <circle cx="1060" cy="130" r="230" fill="url(#blobViolet)"/>
+  <circle cx="170" cy="540" r="190" fill="url(#blobEmerald)"/>
+  <circle cx="1060" cy="560" r="210" fill="url(#blobCyan)"/>
+
+  <g transform="translate(700, 190)">
+    <g fill="none" stroke="url(#nodeStroke)" stroke-width="2.5" opacity="0.55" stroke-linecap="round">
+      <path d="C 80 60 150 20 190 10"/>
+      <path d="C 120 150 210 170 250 20"/>
+      <path d="C 30 200 90 260 240 300"/>
+      <path d="C 170 90 260 60 330 120"/>
+      <path d="C 60 60 130 320 320 320"/>
+    </g>
+    <g>
+      <circle cx="80" cy="60" r="36" fill="url(#glow)"/>
+      <circle cx="80" cy="60" r="10" fill="#ffffff" stroke="url(#nodeStroke)" stroke-width="3.5"/>
+      <circle cx="190" cy="10" r="7" fill="#a78bfa"/>
+      <circle cx="250" cy="20" r="9" fill="#ffffff" stroke="#93c5fd" stroke-width="3"/>
+      <circle cx="240" cy="300" r="8" fill="#5eead4"/>
+      <circle cx="120" cy="150" r="6" fill="#93c5fd"/>
+      <circle cx="330" cy="120" r="8" fill="#ffffff" stroke="#5eead4" stroke-width="3"/>
+      <circle cx="320" cy="320" r="6" fill="#a78bfa"/>
+    </g>
+  </g>
+
+  <rect x="700" y="165" width="420" height="320" rx="34" fill="#ffffff" filter="url(#cardShadow)"/>
+  <rect x="700" y="165" width="420" height="320" rx="34" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <g clip-path="url(#cardClip)">
+    <circle cx="730" cy="208" r="9" fill="#f87171"/>
+    <circle cx="760" cy="208" r="9" fill="#fbbf24"/>
+    <circle cx="790" cy="208" r="9" fill="#34d399"/>
+    <text x="1082" y="213" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#94a3b8">workflow.ts</text>
+    <line x1="730" y1="238" x2="1090" y2="238" stroke="#f1f5f9" stroke-width="2"/>
+    <g font-family="'SF Mono', ui-monospace, Consolas, Menlo, monospace">
+      <text x="736" y="276" font-size="20">
+        <tspan fill="#2563eb" font-weight="700">const </tspan><tspan fill="#334155">plan = </tspan><tspan fill="#7c3aed">ai.draft</tspan><tspan fill="#334155">();</tspan>
+      </text>
+      <text x="736" y="312" font-size="20">
+        <tspan fill="#7c3aed">runTests</tspan><tspan fill="#334155">(plan, { strict });</tspan>
+      </text>
+      <text x="736" y="348" font-size="20">
+        <tspan fill="#2563eb" font-weight="700">if </tspan><tspan fill="#334155">(!isVerified) block();</tspan>
+      </text>
+      <text x="736" y="384" font-size="20" fill="#94a3b8" font-style="italic">
+        <tspan>// human sign-off required</tspan>
+      </text>
+      <text x="736" y="420" font-size="20">
+        <tspan fill="#7c3aed">ship</tspan><tspan fill="#334155">({ reviewedBy: </tspan><tspan fill="#059669">you</tspan><tspan fill="#334155"> });</tspan>
+      </text>
+      <text x="736" y="456" font-size="20" fill="#94a3b8" font-style="italic">
+        <tspan># AI-assisted. Human-first.</tspan>
+      </text>
+    </g>
+  </g>
+
+  <text x="80" y="120" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="6" fill="#2563eb">AI-ASSISTED CODING</text>
+
+  <text x="80" y="216" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800" fill="#0f172a">Code Faster.</text>
+  <text x="80" y="286" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800" fill="#0f172a">Reason <tspan fill="#7c3aed">Harder.</tspan></text>
+
+  <rect x="80" y="328" width="84" height="10" rx="5" fill="url(#accent)"/>
+
+  <text x="80" y="394" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#64748b">Structured workflows, verified code, and the human</text>
+  <text x="80" y="428" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#64748b">judgment that makes it trustworthy.</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g>
+      <rect x="80" y="522" width="200" height="58" rx="29" fill="url(#chipBlue)" stroke="#93c5fd" stroke-width="1.5"/>
+      <text x="180" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#2563eb">SAFE Checklist</text>
+    </g>
+    <g>
+      <rect x="292" y="522" width="190" height="58" rx="29" fill="url(#chipViolet)" stroke="#c4b5fd" stroke-width="1.5"/>
+      <text x="387" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#7c3aed">Human Oversight</text>
+    </g>
+    <g>
+      <rect x="494" y="522" width="180" height="58" rx="29" fill="url(#chipEmerald)" stroke="#6ee7b7" stroke-width="1.5"/>
+      <text x="584" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#059669">Verified Code</text>
+    </g>
+    <g>
+      <rect x="686" y="522" width="190" height="58" rx="29" fill="url(#chipAmber)" stroke="#fde047" stroke-width="1.5"/>
+      <text x="781" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#a16207">No Vibe Coding</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#f6fbf8"/>
+      <stop offset="1" stop-color="#eef5f2"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="0.5" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="lead" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="0.55" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="nodeStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6ee7b7"/>
+      <stop offset="0.5" stop-color="#a5b4fc"/>
+      <stop offset="1" stop-color="#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="chipBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="chipViolet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf5ff"/>
+      <stop offset="1" stop-color="#ede9fe"/>
+    </linearGradient>
+    <linearGradient id="chipEmerald" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/>
+      <stop offset="1" stop-color="#d1fae5"/>
+    </linearGradient>
+    <linearGradient id="chipAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffbeb"/>
+      <stop offset="1" stop-color="#fef3c7"/>
+    </linearGradient>
+    <radialGradient id="blobEmerald" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#d1fae5" stop-opacity="0.8"/>
+      <stop offset="0.55" stop-color="#d1fae5" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#d1fae5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobIndigo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e0e7ff" stop-opacity="0.75"/>
+      <stop offset="0.55" stop-color="#e0e7ff" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#e0e7ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobBlue" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#dbeafe" stop-opacity="0.8"/>
+      <stop offset="0.55" stop-color="#dbeafe" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#dbeafe" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="teamGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="nodeShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="1120" cy="130" r="230" fill="url(#blobEmerald)"/>
+  <circle cx="980" cy="520" r="220" fill="url(#blobIndigo)"/>
+  <circle cx="180" cy="150" r="190" fill="url(#blobBlue)"/>
+  <circle cx="120" cy="540" r="180" fill="url(#blobEmerald)"/>
+
+  <g fill="none" stroke="url(#nodeStroke)" stroke-width="2.5" opacity="0.55" stroke-linecap="round">
+    <path d="M 930 300 C 900 260 830 235 758 210"/>
+    <path d="M 930 300 C 950 240 980 200 1040 176"/>
+    <path d="M 930 300 C 920 360 900 400 860 424"/>
+    <path d="M 930 300 C 960 330 1010 350 1078 372"/>
+  </g>
+
+  <g>
+    <circle cx="758" cy="210" r="34" fill="url(#teamGlow)">
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1040" cy="176" r="26" fill="#ffffff" stroke="url(#nodeStroke)" stroke-width="4"/>
+    <rect x="1030" y="166" width="20" height="20" rx="5" fill="#10b981" opacity="0.16"/>
+    <text x="1040" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#10b981">B</text>
+    <circle cx="860" cy="424" r="26" fill="#ffffff" stroke="url(#nodeStroke)" stroke-width="4"/>
+    <rect x="850" y="414" width="20" height="20" rx="5" fill="#06b6d4" opacity="0.16"/>
+    <text x="860" y="432" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#06b6d4">C</text>
+    <circle cx="1078" cy="372" r="26" fill="#ffffff" stroke="url(#nodeStroke)" stroke-width="4"/>
+    <rect x="1068" y="362" width="20" height="20" rx="5" fill="#6366f1" opacity="0.16"/>
+    <text x="1078" y="380" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#6366f1">D</text>
+  </g>
+
+  <circle cx="930" cy="300" r="58" fill="url(#lead)" filter="url(#nodeShadow)"/>
+  <circle cx="930" cy="300" r="58" fill="none" stroke="#ffffff" stroke-width="7"/>
+  <circle cx="930" cy="300" r="66" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+  <path d="M 930 278 C 933 292 946 296 946 300 C 946 304 933 308 930 322 C 927 308 914 304 914 300 C 914 296 927 292 930 278 Z" fill="#ffffff"/>
+  <g fill="#ffffff" opacity="0.95">
+    <circle cx="901" cy="300" r="3"/>
+    <circle cx="959" cy="300" r="3"/>
+    <circle cx="930" cy="271" r="3"/>
+    <circle cx="930" cy="329" r="3"/>
+  </g>
+
+  <text x="80" y="120" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="6" fill="#059669">TECHNICAL LEADERSHIP</text>
+
+  <text x="80" y="216" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800" fill="#0f172a">It's Not Senior Code.</text>
+  <text x="80" y="286" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800" fill="#0f172a">It's Growing the <tspan fill="#6366f1">Team.</tspan></text>
+
+  <rect x="80" y="328" width="84" height="10" rx="5" fill="url(#accent)"/>
+
+  <text x="80" y="394" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#64748b">Mentoring, ownership, decisions, and code review —</text>
+  <text x="80" y="428" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#64748b">the habits that compound across every engineer near you.</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g>
+      <rect x="80" y="522" width="170" height="58" rx="29" fill="url(#chipBlue)" stroke="#93c5fd" stroke-width="1.5"/>
+      <text x="165" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#2563eb">Mentoring</text>
+    </g>
+    <g>
+      <rect x="262" y="522" width="176" height="58" rx="29" fill="url(#chipViolet)" stroke="#c4b5fd" stroke-width="1.5"/>
+      <text x="350" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#7c3aed">Ownership</text>
+    </g>
+    <g>
+      <rect x="450" y="522" width="186" height="58" rx="29" fill="url(#chipEmerald)" stroke="#6ee7b7" stroke-width="1.5"/>
+      <text x="543" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#059669">Code Review</text>
+    </g>
+    <g>
+      <rect x="648" y="522" width="194" height="58" rx="29" fill="url(#chipAmber)" stroke="#fde047" stroke-width="1.5"/>
+      <text x="745" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="#a16207">Architecture</text>
+    </g>
+  </g>
+</svg>

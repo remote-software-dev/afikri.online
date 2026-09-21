@@ -29,8 +29,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
   readMoreLink,
 }) => (
   <article className="rounded-lg border border-gray-200 bg-white">
-    <div className="aspect-video w-full bg-gray-100">
-      <img src={imageUrl} alt={title} className="h-full w-full object-cover" />
+    <div className="aspect-video w-full bg-gradient-to-b from-gray-100 to-gray-200">
+      <img src={imageUrl} alt={title} className="h-full w-full object-contain p-4" />
     </div>
     <div className="space-y-4 p-6">
       <div className="flex flex-wrap gap-2">
