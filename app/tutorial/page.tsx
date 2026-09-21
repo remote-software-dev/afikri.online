@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { generatePageMetadata, PageMetadata } from "@/components/PageMetadata";
 import { getAllTutorials } from "@/data/tutorials";
+import { getAllMdxTutorials } from "@/lib/getMdxContent";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Tutorials",
@@ -12,7 +13,13 @@ export const metadata: Metadata = generatePageMetadata({
 });
 
 export default function TutorialPage() {
-  const tutorials = getAllTutorials();
+  const mdxTutorials = getAllMdxTutorials();
+  const dataTutorials = getAllTutorials().map(({ slug, title, description }) => ({
+    slug,
+    title,
+    description,
+  }));
+  const tutorials = [...mdxTutorials, ...dataTutorials];
 
   return (
     <>

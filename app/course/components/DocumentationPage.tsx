@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X, Search, FileText, ChevronRight, ChevronDown, ArrowLeft, Info } from 'lucide-react';
+import CodeBlock from '@/components/CodeBlock';
 
 interface NavItem {
   id: string;
@@ -75,15 +76,6 @@ const InfoBox = ({ children }: { children: React.ReactNode }) => (
       <Info className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
       <div className="text-blue-900 text-sm leading-relaxed">{children}</div>
     </div>
-  </div>
-);
-
-const CodeBlock = ({ language, code }: { language: string; code: string }) => (
-  <div className="my-4 rounded-lg overflow-hidden border border-gray-200">
-    <div className="bg-gray-800 text-gray-400 text-xs px-4 py-2 font-mono">{language}</div>
-    <pre className="bg-gray-900 text-gray-100 p-4 overflow-x-auto text-sm leading-relaxed">
-      <code>{code}</code>
-    </pre>
   </div>
 );
 

@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
+import { getAllTutorialSlugs } from "@/data/tutorials";
+import { getMdxSlugs } from "@/lib/getMdxContent";
 
 const SITE_URL = "https://afikri.online";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
-  return [
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
       lastModified: now,
@@ -37,4 +39,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
   ];
+
+  const tutorialSlugs = Array.from(
+    new Set([...getAllTutorialSlugs(), ...getMdxSlugs("tutorials")])
+  );
+
+  const tutorialPages: MetadataRoute.Sitemap = tutorialSlugs.map((slug) => ({
+    url: `${SITE_URL}/tutorial/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const blogPages: MetadataRoute.Sitemap = getMdxSlugs("blogs").map((slug) => ({
+    url: `${SITE_URL}/blogs/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...tutorialPages, ...blogPages];
 }

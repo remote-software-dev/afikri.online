@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { getMdxContent } from "@/lib/getMdxContent";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import CodeBlock from "@/components/blog/CodeBlock";
+import CodeBlock from "@/components/CodeBlock";
 import { generatePageMetadata } from "@/components/PageMetadata";
 import { ArticleJsonLd } from "@/components/JsonLd";
 
@@ -142,8 +142,11 @@ export default async function BlogPostPage({
           <MDXRemote
             source={mdxData.source}
             components={{
-              code: (props: React.HTMLAttributes<HTMLElement>) => (
-                <CodeBlock {...props} children={props.children ?? ""} />
+              code: ({
+                children,
+                ...props
+              }: React.HTMLAttributes<HTMLElement>) => (
+                <CodeBlock {...props}>{children ?? ""}</CodeBlock>
               ),
             }}
           />

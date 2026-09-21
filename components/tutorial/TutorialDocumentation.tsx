@@ -14,6 +14,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Tutorial, TutorialNavItem, SectionContent } from "@/data/tutorials";
+import CodeBlock from "@/components/CodeBlock";
 
 interface TutorialDocumentationProps {
   tutorial: Tutorial;
@@ -25,17 +26,6 @@ const InfoBox = ({ children }: { children: React.ReactNode }) => (
       <Info className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
       <div className="text-sm leading-relaxed text-blue-900">{children}</div>
     </div>
-  </div>
-);
-
-const CodeBlock = ({ language, code }: { language: string; code: string }) => (
-  <div className="my-4 overflow-hidden rounded-lg border border-gray-200">
-    <div className="bg-gray-800 px-4 py-2 font-mono text-xs text-gray-400">
-      {language}
-    </div>
-    <pre className="overflow-x-auto bg-gray-900 p-4 font-mono text-sm leading-relaxed text-gray-100">
-      <code>{code}</code>
-    </pre>
   </div>
 );
 
