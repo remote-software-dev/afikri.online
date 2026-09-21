@@ -1,6 +1,6 @@
 ---
-title: "AI-Assisted Coding for Real Developers (No Vibe Coding)"
-description: "Learn a practical AI-assisted coding workflow for Next.js, FastAPI, Python, and TypeScript without relying on vibe coding."
+title: "AI-Assisted Software Development: A Practical Workflow for Real Developers"
+description: "Learn a practical AI-assisted software development workflow for Next.js, FastAPI, Python, and TypeScript without relying on vibe coding."
 slug: "ai-assisted-coding-for-real-developers-no-vibe-coding"
 category: "AI Automation"
 tags:
@@ -16,12 +16,9 @@ featured: true
 author: "Fikri Abdul"
 ---
 
-# AI-Assisted Coding for Real Developers (No Vibe Coding)
+# AI-Assisted Software Development: A Practical Workflow for Real Developers
 
 > A practical guide to using AI as a software engineering partner—not as a replacement for understanding your code.
-
-**Author:** Fikri Abdul  
-**Series:** Daily Coding → AI Automation
 
 ---
 
@@ -43,7 +40,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 1. Why This Guide Exists
+## 1. Why This Guide Exists
 
 **Goal:** Explain why this guide is different from typical AI coding tutorials.
 
@@ -60,7 +57,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 2. What Is Vibe Coding?
+## 2. What Is Vibe Coding?
 
 **Goal:** Define vibe coding and explain why it became popular.
 
@@ -80,7 +77,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 3. What Is AI-Assisted Coding?
+## 3. What Is AI-Assisted Coding?
 
 **Goal:** Introduce AI-assisted coding as an engineering workflow.
 
@@ -97,7 +94,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 4. Vibe Coding vs AI-Assisted Coding
+## 4. Vibe Coding vs AI-Assisted Coding
 
 **Goal:** Compare both approaches side by side.
 
@@ -118,7 +115,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 5. The AI-Assisted Software Development Workflow
+## 5. The AI-Assisted Software Development Workflow
 
 **Goal:** Build a repeatable workflow for real projects.
 
@@ -140,7 +137,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 6. Choosing the Right AI for Each Coding Task
+## 6. Choosing the Right AI for Each Coding Task
 
 **Goal:** Match AI tools to different development tasks.
 
@@ -180,7 +177,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 7. How to Debug AI-Generated Code
+## 7. How to Debug AI-Generated Code
 
 **Goal:** Learn a structured debugging workflow.
 
@@ -203,7 +200,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 8. Building a Next.js + FastAPI Project with AI (Step by Step)
+## 8. Building a Next.js + FastAPI Project with AI (Step by Step)
 
 **Goal:** Build a production-style application using AI without losing control.
 
@@ -237,7 +234,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 9. AI Code Review: Catching Hallucinations Before Production
+## 9. AI Code Review: Catching Hallucinations Before Production
 
 **Goal:** Review AI-generated code before merging.
 
@@ -261,7 +258,7 @@ author: "Fikri Abdul"
 
 ---
 
-# 10. Best Practices for Real Developers
+## 10. Best Practices for Real Developers
 
 **Goal:** Build habits that scale.
 
@@ -280,7 +277,7 @@ If you can't explain it, don't merge it.
 
 ---
 
-# 11. Common Mistakes and Anti-Patterns
+## 11. Common Mistakes and Anti-Patterns
 
 **Goal:** Avoid common AI coding traps.
 
@@ -301,7 +298,7 @@ If you can't explain it, don't merge it.
 
 ---
 
-# 12. A Practical AI Stack for 2026
+## 12. A Practical AI Stack for 2026
 
 **Goal:** Recommend a practical workflow instead of one "best AI."
 
@@ -332,13 +329,13 @@ If you can't explain it, don't merge it.
 - Vitest
 - AI-generated test cases
 
-## Suggested Workflow
+### Suggested Workflow
 
 Plan → Generate → Review → Test → Merge
 
 ---
 
-# 13. Final Thoughts: AI Won't Replace Debugging
+## 13. Final Thoughts: AI Won't Replace Debugging
 
 **Goal:** End with practical engineering principles.
 
@@ -351,7 +348,7 @@ Plan → Generate → Review → Test → Merge
 
 ---
 
-# Bonus Resources (Future Articles)
+## Bonus Resources (Future Articles)
 
 This guide is the foundation of a larger **AI Automation** series.
 
@@ -368,4 +365,4 @@ This guide is the foundation of a larger **AI Automation** series.
 
 ## About This Series
 
-**AI-Assisted Coding for Real Developers** is a hands-on series focused on software engineering with AI—not hype, not "build apps without coding," but practical workflows for developers building real production systems.
+**AI-Assisted Software Development** is a hands-on series focused on software engineering with AI—not hype, not "build apps without coding," but practical workflows for developers building real production systems.

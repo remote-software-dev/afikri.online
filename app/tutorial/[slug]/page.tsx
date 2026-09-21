@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import {
   getTutorialBySlug,
   getAllTutorialSlugs,
@@ -127,7 +128,7 @@ export default async function TutorialDetailPage({ params }: PageProps) {
           description={mdxData.frontMatter.description}
           toc={toc}
         >
-          <MDXRemote source={source} components={mdxComponents} />
+          <MDXRemote source={source} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} components={mdxComponents} />
         </TutorialMdxDocumentation>
       </>
     );

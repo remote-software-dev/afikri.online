@@ -20,11 +20,17 @@ type FrontMatter = {
 
 type ContentType = "blogs" | "projects" | "tutorials";
 
+const CONTENT_EXTENSIONS = [".md", ".mdx"] as const;
+
 export function readMdxContentSync(
   slug: string,
   contentType: ContentType = "blogs"
 ) {
-  const filePath = path.join(process.cwd(), "content", contentType, `${slug}.md`);
+  const dir = path.join(process.cwd(), "content", contentType);
+  const extension =
+    CONTENT_EXTENSIONS.find((ext) => fs.existsSync(path.join(dir, `${slug}${ext}`))) ??
+    ".md";
+  const filePath = path.join(dir, `${slug}${extension}`);
   if (!fs.existsSync(filePath)) {
     return null;
   }
@@ -48,8 +54,8 @@ export function getMdxSlugs(contentType: ContentType): string[] {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
-    .filter((filename) => filename.endsWith(".md"))
-    .map((filename) => filename.replace(/\.md$/, ""));
+    .filter((filename) => CONTENT_EXTENSIONS.some((ext) => filename.endsWith(ext)))
+    .map((filename) => filename.replace(/\.(md|mdx)$/, ""));
 }
 
 export interface MdxTutorialSummary {

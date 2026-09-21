@@ -29,14 +29,14 @@ async function getBlogPosts() {
     const files = await fs.readdir(blogDir);
     const posts = await Promise.all(
       files
-        .filter((filename) => filename.endsWith(".md"))
+        .filter((filename) => /\.mdx?$/.test(filename))
         .map(async (filename) => {
           const filePath = path.join(blogDir, filename);
           const fileContent = await fs.readFile(filePath, "utf-8");
           const { data, content } = matter(fileContent);
 
           return {
-            slug: filename.replace(".md", ""),
+            slug: filename.replace(/\.(md|mdx)$/, ""),
             title: data.title || "Untitled",
             date: data.date || data.publishedAt || "Unknown date",
             author: data.author || "afikri",
