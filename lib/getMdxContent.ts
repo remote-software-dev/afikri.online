@@ -89,11 +89,38 @@ export function slugifyHeading(text: string): string {
     .replace(/[\s-]+/g, "-");
 }
 
+const GENERIC_SECTION_LABELS = new Set([
+  "topics",
+  "goal",
+  "example",
+  "summary",
+  "key takeaway",
+  "key principle",
+  "chapters",
+  "practices",
+  "mistakes",
+  "example project",
+  "discussion",
+  "workflow stages",
+  "debugging checklist",
+  "ai review checklist",
+  "development stack",
+  "key lessons",
+  "upcoming articles",
+]);
+
+function isGenericSectionLabel(title: string): boolean {
+  return GENERIC_SECTION_LABELS.has(title.trim().toLowerCase());
+}
+
 export function buildMdxToc(source: string): MdxTocItem[] {
+  const lines = source.split("\n");
+  const hasNumberedChapters = lines.some((line) => /^##\s+\d+\./.test(line));
+
   const toc: MdxTocItem[] = [];
   let current: MdxTocItem | null = null;
 
-  for (const line of source.split("\n")) {
+  for (const line of lines) {
     const h1Match = line.match(/^#\s+(.+)$/);
     const h2Match = line.match(/^##\s+(.+)$/);
 
@@ -103,6 +130,8 @@ export function buildMdxToc(source: string): MdxTocItem[] {
       toc.push(current);
     } else if (h2Match) {
       const title = h2Match[1].trim();
+      if (isGenericSectionLabel(title)) continue;
+      if (hasNumberedChapters && !/^\d+\./.test(title)) continue;
       const item: MdxTocItem = { id: slugifyHeading(title), title };
       if (current) {
         current.children!.push(item);

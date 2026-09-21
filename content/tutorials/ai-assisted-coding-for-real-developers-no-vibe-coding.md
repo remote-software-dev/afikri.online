@@ -44,7 +44,7 @@ author: "Fikri Abdul"
 
 **Goal:** Explain why this guide is different from typical AI coding tutorials.
 
-### Topics
+### The Landscape in 2026
 
 - Why AI coding is everywhere in 2026.
 - The promise and reality of "build an app in 5 minutes."
@@ -61,7 +61,7 @@ author: "Fikri Abdul"
 
 **Goal:** Define vibe coding and explain why it became popular.
 
-### Topics
+### Defining Vibe Coding
 
 - Definition of vibe coding.
 - The typical vibe coding workflow.
@@ -81,7 +81,7 @@ author: "Fikri Abdul"
 
 **Goal:** Introduce AI-assisted coding as an engineering workflow.
 
-### Topics
+### How AI-Assisted Coding Works
 
 - AI as a pair programmer.
 - Human owns architecture.
@@ -119,7 +119,7 @@ author: "Fikri Abdul"
 
 **Goal:** Build a repeatable workflow for real projects.
 
-## Workflow Stages
+### Workflow Stages
 
 1. Requirements.
 2. Architecture.
@@ -141,7 +141,7 @@ author: "Fikri Abdul"
 
 **Goal:** Match AI tools to different development tasks.
 
-## Topics
+### Choosing Tools by Task
 
 ### Architecture & Design
 
@@ -181,7 +181,7 @@ author: "Fikri Abdul"
 
 **Goal:** Learn a structured debugging workflow.
 
-## Topics
+### Debugging Steps
 
 - Read stack traces first.
 - Reproduce the bug.
@@ -190,7 +190,7 @@ author: "Fikri Abdul"
 - Logging strategies.
 - Write failing tests first.
 
-## Debugging Checklist
+### Debugging Checklist
 
 - Can I reproduce it?
 - Which file owns the bug?
@@ -204,11 +204,11 @@ author: "Fikri Abdul"
 
 **Goal:** Build a production-style application using AI without losing control.
 
-## Example Project
+### Example Project
 
 **ICT4D Job Board**
 
-## Chapters
+### Project Chapters
 
 ### Backend (FastAPI)
 
@@ -238,7 +238,7 @@ author: "Fikri Abdul"
 
 **Goal:** Review AI-generated code before merging.
 
-## Topics
+### Common Issues to Check
 
 - Hallucinated APIs.
 - Wrong library versions.
@@ -248,7 +248,7 @@ author: "Fikri Abdul"
 - Dead code.
 - Performance issues.
 
-## AI Review Checklist
+### AI Review Checklist
 
 - Does this function exist?
 - Is authentication secure?
@@ -262,7 +262,7 @@ author: "Fikri Abdul"
 
 **Goal:** Build habits that scale.
 
-## Practices
+### Core Practices
 
 - Small prompts.
 - Small commits.
@@ -271,7 +271,7 @@ author: "Fikri Abdul"
 - Keep architecture documentation.
 - Review every AI change.
 
-## The 30-Minute Rule
+### The 30-Minute Rule
 
 If you can't explain it, don't merge it.
 
@@ -281,7 +281,7 @@ If you can't explain it, don't merge it.
 
 **Goal:** Avoid common AI coding traps.
 
-## Mistakes
+### Anti-Patterns
 
 - Giant prompts.
 - Accepting every suggestion.
@@ -302,7 +302,7 @@ If you can't explain it, don't merge it.
 
 **Goal:** Recommend a practical workflow instead of one "best AI."
 
-## Development Stack
+### Recommended Development Stack
 
 ### IDE Assistant
 
@@ -339,7 +339,7 @@ Plan → Generate → Review → Test → Merge
 
 **Goal:** End with practical engineering principles.
 
-## Key Lessons
+### Key Lessons
 
 - AI increases productivity.
 - Developers remain responsible for correctness.
@@ -352,7 +352,7 @@ Plan → Generate → Review → Test → Merge
 
 This guide is the foundation of a larger **AI Automation** series.
 
-## Upcoming Articles
+### Upcoming Articles
 
 - Prompt Engineering for Developers.
 - How I Use ChatGPT, Claude, Gemini, and Qwen Together.
