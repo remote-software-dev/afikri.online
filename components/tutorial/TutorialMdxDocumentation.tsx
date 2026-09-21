@@ -100,8 +100,8 @@ export default function TutorialMdxDocumentation({
       .filter((item): item is MdxTocItem => item !== null);
   }, [toc, searchQuery]);
 
-  const renderNavItem = (item: MdxTocItem, level: number = 0) => (
-    <div key={item.id}>
+  const renderNavItem = (item: MdxTocItem, level: number = 0, index: number = 0) => (
+    <div key={`${level}-${index}-${item.id}`}>
       <a
         href={`#${item.id}`}
         onClick={(e) => {
@@ -128,7 +128,9 @@ export default function TutorialMdxDocumentation({
       </a>
       {item.children && item.children.length > 0 && (
         <div className="mt-1 space-y-1">
-          {item.children.map((child) => renderNavItem(child, level + 1))}
+          {item.children.map((child, index) =>
+            renderNavItem(child, level + 1, index)
+          )}
         </div>
       )}
     </div>
@@ -183,7 +185,7 @@ export default function TutorialMdxDocumentation({
         </div>
 
         <nav className="flex-1 space-y-2 overflow-y-auto p-4">
-          {filteredToc.map((item) => renderNavItem(item))}
+          {filteredToc.map((item, index) => renderNavItem(item, 0, index))}
         </nav>
       </div>
 
