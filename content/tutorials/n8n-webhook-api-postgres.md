@@ -6,8 +6,6 @@ slug: n8n-webhook-api-postgres-pipeline
 date: 2026-09-24
 ---
 
-# 📘 Tutorial: Build a Self‑Hosted Webhook → API → Database Pipeline in n8n
-
 *A complete, reproducible walkthrough — including the real errors you'll hit and how to fix them.*
 
 **What you'll build**
@@ -253,5 +251,3 @@ You now own the hard 80%. The remaining work is just swapping parts:
 - **Schedule instead of webhook:** swap the Webhook trigger for a **Schedule Trigger** to poll new listings every hour, unattended.
 - **Resilience:** open each node's **Settings → On Error** and add retry + an error‑handler workflow so one bad response doesn't kill the run.
 - **Share your exact build:** in the editor, **⋯ → Download** exports the workflow as JSON — attach that to the tutorial so readers can import it in one click.
-
-> 📎 **TODO (author):** paste your exported n8n workflow JSON here in a ```json fence so readers can import the exact build in one click. (Export via ⋯ → Download in the n8n editor.)
