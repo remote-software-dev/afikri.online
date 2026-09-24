@@ -12,14 +12,40 @@ export const metadata: Metadata = generatePageMetadata({
   path: "/tutorial",
 });
 
+type TutorialListItem = {
+  slug: string;
+  title: string;
+  description: string;
+  date?: string;
+};
+
+function getTutorialTimestamp(tutorial: TutorialListItem): number {
+  if (!tutorial.date) return 0;
+  const timestamp = Date.parse(tutorial.date);
+  return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+function sortTutorialsByDateDescending(
+  tutorials: TutorialListItem[]
+): TutorialListItem[] {
+  return [...tutorials].sort(
+    (a, b) => getTutorialTimestamp(b) - getTutorialTimestamp(a)
+  );
+}
+
 export default function TutorialPage() {
   const mdxTutorials = getAllMdxTutorials();
-  const dataTutorials = getAllTutorials().map(({ slug, title, description }) => ({
-    slug,
-    title,
-    description,
-  }));
-  const tutorials = [...mdxTutorials, ...dataTutorials];
+  const dataTutorials: TutorialListItem[] = getAllTutorials().map(
+    ({ slug, title, description }) => ({
+      slug,
+      title,
+      description,
+    })
+  );
+  const tutorials = sortTutorialsByDateDescending([
+    ...mdxTutorials,
+    ...dataTutorials,
+  ]);
 
   return (
     <>
@@ -37,7 +63,7 @@ export default function TutorialPage() {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5">
           {tutorials.map((tutorial) => (
             <Link
               key={tutorial.slug}

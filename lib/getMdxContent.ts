@@ -62,6 +62,7 @@ export interface MdxTutorialSummary {
   slug: string;
   title: string;
   description: string;
+  date?: string;
 }
 
 export function getAllMdxTutorials(): MdxTutorialSummary[] {
@@ -71,6 +72,7 @@ export function getAllMdxTutorials(): MdxTutorialSummary[] {
       slug,
       title: data?.frontMatter.title ?? slug,
       description: data?.frontMatter.description ?? "",
+      date: data?.frontMatter.publishedAt ?? data?.frontMatter.date,
     };
   });
 }
