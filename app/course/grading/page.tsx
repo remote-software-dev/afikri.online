@@ -1017,7 +1017,7 @@ export default function GradingPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+    <div className="mx-auto w-full max-w-5xl px-6 pt-12 pb-12 md:pt-20 md:pb-16">
       <Link
         href="/course"
         className="mb-10 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-black"

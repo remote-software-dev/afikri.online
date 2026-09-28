@@ -157,7 +157,7 @@ export default async function BlogPostPage({
         url={`${SITE_URL}/blogs/${slug}`}
       />
 
-      <article className="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <article className="mx-auto w-full max-w-5xl px-6 pt-12 pb-12 md:pt-20 md:pb-16">
         <header className="mb-10">
           {frontMatter.tags && frontMatter.tags.length > 0 && (
             <div className="mb-5 flex flex-wrap gap-2">

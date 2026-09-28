@@ -55,7 +55,7 @@ export default async function ProjectPage({ params }: PageProps) {
         ]}
       />
 
-      <article className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+      <article className="mx-auto w-full max-w-5xl px-6 pt-12 pb-12 md:pt-20 md:pb-16">
         <Link
           href="/projects"
           className="mb-8 inline-flex items-center text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
