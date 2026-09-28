@@ -18,7 +18,7 @@ const capabilities: Capability[] = [
     icon: Bot,
     backgroundClass: "bg-sky-100",
     textClass: "text-sky-900",
-    label: "01 / AI AGENTS",
+    label: "AI AGENTS",
     title: "Autonomous Workflows",
     description:
       "Building end-to-end AI agents and automation pipelines that execute complex business logic without human intervention.",
@@ -27,7 +27,7 @@ const capabilities: Capability[] = [
     icon: Brain,
     backgroundClass: "bg-amber-100",
     textClass: "text-amber-900",
-    label: "02 / LLM INTEGRATION",
+    label: "LLM INTEGRATION",
     title: "RAG & Data Systems",
     description:
       "Connecting proprietary data to LLMs securely. Building retrieval-augmented generation systems that actually work.",
@@ -36,7 +36,7 @@ const capabilities: Capability[] = [
     icon: Server,
     backgroundClass: "bg-emerald-100",
     textClass: "text-emerald-900",
-    label: "03 / BACKEND",
+    label: "BACKEND",
     title: "Robust Engineering",
     description:
       "The solid Python, FastAPI, and API architecture required to make AI systems scale and handle real production load.",
@@ -45,7 +45,7 @@ const capabilities: Capability[] = [
     icon: Cloud,
     backgroundClass: "bg-indigo-100",
     textClass: "text-indigo-900",
-    label: "04 / INFRASTRUCTURE",
+    label: "INFRASTRUCTURE",
     title: "Cloud & DevOps",
     description:
       "Deploying and maintaining reliable AI infrastructure on GCP, AWS, Docker, and Kubernetes.",
@@ -57,12 +57,9 @@ export default function Home() {
     <>
       <PersonJsonLd />
 
-      <section className="mx-auto w-full max-w-5xl px-6 pt-12 pb-14 md:pt-20 md:pb-20">
+      <section className="mx-auto w-full max-w-5xl px-6 pt-4 pb-14 md:pt-6 md:pb-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-neutral-500">
-              [ SOFTWARE ENGINEER // 15+ YEARS EXP ]
-            </p>
             <h1 className="mt-6 max-w-4xl text-5xl font-bold tracking-tight text-black md:text-7xl md:leading-[1.05]">
               Building scalable backend systems.
             </h1>

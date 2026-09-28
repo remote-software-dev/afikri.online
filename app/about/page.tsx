@@ -19,7 +19,7 @@ export default function AboutPage() {
         ]}
       />
 
-      <div className="mx-auto w-full max-w-5xl px-6 pt-12 pb-12 md:pt-20 md:pb-16">
+      <div className="mx-auto w-full max-w-5xl px-6 pt-4 pb-12 md:pt-6 md:pb-16">
         {/* Header */}
         <section className="mb-12">
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-black md:text-5xl">
