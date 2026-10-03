@@ -64,10 +64,29 @@ const navigationByTopic: Record<string, NavItem[]> = {
             { id: 'crud-exercise', title: 'Hands-on Exercise: Full CRUD API' },
             { id: 'session-checklist', title: 'Session Checklist' },
             { id: 'homework', title: 'Homework' },
-            { id: 'qa-wrapup', title: 'Q&A & Wrap-up' },
-          ]
+{ id: 'qa-wrapup', title: 'Q&A & Wrap-up' },
+          ],
         },
       ],
+  'session-4': [
+    {
+      id: 'session-4',
+      title: 'Session 4',
+      children: [
+        { id: 'learning-outcomes', title: 'Learning Outcomes' },
+        { id: 'postgresql-setup', title: 'PostgreSQL Setup' },
+        { id: 'database-configuration', title: 'Database Configuration' },
+        { id: 'sqlalchemy-intro', title: 'Introduction to SQLAlchemy' },
+        { id: 'defining-models', title: 'Defining Database Models' },
+        { id: 'database-session', title: 'Database Sessions in FastAPI' },
+        { id: 'crud-with-database', title: 'CRUD with the Database' },
+        { id: 'database-exercise', title: 'Hands-on Exercise: Persistent Catalog' },
+        { id: 'session-checklist', title: 'Session Checklist' },
+        { id: 'homework', title: 'Homework' },
+        { id: 'qa-wrapup', title: 'Q&A & Wrap-up' },
+      ],
+    },
+  ],
 };
 
 const InfoBox = ({ children }: { children: React.ReactNode }) => (
@@ -94,14 +113,20 @@ const ChecklistItem = ({ label }: { label: string }) => (
   </label>
 );
 
+const sessionTitles: Record<string, string> = {
+  'session-1': 'Session 1',
+  'session-2': 'Session 2',
+  'session-3': 'Session 3',
+  'session-4': 'Session 4',
+};
+
 export default function DocumentationPage({ topicId, onBackToTopics }: DocumentationPageProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set([topicId]));
   const [activeSection, setActiveSection] = useState('learning-outcomes');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const sessionTitle =
-    topicId === 'session-2' ? 'Session 2' : topicId === 'session-3' ? 'Session 3' : 'Session 1';
+  const sessionTitle = sessionTitles[topicId] ?? sessionTitles['session-1'];
   const navigationData = navigationByTopic[topicId] ?? navigationByTopic['session-1'];
 
   const toggleSection = (sectionId: string) => {
@@ -1106,6 +1131,611 @@ product_counter = 1
             <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Response models to shape and protect outgoing data.</li>
             <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Complete CRUD endpoints for a resource.</li>
           </ul>
+        </div>
+      ),
+
+      'session-4:learning-outcomes': (
+        <div className="space-y-6">
+          <h1 className="text-4xl font-bold tracking-tight text-black">Session 4 — Database Integration (PostgreSQL + SQLAlchemy)</h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Give your API a real database. Connect FastAPI to <strong>PostgreSQL</strong> and store data through the <strong>SQLAlchemy</strong> ORM, so records survive server restarts instead of living in a Python dictionary.
+          </p>
+
+          <h2 className="text-2xl font-semibold tracking-tight text-black mt-8">Learning Outcomes</h2>
+          <p className="text-gray-600 leading-relaxed">By the end of this session, students will be able to:</p>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Install and start a PostgreSQL server and create a database with its own user.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Explain what an ORM is and how SQLAlchemy maps Python classes to database tables.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Build a connection string and configure a SQLAlchemy engine from an environment variable.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Define ORM models with columns, types, primary keys, defaults, and indexes.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Create tables from models and verify them directly with psql.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Manage per-request database sessions in FastAPI with dependency injection.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Rewrite CRUD endpoints to read and write real database records.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Diagnose the most common connection and mapping errors.</li>
+          </ul>
+
+          <InfoBox>
+            <strong>Prerequisite:</strong> This session builds directly on Session 3. You should be comfortable with CRUD endpoints, Pydantic models, and status codes. Today your in-memory API finally gets persistence.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:postgresql-setup': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">PostgreSQL Setup <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            PostgreSQL runs as its own server process. Your FastAPI app connects to it over TCP as a client, the same way it connects to any other database host.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Install and Start the Server</h3>
+          <CodeBlock language="bash" code={`sudo apt update
+sudo apt install postgresql
+sudo systemctl start postgresql
+sudo systemctl enable postgresql`} />
+          <p className="text-gray-600 leading-relaxed">Confirm the service is running:</p>
+          <CodeBlock language="bash" code="sudo systemctl status postgresql" />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Create a Database and a User</h3>
+          <p className="text-gray-600 leading-relaxed">Open the PostgreSQL prompt as the built-in superuser:</p>
+          <CodeBlock language="bash" code="sudo -u postgres psql" />
+          <p className="text-gray-600 leading-relaxed">Then run the following SQL inside the prompt:</p>
+          <CodeBlock language="sql" code={`CREATE USER bookstore WITH PASSWORD 'bookstore123';
+CREATE DATABASE bookstore_db OWNER bookstore;
+GRANT ALL PRIVILEGES ON DATABASE bookstore_db TO bookstore;`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Verify the Connection</h3>
+          <p className="text-gray-600 leading-relaxed">Exit the prompt with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">\\q</code>, then connect as the new user from your terminal:</p>
+          <CodeBlock language="bash" code={`psql -h localhost -U bookstore -d bookstore_db -c "SELECT current_database(), current_user;"`} />
+          <TextBlock text="current_database | current_user
+----------------+---------------
+ bookstore_db   | bookstore" />
+
+          <InfoBox>
+            If you get <strong>connection refused</strong>, the server is not running — start it with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">sudo systemctl start postgresql</code>. If you get <strong>password authentication failed</strong>, the user was created with a different password than the one in your connection string.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:database-configuration': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Database Configuration <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            FastAPI never talks to PostgreSQL directly. <strong>SQLAlchemy</strong> does, using a driver called <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">psycopg</code>. Install both:
+          </p>
+          <CodeBlock language="bash" code={`pip install sqlalchemy "psycopg[binary]" python-dotenv`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">The Connection String</h3>
+          <p className="text-gray-600 leading-relaxed">Everything SQLAlchemy needs to reach the database is one URL:</p>
+          <TextBlock text="postgresql+psycopg://bookstore:bookstore123@localhost:5432/bookstore_db" />
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Part</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Meaning</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">postgresql+psycopg</td><td className="px-4 py-3 text-sm text-gray-700">Dialect + driver. The part after <code className="bg-gray-100 px-1 py-0.5 rounded text-xs font-mono">+</code> selects the Python driver.</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">bookstore</td><td className="px-4 py-3 text-sm text-gray-700">Username</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">bookstore123</td><td className="px-4 py-3 text-sm text-gray-700">Password</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">localhost:5432</td><td className="px-4 py-3 text-sm text-gray-700">Host and port (5432 is the PostgreSQL default)</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">bookstore_db</td><td className="px-4 py-3 text-sm text-gray-700">Database name</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Read It From the Environment</h3>
+          <p className="text-gray-600 leading-relaxed">Never hard-code credentials in your source. Create a <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">.env</code> file in your <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">backend</code> folder:</p>
+          <TextBlock text="DATABASE_URL=postgresql+psycopg://bookstore:bookstore123@localhost:5432/bookstore_db" />
+          <p className="text-gray-600 leading-relaxed">Then load it in <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/config.py</code>:</p>
+          <CodeBlock language="python" code={`import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Create the Engine</h3>
+          <p className="text-gray-600 leading-relaxed">The <strong>engine</strong> owns the connection pool. Create it once, at import time, in <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/database.py</code>:</p>
+          <CodeBlock language="python" code={`from sqlalchemy import create_engine
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
+
+from app.config import DATABASE_URL
+
+engine = create_engine(DATABASE_URL, echo=True)
+
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+
+
+class Base(DeclarativeBase):
+    pass`} />
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">echo=True</code> prints every SQL statement and its result — invaluable while learning. Turn it off in production.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">SessionLocal</code> is a factory: each call creates one <strong>session</strong> (one unit of work).</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">Base</code> is the registry every model inherits from, so SQLAlchemy knows all of your tables.</li>
+          </ul>
+
+          <InfoBox>
+            Add <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">.env</code> to <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">.gitignore</code> so passwords never reach GitHub.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:sqlalchemy-intro': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Introduction to SQLAlchemy <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            An <strong>ORM</strong> (Object-Relational Mapper) lets you work with tables using Python classes and objects. You write <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">book.title</code> instead of <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">SELECT title FROM books</code>, and SQLAlchemy generates the SQL.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Python Side vs. Database Side</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">In Python (ORM)</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">In PostgreSQL</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Model class</td><td className="px-4 py-3 text-sm text-gray-700">Table</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Object instance</td><td className="px-4 py-3 text-sm text-gray-700">Row</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Column attribute</td><td className="px-4 py-3 text-sm text-gray-700">Field</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Session</td><td className="px-4 py-3 text-sm text-gray-700">Transaction / connection</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Type Mapping</h3>
+          <p className="text-gray-600 leading-relaxed">Python type hints on your model are translated into real PostgreSQL column types:</p>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Python Type</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">SQLAlchemy Column</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">PostgreSQL Type</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">str</td><td className="px-4 py-3 text-sm font-mono text-gray-700">String(n)</td><td className="px-4 py-3 text-sm font-mono text-gray-700">VARCHAR(n)</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">int</td><td className="px-4 py-3 text-sm font-mono text-gray-700">Integer</td><td className="px-4 py-3 text-sm font-mono text-gray-700">INTEGER</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">float</td><td className="px-4 py-3 text-sm font-mono text-gray-700">Float</td><td className="px-4 py-3 text-sm font-mono text-gray-700">DOUBLE PRECISION</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">bool</td><td className="px-4 py-3 text-sm font-mono text-gray-700">Boolean</td><td className="px-4 py-3 text-sm font-mono text-gray-700">BOOLEAN</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">datetime</td><td className="px-4 py-3 text-sm font-mono text-gray-700">DateTime</td><td className="px-4 py-3 text-sm font-mono text-gray-700">TIMESTAMP</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-semibold text-black mt-6">The Four Steps, Every Time</h3>
+          <ol className="space-y-3 text-gray-700 ml-4 list-decimal list-inside">
+            <li>Define a model class (the table shape).</li>
+            <li>Create the tables with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">Base.metadata.create_all()</code>.</li>
+            <li>Open a session and query or modify objects.</li>
+            <li>Commit the session to write changes to PostgreSQL.</li>
+          </ol>
+
+          <InfoBox>
+            SQLAlchemy does not hide SQL from you — it writes it for you and lets you drop down to raw SQL whenever you need something unusual. Start with the ORM, learn the SQL it generates from the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">echo=True</code> logs.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:defining-models': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Defining Database Models <span className="text-base font-normal text-gray-400">(~25 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            Each model is a Python class. In SQLAlchemy 2.0 you declare the table name with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">__tablename__</code>, and describe each column with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">Mapped</code> (the Python type) plus <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">mapped_column</code> (the database column).
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Models for a Bookstore</h3>
+          <p className="text-gray-600 leading-relaxed">Create <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/models.py</code>:</p>
+          <CodeBlock language="python" code={`from datetime import datetime
+
+from sqlalchemy import Boolean, DateTime, Float, ForeignKey, String, func
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from app.database import Base
+
+
+class Author(Base):
+    __tablename__ = "authors"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(120), index=True)
+    country: Mapped[str | None] = mapped_column(String(80), default=None)
+
+    books: Mapped[list["Book"]] = relationship(
+        back_populates="author",
+        cascade="all, delete-orphan",
+    )
+
+
+class Book(Base):
+    __tablename__ = "books"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str] = mapped_column(String(200), nullable=False, index=True)
+    author_id: Mapped[int] = mapped_column(ForeignKey("authors.id"), index=True)
+    price: Mapped[float] = mapped_column(Float, default=0.0)
+    in_stock: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+    author: Mapped["Author"] = relationship(back_populates="books")`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Reading the Model</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">Mapped[str | None]</code> makes the column nullable. <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">Mapped[str]</code> makes it required.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">primary_key=True</code> marks the primary key; PostgreSQL numbers it automatically.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">ForeignKey(&quot;authors.id&quot;)</code> creates a real database constraint, so a book can never point at a missing author.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">index=True</code> speeds up lookups on columns you filter by.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">default</code> is applied by Python; <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">server_default</code> is applied by PostgreSQL. Use <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">func.now()</code> when only the database should decide the timestamp.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">relationship</code> turns the foreign key into <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">book.author.name</code>. <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">cascade=&quot;all, delete-orphan&quot;</code> deletes an author&apos;s books with the author.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Create the Tables</h3>
+          <p className="text-gray-600 leading-relaxed">Create tables when the app starts, using the <strong>lifespan</strong> handler in <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/main.py</code>:</p>
+          <CodeBlock language="python" code={`from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+
+from app import models  # noqa: F401 — imported so the models register with Base
+from app.database import Base, engine
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    Base.metadata.create_all(bind=engine)
+    yield
+
+
+app = FastAPI(title="Bookstore API", lifespan=lifespan)`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Verify in psql</h3>
+          <CodeBlock language="bash" code={`psql -h localhost -U bookstore -d bookstore_db -c "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';"`} />
+          <p className="text-gray-600 leading-relaxed">You should see <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">authors</code> and <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">books</code>. Real tables, created from your Python classes.</p>
+
+          <InfoBox>
+            <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">create_all()</code> creates missing tables but never alters existing ones. That is fine for a course; production projects use Alembic migrations, which you will meet later.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:database-session': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Database Sessions in FastAPI <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            A <strong>session</strong> is your unit of work: it holds a connection, tracks every object you load or change, and commits them together. One session per request — never one shared across all requests.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">The Session Dependency</h3>
+          <p className="text-gray-600 leading-relaxed">Add this to <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/database.py</code>:</p>
+          <CodeBlock language="python" code={`from collections.abc import Generator
+
+from sqlalchemy.orm import Session
+
+
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()`} />
+          <p className="text-gray-600 leading-relaxed">The <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">yield</code> hands a session to the endpoint. The <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">finally</code> block runs afterwards — even if the endpoint raised an error — so the connection always returns to the pool.</p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Injecting It Into Endpoints</h3>
+          <CodeBlock language="python" code={`from fastapi import Depends
+from sqlalchemy.orm import Session
+
+from app.database import get_db
+
+
+@app.get("/authors")
+def list_authors(db: Session = Depends(get_db)):
+    return db.query(Author).all()`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Session Methods You Will Use</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Call</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">What it does</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">db.add(obj)</td><td className="px-4 py-3 text-sm text-gray-700">Stage a new object for insertion</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">db.execute(select(...))</td><td className="px-4 py-3 text-sm text-gray-700">Run a SELECT statement</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">.scalars().all()</td><td className="px-4 py-3 text-sm text-gray-700">Turn the result into a list of model objects</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">db.get(Book, id)</td><td className="px-4 py-3 text-sm text-gray-700">Fetch one row by primary key, or None</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">db.delete(obj)</td><td className="px-4 py-3 text-sm text-gray-700">Stage an object for deletion</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">db.commit()</td><td className="px-4 py-3 text-sm text-gray-700">Write all staged changes and end the transaction</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">db.refresh(obj)</td><td className="px-4 py-3 text-sm text-gray-700">Reload the row to get database-generated values</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">db.rollback()</td><td className="px-4 py-3 text-sm text-gray-700">Discard uncommitted changes</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <InfoBox>
+            Nothing is written to PostgreSQL until you call <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">commit()</code>. If you forget it, the object looks correct in Python and vanishes when the session closes.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:crud-with-database': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">CRUD with the Database <span className="text-base font-normal text-gray-400">(~25 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            The endpoints look almost identical to Session 3. The difference is the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">db</code> parameter and the commit calls.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Schemas That Accept ORM Objects</h3>
+          <CodeBlock language="python" code={`from datetime import datetime
+
+from pydantic import BaseModel, ConfigDict, Field
+
+
+class BookCreate(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+    author_id: int
+    price: float = Field(ge=0)
+    in_stock: bool = True
+
+
+class BookOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    title: str
+    author_id: int
+    price: float
+    in_stock: bool
+    created_at: datetime`} />
+          <p className="text-gray-600 leading-relaxed">
+            <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">from_attributes=True</code> lets Pydantic read values from SQLAlchemy model objects. Without it, FastAPI raises a validation error when you return a model instance.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Read (GET)</h3>
+          <CodeBlock language="python" code={`from fastapi import APIRouter, Depends
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from app.database import get_db
+from app.models import Author, Book
+from app.schemas import BookOut
+
+router = APIRouter(prefix="/books", tags=["books"])
+
+
+@router.get("", response_model=list[BookOut])
+def list_books(db: Session = Depends(get_db)):
+    result = db.execute(select(Book).order_by(Book.id))
+    return result.scalars().all()
+
+
+@router.get("/{book_id}", response_model=BookOut)
+def get_book(book_id: int, db: Session = Depends(get_db)):
+    book = db.get(Book, book_id)
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return book`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Create (POST)</h3>
+          <CodeBlock language="python" code={`@router.post("", status_code=201, response_model=BookOut)
+def create_book(payload: BookCreate, db: Session = Depends(get_db)):
+    book = Book(**payload.model_dump())
+    db.add(book)
+    db.commit()
+    db.refresh(book)
+    return book`} />
+          <p className="text-gray-600 leading-relaxed">
+            <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">commit()</code> performs the INSERT and fills in <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">id</code>; <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">refresh()</code> reloads the row so <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">created_at</code> is populated.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Update (PUT) and Delete (DELETE)</h3>
+          <CodeBlock language="python" code={`@router.put("/{book_id}", response_model=BookOut)
+def update_book(book_id: int, payload: BookCreate, db: Session = Depends(get_db)):
+    book = db.get(Book, book_id)
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+    for field, value in payload.model_dump().items():
+        setattr(book, field, value)
+    db.commit()
+    db.refresh(book)
+    return book
+
+
+@router.delete("/{book_id}", status_code=204)
+def delete_book(book_id: int, db: Session = Depends(get_db)):
+    book = db.get(Book, book_id)
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+    db.delete(book)
+    db.commit()`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Register the Router</h3>
+          <CodeBlock language="python" code={`from app.routers import books
+
+app.include_router(books.router)`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Filtering and Relationships</h3>
+          <CodeBlock language="python" code={`@router.get("", response_model=list[BookOut])
+def list_books(author_id: int | None = None, db: Session = Depends(get_db)):
+    statement = select(Book).order_by(Book.id)
+    if author_id is not None:
+        statement = statement.where(Book.author_id == author_id)
+    return db.execute(statement).scalars().all()`} />
+          <p className="text-gray-600 leading-relaxed">
+            Because both conditions share one session, they are sent as a single SQL statement — no round-trip per filter. If you return related objects too, load them eagerly with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">selectinload(Book.author)</code> to avoid one extra query per row.
+          </p>
+
+          <InfoBox>
+            Read the SQL in your terminal: with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">echo=True</code> every request prints the exact INSERT, SELECT, UPDATE, or DELETE it produced. This is the fastest way to learn what the ORM is doing.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:database-exercise': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Hands-on Exercise: Persistent Catalog <span className="text-base font-normal text-gray-400">(~30 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            Take the Product catalog from Session 3 and move it into PostgreSQL. Same endpoints, real database. Create <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/models.py</code> and <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/routers/products.py</code> in your project.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Requirements</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Method</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Path</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Behavior</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">POST</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/products</td><td className="px-4 py-3 text-sm text-gray-700">Insert a row, return <strong>201</strong> with the new id</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/products</td><td className="px-4 py-3 text-sm text-gray-700">List rows, optional <code>?category=</code> and <code>?in_stock=</code> filters</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/products/{"{id}"}</td><td className="px-4 py-3 text-sm text-gray-700">One row, <strong>404</strong> if missing</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">PUT</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/products/{"{id}"}</td><td className="px-4 py-3 text-sm text-gray-700">Update a row, <strong>404</strong> if missing</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">DELETE</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/products/{"{id}"}</td><td className="px-4 py-3 text-sm text-gray-700">Delete a row, return <strong>204</strong></td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">GET</td><td className="px-4 py-3 text-sm font-mono text-gray-700">/products/stats</td><td className="px-4 py-3 text-sm text-gray-700">Aggregate: total products, count in stock, average price</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-gray-600 leading-relaxed">
+            Note the last route: static paths like <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/products/stats</code> must be declared <strong>before</strong> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">/products/{"{id}"}</code>, otherwise FastAPI tries to parse <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">stats</code> as an integer.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Starter Code</h3>
+          <CodeBlock language="python" code={`# app/models.py
+from datetime import datetime
+
+from sqlalchemy import Boolean, DateTime, Float, String, func
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.database import Base
+
+
+class Product(Base):
+    __tablename__ = "products"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(200), nullable=False, index=True)
+    category: Mapped[str] = mapped_column(String(100), default="General", index=True)
+    price: Mapped[float] = mapped_column(Float, default=0.0)
+    in_stock: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+
+# app/routers/products.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, ConfigDict, Field
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session
+
+from app.database import get_db
+from app.models import Product
+
+router = APIRouter(prefix="/products", tags=["products"])
+
+
+class ProductCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=200)
+    category: str = "General"
+    price: float = Field(gt=0, le=100000)
+    in_stock: bool = True
+
+
+class ProductOut(ProductCreate):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+
+
+# TODO 1: POST /products — add, commit, refresh, return with status_code=201
+
+# TODO 2: GET /products — list all; filter by category and in_stock when provided
+
+# TODO 3: GET /products/stats — use select(func.count(...)) and func.avg(Product.price)
+
+# TODO 4: GET /products/{product_id} — db.get(Product, id) or raise HTTPException(404)
+
+# TODO 5: PUT /products/{product_id} — update fields, commit, refresh, or raise 404
+
+# TODO 6: DELETE /products/{product_id} — db.delete + commit, or raise 404; status_code=204`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Expected Behavior</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Data created through the API is visible in psql with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">SELECT * FROM products;</code>.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Restarting the FastAPI server does <strong>not</strong> lose any records.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /products?category=Electronics&amp;in_stock=true</code> returns only matching rows.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">GET /products/stats</code> returns totals computed by PostgreSQL, not by Python.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> A missing id returns <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">404</code>; a price of <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">-5</code> returns <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">422</code>.</li>
+          </ul>
+
+          <InfoBox>
+            Keep <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">echo=True</code> on for this exercise. Reading the generated INSERT and SELECT statements is how you learn to trust what the ORM produces.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-4:session-checklist': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Session Checklist</h2>
+          <div className="space-y-1 divide-y divide-gray-100">
+            <ChecklistItem label="PostgreSQL server installed and running." />
+            <ChecklistItem label="Database and user created, connection verified with psql." />
+            <ChecklistItem label="SQLAlchemy and psycopg installed; DATABASE_URL in .env." />
+            <ChecklistItem label="Engine and SessionLocal created in app/database.py." />
+            <ChecklistItem label="Models defined with Mapped[] columns, primary key, and indexes." />
+            <ChecklistItem label="Tables created at startup and confirmed in psql." />
+            <ChecklistItem label="get_db dependency injected with Depends." />
+            <ChecklistItem label="CRUD endpoints read and write database rows with commit()." />
+            <ChecklistItem label="Response schema uses from_attributes=True." />
+            <ChecklistItem label="Data still present after restarting the server." />
+            <ChecklistItem label="Persistent catalog exercise completed and tested in Swagger UI." />
+          </div>
+        </div>
+      ),
+
+      'session-4:homework': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Homework</h2>
+          <p className="text-gray-600 leading-relaxed">Reinforce the concepts from this session with these 5 questions:</p>
+          <ol className="space-y-3 text-gray-700 ml-4 list-decimal list-inside">
+            <li>Explain the difference between the SQLAlchemy <strong>engine</strong> and a <strong>session</strong>. Why is one engine created at startup but a new session per request?</li>
+            <li>What does <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">db.commit()</code> actually do, and what happens to your changes if you never call it?</li>
+            <li>Why does <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">db.refresh()</code> come after <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">commit()</code> in a create endpoint?</li>
+            <li>Your Pydantic response model raises a validation error when returning a SQLAlchemy object. Which missing configuration line causes this, and what does it enable?</li>
+            <li>Your endpoint cannot reach the database and the error mentions <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">connection refused</code>. List three things you would check, in order.</li>
+          </ol>
+        </div>
+      ),
+
+      'session-4:qa-wrapup': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Q&amp;A &amp; Wrap-up <span className="text-base font-normal text-gray-400">(~5 min)</span></h2>
+
+          <h3 className="text-xl font-semibold text-black mt-4">What We Covered Today</h3>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> PostgreSQL installation, database and user creation, and connection strings.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Engine, session factory, and environment-based configuration.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> ORM models: columns, types, primary keys, foreign keys, indexes, relationships.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Table creation at startup and verification with psql.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Per-request sessions through FastAPI dependency injection.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> CRUD endpoints and aggregate queries against a real database.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Coming Next: Session 5</h3>
+          <p className="text-gray-600 leading-relaxed">
+            The backend now has real, persistent data. Next we build the <strong>frontend</strong>: Next.js fundamentals, pages, components, and React basics.
+          </p>
+
+          <InfoBox>
+            Before next session, make sure your backend still returns data after a restart and commit your work. A database that loses records on restart is the fastest way to find a bug you missed.
+          </InfoBox>
         </div>
       ),
     };
