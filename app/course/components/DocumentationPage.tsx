@@ -87,6 +87,20 @@ const navigationByTopic: Record<string, NavItem[]> = {
       ],
     },
   ],
+  'session-5': [
+    {
+      id: 'session-5',
+      title: 'Session 5',
+      children: [
+        { id: 'learning-outcomes', title: 'Learning Outcomes' },
+        { id: 'app-router-overview', title: 'App Router Architecture' },
+        { id: 'step-1-project-setup', title: 'Step 1: Project Setup & Structure' },
+        { id: 'step-2-routing-layouts', title: 'Step 2: Routing & Nested Layouts' },
+        { id: 'step-3-server-client', title: 'Step 3: Server vs Client Components' },
+        { id: 'step-4-data-fetching', title: 'Step 4: Data Fetching & Streaming' },
+      ],
+    },
+  ],
 };
 
 const InfoBox = ({ children }: { children: React.ReactNode }) => (
@@ -118,6 +132,7 @@ const sessionTitles: Record<string, string> = {
   'session-2': 'Session 2',
   'session-3': 'Session 3',
   'session-4': 'Session 4',
+  'session-5': 'Session 5',
 };
 
 export default function DocumentationPage({ topicId, onBackToTopics }: DocumentationPageProps) {
@@ -1735,6 +1750,191 @@ class ProductOut(ProductCreate):
 
           <InfoBox>
             Before next session, make sure your backend still returns data after a restart and commit your work. A database that loses records on restart is the fastest way to find a bug you missed.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-5:learning-outcomes': (
+        <div className="space-y-6">
+          <h1 className="text-4xl font-bold tracking-tight text-black">Session 5 — Next.js Fundamentals</h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Introduction to <strong>Next.js</strong>, pages, components, and React basics. Build the <strong>frontend</strong> of your full-stack application using the App Router.
+          </p>
+
+          <h2 className="text-2xl font-semibold tracking-tight text-black mt-8">Learning Outcomes</h2>
+          <p className="text-gray-600 leading-relaxed">By the end of this session, students will be able to:</p>
+          <ul className="space-y-2 text-gray-700 ml-4">
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Explain how Next.js renders pages and how the App Router maps folders to URLs.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Understand file-system routing conventions (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">page.tsx</code>, <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">layout.tsx</code>, <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">loading.tsx</code>).</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Differentiate between React Server Components and Client Components (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">&apos;use client&apos;</code>).</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Build shared layouts that preserve state across route changes.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Fetch data directly inside async Server Components without client waterfalls.</li>
+            <li className="flex items-start gap-2"><span className="text-blue-600 mt-1">•</span> Use <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">&lt;Link&gt;</code> for intelligent background prefetching and instant transitions.</li>
+          </ul>
+
+          <InfoBox>
+            <strong>Prerequisite:</strong> Sessions 2-4 covered the FastAPI backend. This session shifts to the frontend; you should already have a running Next.js project from Session 1.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-5:app-router-overview': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">App Router Architecture <span className="text-base font-normal text-gray-400">(~10 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">
+            The Next.js <strong>App Router</strong> is built on modern React architecture featuring <strong>Server Components by default</strong>. Your project structure maps directly to your URL structure.
+          </p>
+
+          <h3 className="text-xl font-semibold text-black mt-6">Special File Conventions</h3>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">File</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Role</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">page.tsx</td><td className="px-4 py-3 text-sm text-gray-700">Unique UI for a route, making the path publicly accessible.</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">layout.tsx</td><td className="px-4 py-3 text-sm text-gray-700">Shared UI across multiple routes. Preserves state and avoids re-rendering.</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">loading.tsx</td><td className="px-4 py-3 text-sm text-gray-700">Instant loading UI rendered using React Suspense boundaries.</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">not-found.tsx</td><td className="px-4 py-3 text-sm text-gray-700">UI displayed when <code className="bg-gray-100 px-1 py-0.5 rounded text-xs font-mono">notFound()</code> is thrown.</td></tr>
+                <tr><td className="px-4 py-3 text-sm font-mono text-gray-700">error.tsx</td><td className="px-4 py-3 text-sm text-gray-700">Error boundary UI for catching runtime rendering errors.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <InfoBox>
+            Every component inside the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/</code> folder is a React Server Component by default, meaning zero JavaScript bundle footprint is sent to the client for purely static pages.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-5:step-1-project-setup': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Step 1: Project Setup &amp; Structure <span className="text-base font-normal text-gray-400">(~5 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">Create a modern Next.js project with TypeScript and Tailwind CSS in the <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">frontend</code> folder:</p>
+          <CodeBlock language="bash" code={`npx create-next-app@latest frontend --typescript --tailwind --eslint --app
+cd frontend
+npm run dev`} />
+          <p className="text-gray-600 leading-relaxed">Then open:</p>
+          <TextBlock text="http://localhost:3000" />
+          <InfoBox>
+            The <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">--app</code> flag enables the App Router. Keep the default <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">app/</code> folder when prompted — every other prompt can stay at its default.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-5:step-2-routing-layouts': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Step 2: Routing &amp; Nested Layouts <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">Folders define routes, and <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">page.tsx</code> makes the route accessible. The folder structure maps directly to URL paths:</p>
+          <TextBlock text={`app/
+├── layout.tsx         # Root layout (html, body, Navbar, Footer)
+├── page.tsx           # Route: /
+├── about/
+│   └── page.tsx       # Route: /about
+└── tutorial/
+    ├── page.tsx       # Route: /tutorial
+    └── [slug]/
+        └── page.tsx   # Dynamic route: /tutorial/getting-started-with-fastapi`} />
+
+          <h3 className="text-xl font-semibold text-black mt-6">Root Layout Pattern</h3>
+          <p className="text-gray-600 leading-relaxed">Every app must export a root layout containing <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">&lt;html&gt;</code> and <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">&lt;body&gt;</code>:</p>
+          <CodeBlock language="tsx" code={`export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className="flex min-h-screen flex-col bg-white">
+        <header className="border-b">/* Navigation */</header>
+        <main className="flex-1">{children}</main>
+        <footer className="border-t">/* Footer */</footer>
+      </body>
+    </html>
+  );
+}`} />
+
+          <InfoBox>
+            A <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">[slug]</code> folder creates a <strong>dynamic segment</strong>. Its value is available from the route&apos;s <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">params</code> prop.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-5:step-3-server-client': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Step 3: Server vs Client Components <span className="text-base font-normal text-gray-400">(~15 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">Learn when to run code on the server and when to opt-in to client interactivity with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">&apos;use client&apos;</code>.</p>
+
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Requirement</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Server Component</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b border-gray-200">Client Component (<code>use client</code>)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Fetch data directly from DB/API</td><td className="px-4 py-3 text-sm text-gray-700">Yes (Preferred)</td><td className="px-4 py-3 text-sm text-gray-700">No</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Access backend secrets/tokens</td><td className="px-4 py-3 text-sm text-gray-700">Yes</td><td className="px-4 py-3 text-sm text-gray-700">No</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Listen to onClick, onChange</td><td className="px-4 py-3 text-sm text-gray-700">No</td><td className="px-4 py-3 text-sm text-gray-700">Yes</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Use useState, useEffect, useRef</td><td className="px-4 py-3 text-sm text-gray-700">No</td><td className="px-4 py-3 text-sm text-gray-700">Yes</td></tr>
+                <tr><td className="px-4 py-3 text-sm text-gray-700">Use browser APIs (localStorage)</td><td className="px-4 py-3 text-sm text-gray-700">No</td><td className="px-4 py-3 text-sm text-gray-700">Yes</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <InfoBox>
+            Rule of thumb: keep components as Server Components by default. Only add <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">&apos;use client&apos;</code> at the leaves of your component tree where user interaction is needed.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-5:step-4-data-fetching': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Step 4: Data Fetching &amp; Streaming <span className="text-base font-normal text-gray-400">(~10 min)</span></h2>
+          <p className="text-gray-600 leading-relaxed">In Next.js, Server Components can directly use <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">async / await</code> to fetch data:</p>
+          <CodeBlock language="tsx" code={`// This runs entirely on the server!
+export default async function ProjectsList() {
+  const response = await fetch("https://api.example.com/projects", {
+    next: { revalidate: 3600 } // Cache for 1 hour
+  });
+  const projects = await response.json();
+
+  return (
+    <div className="grid gap-4">
+      {projects.map((project: { id: string; title: string }) => (
+        <article key={project.id} className="p-4 border rounded">
+          <h2>{project.title}</h2>
+        </article>
+      ))}
+    </div>
+  );
+}`} />
+
+          <InfoBox>
+            Because this fetch happens on the server, your API keys stay secret and the client never downloads the data-fetching logic. Pair it with <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">loading.tsx</code> to stream the UI as data arrives.
+          </InfoBox>
+        </div>
+      ),
+
+      'session-5:key-takeaways': (
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold tracking-tight text-black">Session Checklist &amp; Key Takeaways</h2>
+          <p className="text-gray-600 leading-relaxed">Summary of modern Next.js core concepts:</p>
+          <div className="space-y-1 divide-y divide-gray-100">
+            <ChecklistItem label="Next.js project created with App Router, TypeScript, and Tailwind." />
+            <ChecklistItem label="Folder-based routing structure understood (page.tsx, dynamic [slug] routes)." />
+            <ChecklistItem label="Root layout configured with shared header and footer." />
+            <ChecklistItem label="Clear boundary established between Server and Client Components." />
+            <ChecklistItem label="Async Server Component data fetching implemented." />
+            <ChecklistItem label="Client-side navigation optimized using the Link component." />
+          </div>
+          <InfoBox>
+            You have completed Next.js Fundamentals! You are ready to start building the frontend for your full-stack application.
           </InfoBox>
         </div>
       ),
