@@ -64,7 +64,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212012",
@@ -75,7 +75,7 @@ export default function GradingPage() {
         false,
         false,
         false,
-        false,
+        true,
         false,
         false,
         false,
@@ -110,7 +110,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212022",
@@ -133,7 +133,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212024",
@@ -156,7 +156,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     
     {
@@ -180,7 +180,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212051",
@@ -203,12 +203,16 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212064",
       name: "Salwa Salsabila",
       attendance: [
+        false,
+        true,
+        false,
+        false,
         false,
         true,
         false,
@@ -221,12 +225,8 @@ export default function GradingPage() {
         false,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212070",
@@ -284,7 +284,7 @@ export default function GradingPage() {
         false,
         false,
         false,
-        false,
+        true,
         false,
         false,
         false,
@@ -296,7 +296,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212084",
@@ -342,7 +342,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212086",
@@ -365,7 +365,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212091",
@@ -388,12 +388,16 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212092",
       name: "Suci Widia Rizki",
       attendance: [
+        false,
+        true,
+        false,
+        false,
         false,
         true,
         false,
@@ -406,12 +410,8 @@ export default function GradingPage() {
         false,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
       ],
-      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212096",
@@ -457,7 +457,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212104",
@@ -468,7 +468,7 @@ export default function GradingPage() {
         false,
         false,
         false,
-        false,
+        true,
         false,
         false,
         false,
@@ -480,7 +480,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212106",
@@ -503,7 +503,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
     {
       nim: "240212131",
@@ -526,7 +526,7 @@ export default function GradingPage() {
         false,
         false,
       ],
-      exercises: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      exercises: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     },
   ];
 

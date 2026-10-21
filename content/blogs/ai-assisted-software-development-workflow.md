@@ -1,6 +1,6 @@
 ---
 title: "AI-Assisted Software Development Workflow"
-date: "7 September 2026"
+date: "21 October 2026"
 author: "Abdul Fikri"
 tags: ["AI", "Software Engineering", "Productivity", "Workflow"]
 description: "A practical, repeatable workflow for building high-quality software with AI coding agents."
