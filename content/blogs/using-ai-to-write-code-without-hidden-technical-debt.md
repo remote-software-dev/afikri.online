@@ -28,12 +28,6 @@ This post covers what is true and what is exaggerated, the small loop you can re
 - Some evidence supports the broader worry. GitClear's analyses of large code samples found more duplicated and quickly reverted code as AI tools spread, and Google's DORA research linked heavier AI adoption to lower delivery stability even while individual productivity felt higher. Developer surveys also repeatedly name "almost right" output as a top frustration.
 - AI makes review harder in a specific way: the code is fluent and consistently formatted, so it triggers less suspicion than messy human code.
 
-**What is overstated**
-
-- "A new kind of technical debt" is partly branding. The mechanics are old: unreviewed code, duplicated logic, and code nobody understands. AI produces them faster and in larger volume.
-- "Most teams only notice too late" is unverifiable, and "three questions in thirty seconds" is a video hook. A good checklist helps, but it does not catch most hidden debt on its own.
-- The evidence is early and mixed. Teams with strong tests and review habits report real gains.
-
 **The takeaway:** take the warning seriously, but do not treat it as a brand-new phenomenon. The answer is traditional engineering discipline, applied a bit more strictly to code you did not write yourself.
 
 ## The approach: traditional engineering, with AI as the first draft
