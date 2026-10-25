@@ -2,10 +2,10 @@
 title: "Using AI to Write Code Without Creating Hidden Technical Debt"
 date: "24 October 2026"
 author: "Abdul Fikri"
-tags: ["AI", "Software Engineering", "Next.js", "Productivity", "Best Practices"]
-description: "Stop blindly trusting AI code. A developer's guide to structured workflows, the SAFE verification checklist, and a rigorous 12-phase engineering lifecycle."
+tags: ["AI", "Software Engineering", "Testing", "Productivity", "Best Practices"]
+description: "A practical guide to writing code with AI without hidden technical debt: the spec-first loop, property-based testing, review questions, and scaling it to real and existing projects."
 imgUrl: "/blogs/stop-trusting-ai-code-blindly.jpg"
-excerpt: "Here is my experience developing software with the assistance of AI-generated tools."
+excerpt: "A practical reference for writing code with AI: the spec-first loop, a worked example, and how to scale it to real projects without hidden technical debt."
 ---
 
 # Using AI to Write Code Without Creating Hidden Technical Debt
